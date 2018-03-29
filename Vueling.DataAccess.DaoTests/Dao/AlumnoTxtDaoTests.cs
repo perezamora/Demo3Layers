@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Vueling.DataAcces.Dao.Tests
 {
     [TestClass()]
-    public class FormatoTxtTests
+    public class AlumnoTxtDaoTests
     {
         [TestMethod()]
         public void AddTest()
