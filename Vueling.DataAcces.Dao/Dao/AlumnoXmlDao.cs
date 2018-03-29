@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vueling.DataAcces.Dao.Dao
 {
-    class AlumnoDAO : IAlumnoDAO
+    class AlumnoXmlDao : IAlumnoFormatoDao
     {
         public Alumno Add(Alumno alumno)
         {

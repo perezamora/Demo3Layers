@@ -7,7 +7,7 @@ using Vueling.DataAcces.Dao;
 
 namespace Vueling.DataAcces.Dao
 {
-    public interface IAlumnoDAO
+    public interface IAlumnoFormatoDao
     {
         Alumno Add(Alumno alumno);
     }

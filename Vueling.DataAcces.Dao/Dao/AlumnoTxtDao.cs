@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Vueling.DataAcces.Dao
 {
-    public class FormatoJson : Formato
+    public class AlumnoTxtDao : IAlumnoFormatoDao
     {
-        public override void Add(Alumno alumno)
+        public Alumno Add(Alumno alumno)
         {
             throw new NotImplementedException();
         }
