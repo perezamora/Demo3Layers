@@ -8,6 +8,13 @@ namespace Vueling.Common.Logic.Model
 {
     public class VuelingObject
     {
-        private Guid guid;
+        private String guid;
+
+        public VuelingObject()
+        {
+            this.guid = System.Guid.NewGuid().ToString();
+        }
+
+        public string Guid { get => guid; set => guid = value; }
     }
 }

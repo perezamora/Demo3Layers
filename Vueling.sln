@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vueling.DataAccess.Dao", "V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vueling.Common.Logic", "Vueling.Common.Logic\Vueling.Common.Logic.csproj", "{0912F050-0F24-4C5B-B9CF-1160EC397642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vueling.DataAccess.DaoTests", "Vueling.DataAccess.DaoTests\Vueling.DataAccess.DaoTests.csproj", "{05E99483-0492-4A83-9F7B-65C436CC0823}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vueling.DataAccess.DaoTests", "Vueling.DataAccess.DaoTests\Vueling.DataAccess.DaoTests.csproj", "{CC4EFFE9-470A-46D5-99D5-D7A0FF474DD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{0912F050-0F24-4C5B-B9CF-1160EC397642}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0912F050-0F24-4C5B-B9CF-1160EC397642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0912F050-0F24-4C5B-B9CF-1160EC397642}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05E99483-0492-4A83-9F7B-65C436CC0823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05E99483-0492-4A83-9F7B-65C436CC0823}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05E99483-0492-4A83-9F7B-65C436CC0823}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05E99483-0492-4A83-9F7B-65C436CC0823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4EFFE9-470A-46D5-99D5-D7A0FF474DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4EFFE9-470A-46D5-99D5-D7A0FF474DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4EFFE9-470A-46D5-99D5-D7A0FF474DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4EFFE9-470A-46D5-99D5-D7A0FF474DD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Vueling.DataAccess.DaoTests1")]
+[assembly: AssemblyTitle("Vueling.DataAccess.DaoTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Vueling.DataAccess.DaoTests1")]
+[assembly: AssemblyProduct("Vueling.DataAccess.DaoTests")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("4846880b-a395-4717-82c0-49d801c2f09f")]
+[assembly: Guid("cc4effe9-470a-46d5-99d5-d7a0ff474dd6")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

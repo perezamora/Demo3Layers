@@ -42,9 +42,9 @@
   <ItemGroup>
     <Compile Include="AlumnoBL.cs" />
     <Compile Include="IAlumnoBL.cs" />
-    <Compile Include="Service\FileFactory.cs" />
+    <Compile Include="FileFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\TypeFactory.cs" />
+    <Compile Include="ITypeFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vueling.Common.Logic\Vueling.Common.Logic.csproj">

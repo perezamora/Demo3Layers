@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4846880B-A395-4717-82C0-49D801C2F09F}</ProjectGuid>
+    <ProjectGuid>{CC4EFFE9-470A-46D5-99D5-D7A0FF474DD6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Vueling.DataAccess.DaoTests1</RootNamespace>
-    <AssemblyName>Vueling.DataAccess.DaoTests1</AssemblyName>
+    <RootNamespace>Vueling.DataAccess.DaoTests</RootNamespace>
+    <AssemblyName>Vueling.DataAccess.DaoTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,6 +56,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Dao\AlumnoJsonDaoTests.cs" />
     <Compile Include="Dao\AlumnoTxtDaoTests.cs" />
     <Compile Include="Dao\AlumnoXmlDaoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +65,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vueling.Business.Logic\Vueling.Business.Logic.csproj">
+      <Project>{4BFD752E-205A-4926-827E-0A1761BDD12C}</Project>
+      <Name>Vueling.Business.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vueling.Common.Logic\Vueling.Common.Logic.csproj">
+      <Project>{0912F050-0F24-4C5B-B9CF-1160EC397642}</Project>
+      <Name>Vueling.Common.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vueling.DataAcces.Dao\Vueling.DataAccess.Dao.csproj">
       <Project>{A5DA1120-5615-4F5C-B24B-BA18DE365C58}</Project>
       <Name>Vueling.DataAccess.Dao</Name>

@@ -40,11 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dao\AlumnoDAO.cs" />
-    <Compile Include="Dao\Formato.cs" />
-    <Compile Include="Dao\FormatoJson.cs" />
-    <Compile Include="Dao\FormatoTxt.cs" />
-    <Compile Include="Dao\IAlumnoDAO.cs" />
+    <Compile Include="Dao\AlumnoXmlDao.cs" />
+    <Compile Include="Dao\AlumnoJsonDao.cs" />
+    <Compile Include="Dao\AlumnoTxtDao.cs" />
+    <Compile Include="Dao\IAlumnoFormatoDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
