@@ -15,7 +15,7 @@ namespace Vueling.Business
 {
     public partial class AlumnoForm : Form
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
@@ -29,7 +29,6 @@ namespace Vueling.Business
 
         private void button1_Click(object sender, EventArgs e)
         {
-            log.Info("Button formato txt");
             GuardarVarEnv(Properties.Resources.FormatTxt);
             LoadAlumnoData();
         }
@@ -48,18 +47,17 @@ namespace Vueling.Business
 
         private void LoadAlumnoData()
         {
-            log.Info("Guardar datos alumno");
             alumno.Id = Convert.ToInt32(textId.Text);
             alumno.Name = textNombre.Text;
             alumno.Apellidos = textApellidos.Text;
             alumno.Dni = textDni.Text;
             alumno.FechaNac = textFechaNac.Text;
+            LogUtil.WriteDebugLog(alumno.ToString());
             alumnoBL.Add(alumno);
         }
 
         private void GuardarVarEnv(string format)
         {
-            log.Info("Guardar variable entorno");
             ConfigUtils.SetValorVarEnvironment(format);
         }
     }

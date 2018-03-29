@@ -41,6 +41,11 @@ namespace Vueling.Common.Logic.Model
         public string FechaCr { get => fechaCr; set => fechaCr = value; }
         #endregion
 
+        public override String ToString()
+        {
+            return string.Format("{0};{1};{2};{3};{4};", this.id, this.name, this.apellidos, this.dni, this.fechaNac);
+        }
+
         public override bool Equals(object obj)
         {
             var alumno = obj as Alumno;
