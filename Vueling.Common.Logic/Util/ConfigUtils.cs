@@ -14,12 +14,12 @@ namespace Vueling.Common.Logic.Util
 
         public static string GetValorVarEnvironment()
         {
-            return Environment.GetEnvironmentVariable("Formato")== null ? "Text" : Environment.GetEnvironmentVariable("Formato");
+            return Environment.GetEnvironmentVariable("Formato") == null ? "Txt" : Environment.GetEnvironmentVariable("Formato");
         }
 
         public static void SetValorVarEnvironment(string format)
         {
-            Environment.SetEnvironmentVariable("Formato", format);
+            Environment.SetEnvironmentVariable("Formato", format, EnvironmentVariableTarget.User);
         }
     }
 }

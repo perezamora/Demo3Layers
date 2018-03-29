@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vueling.Common.Logic.Model;
+using System.IO;
+using Vueling.Common.Logic.Util;
 
 namespace Vueling.DataAcces.Dao
 {
@@ -11,7 +13,9 @@ namespace Vueling.DataAcces.Dao
     {
         public Alumno Add(Alumno alumno)
         {
-            throw new NotImplementedException();
+            FileStream fs = FileUtils.Append(FileUtils.getPath());
+            FileUtils.Escribir(fs, alumno.ToJson());
+            return alumno;
         }
     }
 }

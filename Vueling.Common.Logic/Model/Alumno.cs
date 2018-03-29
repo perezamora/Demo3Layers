@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Vueling.Common.Logic.Model
 {
@@ -28,7 +29,7 @@ namespace Vueling.Common.Logic.Model
             this.apellidos = apellidos;
             this.dni = dni;
             this.fechaNac = fechaNac;
-        } 
+        }
         #endregion
 
         #region Propiedades
@@ -43,7 +44,22 @@ namespace Vueling.Common.Logic.Model
 
         public override String ToString()
         {
-            return string.Format("{0};{1};{2};{3};{4};", this.id, this.name, this.apellidos, this.dni, this.fechaNac);
+            return string.Format("{0};{1};{2};{3};{4};{5};{6};{7};",
+                this.id, this.name, this.apellidos, this.dni, this.fechaNac, this.edad, this.fechaCr, this.Guid);
+        }
+
+        public string ToJson()
+        {
+            Alumno alumn = new Alumno
+            {
+                Id = this.id,
+                Name = this.name,
+                Apellidos = this.apellidos,
+                Dni = this.dni,
+                FechaNac = this.fechaNac,
+            };
+
+            return JsonConvert.SerializeObject(alumn, Formatting.Indented);
         }
 
         public override bool Equals(object obj)
@@ -67,6 +83,6 @@ namespace Vueling.Common.Logic.Model
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(fechaNac);
             return hashCode;
         }
-    
+
     }
 }

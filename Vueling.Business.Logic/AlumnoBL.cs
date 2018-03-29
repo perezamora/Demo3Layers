@@ -34,7 +34,6 @@ namespace Vueling.Business.Logic
                     break;
             }
 
-
             return new Alumno();
         }
     }

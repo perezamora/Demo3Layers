@@ -20,6 +20,8 @@ namespace Vueling.Business
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
 
+        // Si ponemos la instanciacion en la creacion del FORM, el GUID siempre sera el mismo
+        // tener cuidado !!!!!!!
         public AlumnoForm()
         {
             InitializeComponent();
