@@ -36,9 +36,11 @@ namespace Vueling.DataAcces.Dao
                 {
                     List<Alumno> alumnos = new List<Alumno>();
                     XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
-                    FileStream fs1 = new FileStream(path, FileMode.Create);
-                    alumnos.Add(alumno);
-                    xSeriz.Serialize(fs1, alumnos);
+                    using (FileStream fs1 = new FileStream(path, FileMode.Create))
+                    {
+                        alumnos.Add(alumno);
+                        xSeriz.Serialize(fs1, alumnos);
+                    }
                 }
                 return alumno;
             }

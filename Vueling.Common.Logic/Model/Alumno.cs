@@ -77,7 +77,8 @@ namespace Vueling.Common.Logic.Model
                 Dni = this.dni,
                 FechaNac = this.fechaNac,
                 Edad = this.edad,
-                FechaCr = this.fechaCr
+                FechaCr = this.fechaCr,
+                Guid = this.Guid
             };
 
             return JsonConvert.SerializeObject(alumn, Formatting.Indented);
@@ -87,6 +88,7 @@ namespace Vueling.Common.Logic.Model
         {
             var alumno = obj as Alumno;
             return alumno != null &&
+                   base.Equals(obj) &&
                    id == alumno.id &&
                    name == alumno.name &&
                    apellidos == alumno.apellidos &&
@@ -106,6 +108,7 @@ namespace Vueling.Common.Logic.Model
         public override int GetHashCode()
         {
             var hashCode = -1156335184;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + id.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(name);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(apellidos);
@@ -122,6 +125,7 @@ namespace Vueling.Common.Logic.Model
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FechaCr);
             return hashCode;
         }
+
         #endregion
     }
 }

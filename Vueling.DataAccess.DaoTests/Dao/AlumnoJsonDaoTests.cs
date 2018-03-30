@@ -44,7 +44,7 @@ namespace Vueling.DataAcces.Dao.Tests
             alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
 
             // Añadimos variable entorno con el formato JSON
-            ConfigUtils.SetValorVarEnvironment("json");
+            ConfigUtils.SetValorVarEnvironment("Json");
 
             // Realizamos la llamada metodo para añadir elemento
             alumnoDao.Add(alumno);
@@ -64,7 +64,7 @@ namespace Vueling.DataAcces.Dao.Tests
             String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var fullPath = path + "\\" + "alumnos.json";
 
-            //File.Delete(fullPath);
+            File.Delete(fullPath);
         }
 
         public Alumno LeerAlumnoJson()
