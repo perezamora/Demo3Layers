@@ -11,12 +11,10 @@ using Vueling.Business.Logic;
 using Vueling.Common.Logic.Model;
 using Vueling.Common.Logic.Util;
 
-namespace Vueling.Business
+namespace Vueling.Presentation.Winsite
 {
     public partial class AlumnoForm : Form
     {
-        //private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
 

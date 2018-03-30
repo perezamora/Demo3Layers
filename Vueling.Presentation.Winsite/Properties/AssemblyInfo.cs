@@ -1,16 +1,16 @@
-﻿using log4net.Config;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using log4net.Config;
 
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Vueling.Business")]
+[assembly: AssemblyTitle("Vueling.Presentation.Winsite")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Vueling.Business")]
+[assembly: AssemblyProduct("Vueling.Presentation.Winsite")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("cd1ce4de-caa7-4f8f-ab04-2b360c9e2a88")]
+[assembly: Guid("31446e9e-854e-4b8d-89cc-6ebe56655ac1")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

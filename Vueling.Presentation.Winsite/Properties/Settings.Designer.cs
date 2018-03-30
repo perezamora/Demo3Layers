@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vueling.Business.Properties
+namespace Vueling.Presentation.Winsite.Properties
 {
 
 
