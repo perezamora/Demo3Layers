@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Vueling.Business.Logic;
 using Vueling.Common.Logic.Model;
 using System.IO;
+using Vueling.Common.Logic.Util;
 
 namespace Vueling.DataAcces.Dao.Tests
 {
@@ -40,6 +41,9 @@ namespace Vueling.DataAcces.Dao.Tests
             alumno.Guid = System.Guid.NewGuid().ToString();
             alumno.Edad = alumno.CalcularEdat();
             alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
+
+            // Añadimos variable entorno con el formato txt
+            ConfigUtils.SetValorVarEnvironment("txt");
 
             // Realizamos la llamada metodo para añadir elemento
             alumnoDao.Add(alumno);
