@@ -33,7 +33,6 @@ namespace Vueling.DataAcces.Dao.Tests
         public void AddTest(int id, string name, string apellidos, string dni, string fechaNac)
         {
             string guid = System.Guid.NewGuid().ToString();
-
             var fechaNac1 = new DateTime();
 
             // Creamos usuario de pruebas

@@ -49,7 +49,7 @@ namespace Vueling.Common.Logic.Model
             return CurrentDate.Year - this.fechaNac.Year;
         }
 
-        public String GetTimestamp(DateTime value)
+        public String GetTimesTamp(DateTime value)
         {
             return value.ToString("yyyyMMddHHmmssffff");
         }
@@ -84,12 +84,21 @@ namespace Vueling.Common.Logic.Model
                    name == alumno.name &&
                    apellidos == alumno.apellidos &&
                    dni == alumno.dni &&
-                   fechaNac == alumno.fechaNac;
+                   fechaNac == alumno.fechaNac &&
+                   edad == alumno.edad &&
+                   fechaCr == alumno.fechaCr &&
+                   Id == alumno.Id &&
+                   Name == alumno.Name &&
+                   Apellidos == alumno.Apellidos &&
+                   Dni == alumno.Dni &&
+                   FechaNac == alumno.FechaNac &&
+                   Edad == alumno.Edad &&
+                   FechaCr == alumno.FechaCr;
         }
 
         public override int GetHashCode()
         {
-            var hashCode = 37312904;
+            var hashCode = -1156335184;
             hashCode = hashCode * -1521134295 + id.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(name);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(apellidos);
@@ -97,8 +106,15 @@ namespace Vueling.Common.Logic.Model
             hashCode = hashCode * -1521134295 + fechaNac.GetHashCode();
             hashCode = hashCode * -1521134295 + edad.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(fechaCr);
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Apellidos);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Dni);
+            hashCode = hashCode * -1521134295 + FechaNac.GetHashCode();
+            hashCode = hashCode * -1521134295 + Edad.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FechaCr);
             return hashCode;
-        }
+        } 
         #endregion
     }
 }

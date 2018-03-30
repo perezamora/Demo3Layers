@@ -26,7 +26,6 @@ namespace Vueling.Common.Logic.Util
 
         public static void WriteDebugLog(string message)
         {
-            Console.WriteLine(message);
             _debugLogger.DebugFormat(message);
         }
     }

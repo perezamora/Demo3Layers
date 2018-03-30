@@ -24,7 +24,6 @@ namespace Vueling.Business
         // tener cuidado !!!!!!!
         public AlumnoForm()
         {
-            LogUtil.WriteDebugLog("Start Application.");
             InitializeComponent();
             alumno = new Alumno();
             alumnoBL = new AlumnoBL();
