@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Vueling.Business.Logic;
 using Vueling.Common.Logic.Model;
-using Vueling.DataAcces.Dao;
 using System.IO;
 
 namespace Vueling.DataAcces.Dao.Tests
@@ -28,15 +27,19 @@ namespace Vueling.DataAcces.Dao.Tests
         }
 
 
-        [DataRow(1, "pere", "zamora", "3333","10031978")]
+        [DataRow(1, "pere", "zamora", "3333", "10-03-1978")]
         [DataTestMethod]
         public void AddTest(int id, string name, string apellidos, string dni, string fechaNac)
         {
-            string guid = System.Guid.NewGuid().ToString();
-            var fechaNac1 = new DateTime();
+            // Convertir fecha nacimiento en formato DateTime
+            var lfechaNac = fechaNac.Split('-');
+            var FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
 
-            // Creamos usuario de pruebas
-            Alumno alumno = new Alumno(id, name, apellidos, dni, fechaNac1);
+            // Creamos usuario de pruebas (asignamos Guid, fecha creacion y edad calculada)
+            Alumno alumno = new Alumno(id, name, apellidos, dni, FechaNac);
+            alumno.Guid = System.Guid.NewGuid().ToString();
+            alumno.Edad = alumno.CalcularEdat();
+            alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
 
             // Realizamos la llamada metodo para añadir elemento
             alumnoDao.Add(alumno);
@@ -53,7 +56,10 @@ namespace Vueling.DataAcces.Dao.Tests
         [TestCleanup]
         public void testClean()
         {
-            //File.Delete("AlumnosTest.txt");
+            String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var fullPath = path + "\\" + "alumnos.txt";
+
+            File.Delete(fullPath);
         }
 
         public Alumno LeerAlumnoTxt()
@@ -70,7 +76,7 @@ namespace Vueling.DataAcces.Dao.Tests
                 // Recuperamos los alumnos del fichero Txt
                 String text = sw.ReadToEnd();
                 string[] fields = text.Split(';');
-                return new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], new DateTime()); ;
+                return new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], Convert.ToDateTime(fields[4]), Convert.ToInt32(fields[5]), fields[6], fields[7]); ;
             }
         }
 

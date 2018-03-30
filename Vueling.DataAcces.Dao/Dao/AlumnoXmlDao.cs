@@ -7,7 +7,6 @@ using Vueling.Common.Logic.Model;
 using Vueling.Common.Logic.Util;
 using System.IO;
 using System.Xml.Serialization;
-using Vueling.Common.Logic.Util;
 
 namespace Vueling.DataAcces.Dao
 {
@@ -43,9 +42,9 @@ namespace Vueling.DataAcces.Dao
                 }
                 return alumno;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
 
         }

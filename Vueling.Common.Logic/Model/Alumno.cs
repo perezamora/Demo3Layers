@@ -22,13 +22,20 @@ namespace Vueling.Common.Logic.Model
         #region Constructores
         public Alumno() { }
 
-        public Alumno(int id, string name, string apellidos, string dni, DateTime fechaNac)
+        public Alumno(int id, string name, string apellidos, string dni, DateTime fechaNac) :
+            this(id, name, apellidos, dni, fechaNac, 0, "", "")
+        { }
+
+        public Alumno(int id, string name, string apellidos, string dni, DateTime fechaNac, int edad, string fechaCr, string guid)
         {
             this.id = id;
             this.name = name;
             this.apellidos = apellidos;
             this.dni = dni;
             this.fechaNac = fechaNac;
+            this.edad = edad;
+            this.fechaCr = fechaCr;
+            this.Guid = guid;
         }
         #endregion
 
@@ -114,7 +121,7 @@ namespace Vueling.Common.Logic.Model
             hashCode = hashCode * -1521134295 + Edad.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FechaCr);
             return hashCode;
-        } 
+        }
         #endregion
     }
 }

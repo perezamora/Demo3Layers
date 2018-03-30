@@ -17,9 +17,9 @@ namespace Vueling.Presentation.Winsite
     {
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
+       // private static readonly log4net.ILog log = 
+       //     log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        // Si ponemos la instanciacion en la creacion del FORM, el GUID siempre sera el mismo
-        // tener cuidado !!!!!!!
         public AlumnoForm()
         {
             InitializeComponent();
@@ -53,7 +53,8 @@ namespace Vueling.Presentation.Winsite
             alumno.Dni = textDni.Text;
             var lfechaNac = textFechaNac.Text.Split('-');
             alumno.FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
-            LogUtil.WriteDebugLog(alumno.ToString());
+            //LogUtil.WriteDebugLog(alumno.ToString());
+            //log.Info(alumno.ToString());
             alumnoBL.Add(alumno);
         }
 

@@ -19,6 +19,7 @@ namespace Vueling.Business.Logic
             ITypeFactory factory = new FileFactory();
             alumno.Edad = alumno.CalcularEdat();
             alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
+            LogUtil.WriteDebugLog(alumno.ToString());
 
             switch (EnumApp.getValorFormatAlumno())
             {
