@@ -17,6 +17,8 @@ namespace Vueling.Business.Logic
         public Alumno Add(Alumno alumno)
         {
             ITypeFactory factory = new FileFactory();
+            alumno.Edad = alumno.CalcularEdat();
+            alumno.FechaCr = alumno.GetTimestamp(DateTime.Now);
 
             switch (EnumApp.getValorFormatAlumno())
             {

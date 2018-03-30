@@ -34,8 +34,10 @@ namespace Vueling.DataAcces.Dao.Tests
         {
             string guid = System.Guid.NewGuid().ToString();
 
+            var fechaNac1 = new DateTime();
+
             // Creamos usuario de pruebas
-            Alumno alumno = new Alumno(id, name, apellidos, dni, fechaNac);
+            Alumno alumno = new Alumno(id, name, apellidos, dni, fechaNac1);
 
             // Realizamos la llamada metodo para añadir elemento
             alumnoDao.Add(alumno);
@@ -69,7 +71,7 @@ namespace Vueling.DataAcces.Dao.Tests
                 // Recuperamos los alumnos del fichero Txt
                 String text = sw.ReadToEnd();
                 string[] fields = text.Split(';');
-                return new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], fields[4]); ;
+                return new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], new DateTime()); ;
             }
         }
 

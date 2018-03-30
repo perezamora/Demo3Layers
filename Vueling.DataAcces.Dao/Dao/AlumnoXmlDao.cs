@@ -20,7 +20,7 @@ namespace Vueling.DataAcces.Dao
             {
                 if (File.Exists(path))
                 {
-                    List<Alumno> alumnos = new List<Alumno>();
+                    List<Alumno> alumnos;
                     XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
                     using (StreamReader r = new StreamReader(path))
                     {

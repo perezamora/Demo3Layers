@@ -14,7 +14,7 @@ namespace Vueling.Common.Logic.Model
         private string name;
         private string apellidos;
         private string dni;
-        private DateTime fechaNac;
+        private string fechaNac;
         private int edad;
         private string fechaCr;
         #endregion
@@ -22,7 +22,7 @@ namespace Vueling.Common.Logic.Model
         #region Constructores
         public Alumno() { }
 
-        public Alumno(int id, string name, string apellidos, string dni, DateTime fechaNac)
+        public Alumno(int id, string name, string apellidos, string dni, string fechaNac)
         {
             this.id = id;
             this.name = name;
@@ -37,22 +37,10 @@ namespace Vueling.Common.Logic.Model
         public string Name { get => name; set => name = value; }
         public string Apellidos { get => apellidos; set => apellidos = value; }
         public string Dni { get => dni; set => dni = value; }
-        public DateTime FechaNac { get => fechaNac; set => fechaNac = value; }
+        public string FechaNac { get => fechaNac; set => fechaNac = value; }
         public int Edad { get => edad; set => edad = value; }
         public string FechaCr { get => fechaCr; set => fechaCr = value; }
         #endregion
-
-        #region Metodos
-        public int CalcularEdat()
-        {
-            DateTime CurrentDate = DateTime.Now;
-            return CurrentDate.Year - this.fechaNac.Year;
-        }
-
-        public String GetTimestamp(DateTime value)
-        {
-            return value.ToString("yyyyMMddHHmmssffff");
-        }
 
         public override String ToString()
         {
@@ -69,8 +57,6 @@ namespace Vueling.Common.Logic.Model
                 Apellidos = this.apellidos,
                 Dni = this.dni,
                 FechaNac = this.fechaNac,
-                Edad = this.edad,
-                FechaCr = this.fechaCr
             };
 
             return JsonConvert.SerializeObject(alumn, Formatting.Indented);
@@ -89,16 +75,14 @@ namespace Vueling.Common.Logic.Model
 
         public override int GetHashCode()
         {
-            var hashCode = 37312904;
+            var hashCode = 394487252;
             hashCode = hashCode * -1521134295 + id.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(name);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(apellidos);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(dni);
-            hashCode = hashCode * -1521134295 + fechaNac.GetHashCode();
-            hashCode = hashCode * -1521134295 + edad.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(fechaCr);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(fechaNac);
             return hashCode;
         }
-        #endregion
+
     }
 }

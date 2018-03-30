@@ -24,6 +24,7 @@ namespace Vueling.Business
         // tener cuidado !!!!!!!
         public AlumnoForm()
         {
+            LogUtil.WriteDebugLog("Start Application.");
             InitializeComponent();
             alumno = new Alumno();
             alumnoBL = new AlumnoBL();
@@ -53,7 +54,8 @@ namespace Vueling.Business
             alumno.Name = textNombre.Text;
             alumno.Apellidos = textApellidos.Text;
             alumno.Dni = textDni.Text;
-            alumno.FechaNac = textFechaNac.Text;
+            var lfechaNac = textFechaNac.Text.Split('-');
+            alumno.FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
             LogUtil.WriteDebugLog(alumno.ToString());
             alumnoBL.Add(alumno);
         }
