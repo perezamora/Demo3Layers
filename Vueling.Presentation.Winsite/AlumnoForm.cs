@@ -17,8 +17,6 @@ namespace Vueling.Presentation.Winsite
     {
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
-       // private static readonly log4net.ILog log = 
-       //     log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public AlumnoForm()
         {
@@ -29,19 +27,19 @@ namespace Vueling.Presentation.Winsite
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GuardarVarEnv(Properties.Resources.FormatTxt);
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatTxt);
             LoadAlumnoData();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            GuardarVarEnv(Properties.Resources.FormatJson);
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatJson);
             LoadAlumnoData();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            GuardarVarEnv(Properties.Resources.FormatXml);
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatXml);
             LoadAlumnoData();
         }
 
@@ -53,14 +51,10 @@ namespace Vueling.Presentation.Winsite
             alumno.Dni = textDni.Text;
             var lfechaNac = textFechaNac.Text.Split('-');
             alumno.FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
-            //LogUtil.WriteDebugLog(alumno.ToString());
-            //log.Info(alumno.ToString());
+            LogUtilSer.WriteInfoSerilog("Capa presentacion, " + alumno.ToString());
+            LogUtil.WriteInfoLog("Prueba de log4net");
             alumnoBL.Add(alumno);
         }
 
-        private void GuardarVarEnv(string format)
-        {
-            ConfigUtils.SetValorVarEnvironment(format);
-        }
     }
 }

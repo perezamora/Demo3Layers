@@ -15,6 +15,7 @@ namespace Vueling.DataAcces.Dao
         {
             FileStream fs = FileUtils.Append(FileUtils.getPath());
             FileUtils.Escribir(fs, alumno.ToJson());
+            LogUtilSer.WriteDebugSerilog(alumno.ToString());
             return alumno;
         }
     }
