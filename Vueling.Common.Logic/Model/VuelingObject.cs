@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Vueling.Common.Logic.Model
 {
-    public class VuelingObject
+    public abstract class VuelingObject
     {
-        private String guid;
+        protected String guid;
 
-        public VuelingObject()
+        protected VuelingObject()
         {
-            this.guid = System.Guid.NewGuid().ToString();
+            GenerateGuid();
+        }
+
+        protected VuelingObject(string guid)
+        {
+            this.guid = guid;
         }
 
         public string Guid { get => guid; set => guid = value; }
@@ -23,6 +28,11 @@ namespace Vueling.Common.Logic.Model
             return @object != null &&
                    guid == @object.guid &&
                    Guid == @object.Guid;
+        }
+
+        public virtual void GenerateGuid()
+        {
+            Guid = System.Guid.NewGuid().ToString();
         }
 
         public override int GetHashCode()

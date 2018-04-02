@@ -28,14 +28,14 @@ namespace Vueling.Common.Logic.Model
 
         public Alumno(int id, string name, string apellidos, string dni, DateTime fechaNac, int edad, string fechaCr, string guid)
         {
-            this.id = id;
-            this.name = name;
-            this.apellidos = apellidos;
-            this.dni = dni;
-            this.fechaNac = fechaNac;
-            this.edad = edad;
-            this.fechaCr = fechaCr;
-            this.Guid = guid;
+            Id = id;
+            Name = name;
+            Apellidos = apellidos;
+            Dni = dni;
+            FechaNac = fechaNac;
+            Edad = edad;
+            FechaCr = fechaCr;
+            Guid = guid;
         }
         #endregion
 
