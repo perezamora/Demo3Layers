@@ -10,6 +10,8 @@ using Vueling.Common.Logic.Model;
 using System.IO;
 using Newtonsoft.Json;
 using Vueling.Common.Logic.Util;
+using log4net;
+using System.Reflection;
 
 namespace Vueling.DataAcces.Dao.Tests
 {
@@ -17,7 +19,7 @@ namespace Vueling.DataAcces.Dao.Tests
     [TestClass()]
     public class AlumnoJsonDaoTests
     {
-
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         IAlumnoFormatoDao alumnoDao;
         ITypeFactory factory;
 
@@ -33,6 +35,7 @@ namespace Vueling.DataAcces.Dao.Tests
         [DataTestMethod]
         public void AddTest(int id, string name, string apellidos, string dni, string fechaNac)
         {
+            log.Debug("Entrar metodo AddTest: ");
             // Convertir fecha nacimiento en formato DateTime
             var lfechaNac = fechaNac.Split('-');
             var FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
@@ -56,6 +59,7 @@ namespace Vueling.DataAcces.Dao.Tests
             Console.WriteLine(alumno);
             Console.WriteLine(alumnoTest);
             Assert.IsTrue(alumno.Equals(alumnoTest));
+            log.Debug("Salir metodo AddTest: ");
         }
 
         [TestCleanup]

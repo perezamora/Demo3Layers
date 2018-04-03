@@ -9,6 +9,8 @@ using Vueling.Business.Logic;
 using Vueling.Common.Logic.Model;
 using System.IO;
 using Vueling.Common.Logic.Util;
+using log4net;
+using System.Reflection;
 
 namespace Vueling.DataAcces.Dao.Tests
 {
@@ -16,13 +18,14 @@ namespace Vueling.DataAcces.Dao.Tests
     [TestClass()]
     public class AlumnoTxtDaoTests
     {
-
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         IAlumnoFormatoDao alumnoDao;
         ITypeFactory factory;
 
         [TestInitialize]
         public void testInit()
         {
+            log.Debug("Entrar metodo testInit: ");
             factory = new FileFactory();
             alumnoDao = factory.AddTxt();
         }
@@ -32,6 +35,8 @@ namespace Vueling.DataAcces.Dao.Tests
         [DataTestMethod]
         public void AddTest(int id, string name, string apellidos, string dni, string fechaNac)
         {
+            log.Debug("Entrar metodo AddTest : ");
+
             var lfechaNac = fechaNac.Split('-');
             var FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
 
@@ -45,19 +50,23 @@ namespace Vueling.DataAcces.Dao.Tests
             alumnoDao.Add(alumno);
             Alumno alumnoTest = LeerAlumnoTxt();
             Assert.IsTrue(alumno.Equals(alumnoTest));
+            log.Debug("Salir metodo AddTest : ");
         }
 
         [TestCleanup]
         public void testClean()
         {
+            log.Debug("Entrar metodo testClean: ");
             String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var fullPath = path + "\\" + "alumnos.txt";
 
             File.Delete(fullPath);
+            log.Debug("Salir metodo testClean: ");
         }
 
         private Alumno LeerAlumnoTxt()
         {
+            log.Debug("Entrar metodo LeerAlumno: ");
             String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var fullPath = path + "\\" + "alumnos.txt";
 
@@ -66,7 +75,7 @@ namespace Vueling.DataAcces.Dao.Tests
             {
                 String text = sw.ReadToEnd();
                 string[] fields = text.Split(';');
-                return new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], Convert.ToDateTime(fields[4]), Convert.ToInt32(fields[5]), fields[6], fields[7]); ;
+                return new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], Convert.ToDateTime(fields[4]), Convert.ToInt32(fields[5]), fields[6], fields[7]); 
             }
         }
 
