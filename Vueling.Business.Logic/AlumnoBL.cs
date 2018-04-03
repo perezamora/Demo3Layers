@@ -8,15 +8,18 @@ using Vueling.DataAcces.Dao;
 using Vueling.Common.Logic.Util;
 using Vueling.Common.Logic.Enums;
 using System.Reflection;
+using log4net;
 
 namespace Vueling.Business.Logic
 {
     public class AlumnoBL : IAlumnoBL
     {
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private IAlumnoFormatoDao alumnoDao;
 
         public Alumno Add(Alumno alumno)
         {
+            log.Debug("Entrar metodo Add");
             /*
             ITypeFactory factory = new FileFactory();
             alumno.Edad = alumno.CalcularEdat();

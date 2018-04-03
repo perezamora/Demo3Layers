@@ -7,13 +7,21 @@ using Vueling.Common.Logic.Model;
 using Vueling.Common.Logic.Util;
 using System.IO;
 using System.Xml.Serialization;
+using System.Reflection;
+using log4net;
 
 namespace Vueling.DataAcces.Dao
 {
+
+
     public class AlumnoXmlDao : IAlumnoFormatoDao
     {
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public Alumno Add(Alumno alumno)
         {
+            log.Debug("Entrar metodo Add: " + alumno.ToString());
+
             var path = FileUtils.getPath();
             try
             {

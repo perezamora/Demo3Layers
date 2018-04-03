@@ -14,12 +14,11 @@ namespace Vueling.Common.Logic.Util
   
         static LogUtil()
         {
-            //logger names are mentioned in <log4net> section of config file
             _debugLogger = GetLogger(typeof(LogUtil));
         }
 
 
-        private static ILog GetLogger(Type type)
+        public static ILog GetLogger(Type type)
         {
             ILog log = LogManager.GetLogger(type);
             return log;
