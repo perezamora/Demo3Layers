@@ -21,6 +21,7 @@ namespace Vueling.Presentation.Winsite
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private IAlumnoBL alumnoBL;
         SingletonListaJson listaAlumnosJson;
+        SingletonListaXml listaAlumnosXml;
 
         public AlumnosShowForm()
         {
@@ -49,23 +50,46 @@ namespace Vueling.Presentation.Winsite
         private void button1_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar Mostrar lista alumnos TXT: ");
-            List<Alumno> listAlumnos = alumnoBL.GetAlumnos();
-            dataGridView1.ReadOnly = true;
-            dataGridView1.DataSource = listAlumnos;
+            try
+            {
+                List<Alumno> listAlumnos = alumnoBL.GetAlumnos();
+                dataGridView1.ReadOnly = true;
+                dataGridView1.DataSource = listAlumnos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar Mostrar lista alumnos JSON: ");
-            dataGridView1.ReadOnly = true;
-            listaAlumnosJson = SingletonListaJson.Instance;
-            dataGridView1.DataSource = listaAlumnosJson.ListaAlunmnos;
+            try
+            {
+                listaAlumnosJson = SingletonListaJson.Instance;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.DataSource = listaAlumnosJson.ListaAlumnos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            dataGridView1.ReadOnly = true;
-            dataGridView1.DataSource = "";
+            log.Debug("Entrar Mostrar lista alumnos XML: ");
+            try
+            {
+                listaAlumnosXml = SingletonListaXml.Instance;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.DataSource = listaAlumnosXml.ListaAlumnos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

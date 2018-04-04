@@ -25,9 +25,10 @@ namespace Vueling.Common.Logic.Util
                 String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 // Nombre del fichero añadir elementos
+                var slash = "\\";
                 var nameFile = "file" + ConfigUtils.GetValorVarEnvironment();
                 var filePath = Environment.GetEnvironmentVariable(nameFile);
-                var fullPath = path + "\\" + filePath;
+                var fullPath = path + slash + filePath;
                 Console.WriteLine(nameFile);
                 Console.WriteLine(filePath);
                 Console.WriteLine("file path -->" + fullPath);
@@ -36,7 +37,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (IOException e)
             {
-                log.Debug("Catch GetPath: " + e);
+                log.Error("Catch GetPath: " + e);
                 throw;
             }
         }
@@ -61,7 +62,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (IOException e)
             {
-                log.Debug("Catch Crear: " + e);
+                log.Error("Catch Crear: " + e);
                 throw;
             }
 
@@ -77,7 +78,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (IOException e)
             {
-                log.Debug("Catch Append: " + e);
+                log.Error("Catch Append: " + e);
                 throw;
             }
 
@@ -93,7 +94,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (IOException e)
             {
-                log.Debug("Catch Abrir: " + e);
+                log.Error("Catch Abrir: " + e);
                 throw;
             }
         }
@@ -110,7 +111,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (IOException e)
             {
-                log.Debug("Catch Escribir: " + e);
+                log.Error("Catch Escribir: " + e);
                 throw;
             }
 
@@ -135,7 +136,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (IOException e)
             {
-                log.Debug("Catch LeerAllFile: " + e);
+                log.Error("Catch LeerAllFile: " + e);
                 throw;
             }
 
@@ -150,7 +151,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (IOException e)
             {
-                log.Debug("Catch Cerrar: " + e);
+                log.Error("Catch Cerrar: " + e);
                 throw;
             }
 

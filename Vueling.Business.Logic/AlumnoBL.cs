@@ -52,7 +52,7 @@ namespace Vueling.Business.Logic
             }
             catch (Exception e)
             {
-                log.Debug("Catch Add: " + e);
+                log.Error("Catch Add: " + e.ToString());
                 throw;
             }
 
@@ -60,6 +60,7 @@ namespace Vueling.Business.Logic
 
         public List<Alumno> GetAlumnos()
         {
+            log.Debug("Entrar metodo GetAlumnos: ");
             try
             {
                 ReflectionMetodoFactoria();
@@ -67,7 +68,7 @@ namespace Vueling.Business.Logic
             }
             catch (Exception e)
             {
-                log.Debug("Catch Add: " + e);
+                log.Error("Catch Add: " + e.ToString());
                 throw;
             }
         }

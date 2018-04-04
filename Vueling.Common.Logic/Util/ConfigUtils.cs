@@ -27,7 +27,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (Exception e)
             {
-                log.Debug("Catch GetValorVarEnvironment: " + e);
+                log.Error("Catch GetValorVarEnvironment: " + e);
                 throw;
             }
 
@@ -42,7 +42,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (Exception e)
             {
-                log.Debug("Catch SetValorVarEnvironment: " + e);
+                log.Error("Catch SetValorVarEnvironment: " + e);
                 throw;
             }
         }

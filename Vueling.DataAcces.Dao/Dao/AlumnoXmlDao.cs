@@ -54,7 +54,7 @@ namespace Vueling.DataAcces.Dao
             }
             catch (Exception e)
             {
-                log.Debug("Catch Add: " + e);
+                log.Error("Catch Add: " + e);
                 throw;
             }
 
@@ -62,7 +62,32 @@ namespace Vueling.DataAcces.Dao
 
         public List<Alumno> GetAlumnos()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var path = FileUtils.getPath();
+                if (File.Exists(path))
+                {
+                    List<Alumno> alumnos;
+                    XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
+                    using (StreamReader r = new StreamReader(path))
+                    {
+                        String xml = r.ReadToEnd();
+                        StringReader stringReader = new StringReader(xml);
+                        alumnos = (List<Alumno>)xSeriz.Deserialize(stringReader);
+                    }
+                    log.Debug(alumnos);
+                    return alumnos;
+                }
+                else
+                {
+                    return new List<Alumno>();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error("Catch GetAlumnos: " + e);
+                throw;
+            }
         }
     }
 }

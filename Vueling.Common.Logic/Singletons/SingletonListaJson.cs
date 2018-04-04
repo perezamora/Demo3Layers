@@ -10,11 +10,11 @@ namespace Vueling.Common.Logic.Singletons
     public class SingletonListaJson
     {
         private static SingletonListaJson _instancia = null;
-        private List<Alumno> alumos;
+        private List<Alumno> alumnos;
 
         private SingletonListaJson()
         {
-            alumos = new List<Alumno>();
+            alumnos = new List<Alumno>();
         }
 
         // Property de solo lectura
@@ -30,7 +30,7 @@ namespace Vueling.Common.Logic.Singletons
             }
         }
 
-        public List<Alumno> ListaAlunmnos { get => alumos; set => alumos = value; }
+        public List<Alumno> ListaAlumnos { get => alumnos; set => alumnos = value; }
 
     }
 }

@@ -25,7 +25,7 @@ namespace Vueling.DataAcces.Dao
             }
             catch (Exception e)
             {
-                log.Debug("Catch Add: " + e);
+                log.Error("Catch Add: " + e);
                 throw;
             }
         }
@@ -50,7 +50,7 @@ namespace Vueling.DataAcces.Dao
             }
             catch (Exception e)
             {
-                log.Debug("Catch GetAlumnos: " + e);
+                log.Error("Catch GetAlumnos: " + e);
                 throw;
             }
 

@@ -22,6 +22,7 @@ namespace Vueling.Presentation.Winsite
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
         SingletonListaJson listaAlumnosJson;
+        SingletonListaXml listaAlumnosXml;
 
         public AlumnoForm()
         {
@@ -30,6 +31,7 @@ namespace Vueling.Presentation.Winsite
             alumno = new Alumno();
             alumnoBL = new AlumnoBL();
             listaAlumnosJson = SingletonListaJson.Instance;
+            listaAlumnosXml = SingletonListaXml.Instance;
             cargarDatosAlumnos();
         }
 
@@ -99,6 +101,7 @@ namespace Vueling.Presentation.Winsite
         {
             log.Debug("Entrar cargarDatosAlumnos");
             CargarDatosAlumnosJson();
+            CargarDatosAlumnosXml();
 
         }
 
@@ -108,12 +111,27 @@ namespace Vueling.Presentation.Winsite
             try
             {
                 ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatJson);
-                listaAlumnosJson.ListaAlunmnos = alumnoBL.GetAlumnos();
+                listaAlumnosJson.ListaAlumnos = alumnoBL.GetAlumnos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Error cargar datos alumnos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void CargarDatosAlumnosXml()
+        {
+            log.Debug("Entrar CargarDatosAlumnosXml");
+            try
+            {
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatXml);
+                listaAlumnosXml.ListaAlumnos = alumnoBL.GetAlumnos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error cargar datos alumnos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
