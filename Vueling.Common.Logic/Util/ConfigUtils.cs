@@ -20,8 +20,10 @@ namespace Vueling.Common.Logic.Util
             log.Debug("Entrar metodo GetValorVarEnvironment: ");
             try
             {
-                return (Environment.GetEnvironmentVariable("Formato") == null || Environment.GetEnvironmentVariable("Formato") == "")
+                var variable = (Environment.GetEnvironmentVariable("Formato") == null || Environment.GetEnvironmentVariable("Formato") == "")
                     ? "Txt" : Environment.GetEnvironmentVariable("Formato", EnvironmentVariableTarget.User);
+                log.Debug("Valor variable entorno formato: " + variable);
+                return variable;
             }
             catch (Exception e)
             {

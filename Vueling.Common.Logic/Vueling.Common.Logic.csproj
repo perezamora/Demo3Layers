@@ -57,6 +57,8 @@
   <ItemGroup>
     <Compile Include="Enums\EnumApp.cs" />
     <Compile Include="Model\VuelingObject.cs" />
+    <Compile Include="Singletons\SingletonListaJson.cs" />
+    <Compile Include="Singletons\SingletonListaXml.cs" />
     <Compile Include="Util\ConfigUtils.cs" />
     <Compile Include="Util\FileUtils.cs" />
     <Compile Include="Model\Alumno.cs" />

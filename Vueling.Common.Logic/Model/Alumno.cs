@@ -81,7 +81,7 @@ namespace Vueling.Common.Logic.Model
                 Guid = this.Guid
             };
 
-            return JsonConvert.SerializeObject(alumn, Formatting.Indented);
+            return JsonConvert.SerializeObject(alumn);
         }
 
         public override bool Equals(object obj)

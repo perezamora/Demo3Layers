@@ -7,6 +7,7 @@ using System.IO;
 using Vueling.Common.Logic.Util;
 using log4net;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace Vueling.Common.Logic.Util
 {
@@ -142,6 +143,7 @@ namespace Vueling.Common.Logic.Util
 
         public static void Cerrar(FileStream fs)
         {
+            log.Debug("Cerrar fichero: ");
             try
             {
                 fs.Close();
@@ -152,6 +154,12 @@ namespace Vueling.Common.Logic.Util
                 throw;
             }
 
+        }
+
+        public static T DeserializarJson<T>(string item)
+        {
+            log.Debug("DeserializarJson: " + item);
+            return JsonConvert.DeserializeObject<T>(item);
         }
     }
 }

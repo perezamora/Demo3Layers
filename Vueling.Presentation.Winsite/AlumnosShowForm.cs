@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vueling.Business.Logic;
 using Vueling.Common.Logic.Model;
+using Vueling.Common.Logic.Singletons;
 
 namespace Vueling.Presentation.Winsite
 {
@@ -19,6 +20,7 @@ namespace Vueling.Presentation.Winsite
 
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private IAlumnoBL alumnoBL;
+        SingletonListaJson listaAlumnosJson;
 
         public AlumnosShowForm()
         {
@@ -46,7 +48,7 @@ namespace Vueling.Presentation.Winsite
 
         private void button1_Click(object sender, EventArgs e)
         {
-            log.Debug("Entrar button1_Click: ");
+            log.Debug("Entrar Mostrar lista alumnos TXT: ");
             List<Alumno> listAlumnos = alumnoBL.GetAlumnos();
             dataGridView1.ReadOnly = true;
             dataGridView1.DataSource = listAlumnos;
@@ -54,8 +56,10 @@ namespace Vueling.Presentation.Winsite
 
         private void button2_Click(object sender, EventArgs e)
         {
+            log.Debug("Entrar Mostrar lista alumnos JSON: ");
             dataGridView1.ReadOnly = true;
-            dataGridView1.DataSource = "";
+            listaAlumnosJson = SingletonListaJson.Instance;
+            dataGridView1.DataSource = listaAlumnosJson.ListaAlunmnos;
         }
 
         private void button3_Click(object sender, EventArgs e)

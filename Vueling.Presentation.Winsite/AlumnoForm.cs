@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vueling.Business.Logic;
 using Vueling.Common.Logic.Model;
+using Vueling.Common.Logic.Singletons;
 using Vueling.Common.Logic.Util;
 
 namespace Vueling.Presentation.Winsite
@@ -20,6 +21,7 @@ namespace Vueling.Presentation.Winsite
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
+        SingletonListaJson listaAlumnosJson;
 
         public AlumnoForm()
         {
@@ -27,6 +29,7 @@ namespace Vueling.Presentation.Winsite
             InitializeComponent();
             alumno = new Alumno();
             alumnoBL = new AlumnoBL();
+            listaAlumnosJson = SingletonListaJson.Instance;
             cargarDatosAlumnos();
         }
 
@@ -57,14 +60,22 @@ namespace Vueling.Presentation.Winsite
         private void LoadAlumnoData()
         {
             log.Debug("Entrar LoadAlumnoData: ");
-            alumno.Id = Convert.ToInt32(textId.Text);
-            alumno.Name = textNombre.Text;
-            alumno.Apellidos = textApellidos.Text;
-            alumno.Dni = textDni.Text;
-            var lfechaNac = textFechaNac.Text.Split('-');
-            alumno.FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
-            alumnoBL.Add(alumno);
-            log.Debug("Salir LoadAlumnoData: " + alumno.ToString());
+            try
+            {
+                alumno.Id = Convert.ToInt32(textId.Text);
+                alumno.Name = textNombre.Text;
+                alumno.Apellidos = textApellidos.Text;
+                alumno.Dni = textDni.Text;
+                var lfechaNac = textFechaNac.Text.Split('-');
+                alumno.FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
+                alumnoBL.Add(alumno);
+                log.Debug("Salir LoadAlumnoData: " + alumno.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error cargar datos alumnos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void ResetFieldForm()
@@ -79,6 +90,7 @@ namespace Vueling.Presentation.Winsite
         private void button4_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar button4_Click");
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatTxt);
             AlumnosShowForm formShow = new AlumnosShowForm();
             formShow.ShowDialog();
         }
@@ -86,6 +98,22 @@ namespace Vueling.Presentation.Winsite
         private void cargarDatosAlumnos()
         {
             log.Debug("Entrar cargarDatosAlumnos");
+            CargarDatosAlumnosJson();
+
+        }
+
+        private void CargarDatosAlumnosJson()
+        {
+            log.Debug("Entrar CargarDatosAlumnosJson");
+            try
+            {
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatJson);
+                listaAlumnosJson.ListaAlunmnos = alumnoBL.GetAlumnos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error cargar datos alumnos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

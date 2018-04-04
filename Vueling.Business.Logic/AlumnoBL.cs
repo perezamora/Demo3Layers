@@ -19,6 +19,10 @@ namespace Vueling.Business.Logic
 
         public AlumnoBL()
         {
+        }
+
+        private void ReflectionMetodoFactoria()
+        {
             // Factoria tipos
             ITypeFactory factory = new FileFactory();
 
@@ -36,12 +40,12 @@ namespace Vueling.Business.Logic
             alumnoDao = (IAlumnoFormatoDao)info.Invoke(factory, mParam);
         }
 
-
         public Alumno Add(Alumno alumno)
         {
             log.Debug("Entrar metodo Add: " + alumno.ToString());
             try
             {
+                ReflectionMetodoFactoria();
                 alumno.Edad = alumno.CalcularEdat();
                 alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
                 return alumnoDao.Add(alumno);
@@ -58,6 +62,7 @@ namespace Vueling.Business.Logic
         {
             try
             {
+                ReflectionMetodoFactoria();
                 return alumnoDao.GetAlumnos();
             }
             catch (Exception e)
