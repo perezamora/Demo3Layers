@@ -11,9 +11,9 @@ namespace Vueling.Business.Logic
 
     public interface ITypeFactory
     {
-        IAlumnoFormatoDao AddTxt();
-        IAlumnoFormatoDao AddJson();
-        IAlumnoFormatoDao AddXml();
+        IAlumnoFormatoDao TypeTxt();
+        IAlumnoFormatoDao TypeJson();
+        IAlumnoFormatoDao TypeXml();
     }
 
 }

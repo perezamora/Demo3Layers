@@ -18,14 +18,31 @@ namespace Vueling.Common.Logic.Util
         public static string GetValorVarEnvironment()
         {
             log.Debug("Entrar metodo GetValorVarEnvironment: ");
-            return (Environment.GetEnvironmentVariable("Formato") == null || Environment.GetEnvironmentVariable("Formato") == "")
-                ? "Txt" : Environment.GetEnvironmentVariable("Formato",EnvironmentVariableTarget.User);
+            try
+            {
+                return (Environment.GetEnvironmentVariable("Formato") == null || Environment.GetEnvironmentVariable("Formato") == "")
+                    ? "Txt" : Environment.GetEnvironmentVariable("Formato", EnvironmentVariableTarget.User);
+            }
+            catch (Exception e)
+            {
+                log.Debug("Catch GetValorVarEnvironment: " + e);
+                throw;
+            }
+
         }
 
         public static void SetValorVarEnvironment(string format)
         {
             log.Debug("Entrar metodo SetValorVarEnvironment: ");
-            Environment.SetEnvironmentVariable("Formato", format, EnvironmentVariableTarget.User);
+            try
+            {
+                Environment.SetEnvironmentVariable("Formato", format, EnvironmentVariableTarget.User);
+            }
+            catch (Exception e)
+            {
+                log.Debug("Catch SetValorVarEnvironment: " + e);
+                throw;
+            }
         }
     }
 }

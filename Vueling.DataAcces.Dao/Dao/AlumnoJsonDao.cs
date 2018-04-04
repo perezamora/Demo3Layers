@@ -18,10 +18,23 @@ namespace Vueling.DataAcces.Dao
         public Alumno Add(Alumno alumno)
         {
             log.Debug("Entrar metodo Add: " + alumno.ToString());
-            FileStream fs = FileUtils.Append(FileUtils.getPath());
-            FileUtils.Escribir(fs, alumno.ToJson());
-            LogUtilSer.WriteDebugSerilog(alumno.ToString());
-            return alumno;
+            try
+            {
+                FileStream fs = FileUtils.Append(FileUtils.getPath());
+                FileUtils.Escribir(fs, alumno.ToJson());
+                LogUtilSer.WriteDebugSerilog(alumno.ToString());
+                return alumno;
+            }
+            catch (Exception e)
+            {
+                log.Debug("Catch Add: " + e);
+                throw;
+            }
+        }
+
+        public List<Alumno> GetAlumnos()
+        {
+            throw new NotImplementedException();
         }
     }
 }

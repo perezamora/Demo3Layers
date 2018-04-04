@@ -27,7 +27,7 @@ namespace Vueling.DataAcces.Dao.Tests
         {
             log.Debug("Entrar metodo testInit: ");
             factory = new FileFactory();
-            alumnoDao = factory.AddTxt();
+            alumnoDao = factory.TypeTxt();
         }
 
 

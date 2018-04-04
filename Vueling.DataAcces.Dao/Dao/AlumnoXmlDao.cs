@@ -52,11 +52,17 @@ namespace Vueling.DataAcces.Dao
                 }
                 return alumno;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                log.Debug("Catch Add: " + e);
                 throw;
             }
 
+        }
+
+        public List<Alumno> GetAlumnos()
+        {
+            throw new NotImplementedException();
         }
     }
 }

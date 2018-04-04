@@ -27,7 +27,7 @@ namespace Vueling.DataAcces.Dao.Dao.Tests
         public void testInit()
         {
             factory = new FileFactory();
-            alumnoDao = factory.AddXml();
+            alumnoDao = factory.TypeXml();
         }
 
 

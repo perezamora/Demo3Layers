@@ -10,17 +10,17 @@ namespace Vueling.Business.Logic
 {
     public class FileFactory : ITypeFactory
     {
-        public IAlumnoFormatoDao AddTxt()
+        public IAlumnoFormatoDao TypeTxt()
         {
             return new AlumnoTxtDao();
         }
 
-        public IAlumnoFormatoDao AddJson()
+        public IAlumnoFormatoDao TypeJson()
         {
             return new AlumnoJsonDao();
         }
 
-        public IAlumnoFormatoDao AddXml()
+        public IAlumnoFormatoDao TypeXml()
         {
             return new AlumnoXmlDao();
         }

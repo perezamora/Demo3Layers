@@ -14,5 +14,6 @@ namespace Vueling.DataAcces.Dao
     public interface IAlumnoFormatoDao
     {
         Alumno Add(Alumno alumno);
+        List<Alumno> GetAlumnos();
     }
 }

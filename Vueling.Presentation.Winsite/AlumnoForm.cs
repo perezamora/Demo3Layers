@@ -26,6 +26,7 @@ namespace Vueling.Presentation.Winsite
             InitializeComponent();
             alumno = new Alumno();
             alumnoBL = new AlumnoBL();
+            cargarDatosAlumnos();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,5 +75,16 @@ namespace Vueling.Presentation.Winsite
             textFechaNac.Text = "";
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            log.Debug("Entrar button4_Click");
+        }
+
+        private void cargarDatosAlumnos()
+        {
+            log.Debug("Entrar cargarDatosAlumnos");
+            List<Alumno> listAlumnos = alumnoBL.GetAlumnos();
+            log.Debug(listAlumnos);
+        }
     }
 }

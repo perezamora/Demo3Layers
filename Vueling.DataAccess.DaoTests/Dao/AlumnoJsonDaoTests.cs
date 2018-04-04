@@ -27,7 +27,7 @@ namespace Vueling.DataAcces.Dao.Tests
         public void testInit()
         {
             factory = new FileFactory();
-            alumnoDao = factory.AddJson();
+            alumnoDao = factory.TypeJson();
         }
 
 

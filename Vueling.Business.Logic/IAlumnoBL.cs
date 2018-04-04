@@ -11,5 +11,7 @@ namespace Vueling.Business.Logic
     public interface IAlumnoBL
     {
         Alumno Add(Alumno alumno);
+
+        List<Alumno> GetAlumnos();
     }
 }

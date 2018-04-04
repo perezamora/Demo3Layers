@@ -17,52 +17,54 @@ namespace Vueling.Business.Logic
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private IAlumnoFormatoDao alumnoDao;
 
-        public Alumno Add(Alumno alumno)
+        public AlumnoBL()
         {
-            log.Debug("Entrar metodo Add");
-            /*
-            ITypeFactory factory = new FileFactory();
-            alumno.Edad = alumno.CalcularEdat();
-            alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
-            LogUtilSer.WriteInfoSerilog(alumno.ToString());
-
-            switch (EnumApp.getValorFormatAlumno())
-            {
-                case EnumApp.OpcTypeFile.Txt:
-                    alumnoDao = factory.AddTxt();
-                    alumnoDao.Add(alumno);
-                    break;
-                case EnumApp.OpcTypeFile.Json:
-                    alumnoDao = factory.AddJson();
-                    alumnoDao.Add(alumno);
-                    break;
-                case EnumApp.OpcTypeFile.Xml:
-                    alumnoDao = factory.AddXml();
-                    alumnoDao.Add(alumno);
-                    break;
-            }*/
-
             // Factoria tipos
             ITypeFactory factory = new FileFactory();
-            alumno.Edad = alumno.CalcularEdat();
-            alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
 
             // Nombre del metodo segun el formato escogido
-            string metodo = "Add" + EnumApp.getValorFormatAlumno();
+            string metodo = "Type" + EnumApp.getValorFormatAlumno();
 
-            // Reflection sobre clase Factori -> escoger tipo
+            // Reflection sobre clase Factory -> escoger tipo
             Type myTypeObj = factory.GetType();
 
             // Reflection sobre informacion del metodo "Add" clase factory
             MethodInfo info = myTypeObj.GetMethod(metodo);
             object[] mParam = new object[] { };
-            LogUtilSer.WriteInfoSerilog(EnumApp.getValorFormatAlumno().ToString());
-            
+
             // Invocamos el metodo en tiempo ejecucion (Reflection)
             alumnoDao = (IAlumnoFormatoDao)info.Invoke(factory, mParam);
-            alumnoDao.Add(alumno);
+        }
 
-            return new Alumno();
+
+        public Alumno Add(Alumno alumno)
+        {
+            log.Debug("Entrar metodo Add: " + alumno.ToString());
+            try
+            {
+                alumno.Edad = alumno.CalcularEdat();
+                alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
+                return alumnoDao.Add(alumno);
+            }
+            catch (Exception e)
+            {
+                log.Debug("Catch Add: " + e);
+                throw;
+            }
+
+        }
+
+        public List<Alumno> GetAlumnos()
+        {
+            try
+            {
+                return alumnoDao.GetAlumnos();
+            }
+            catch (Exception e)
+            {
+                log.Debug("Catch Add: " + e);
+                throw;
+            }
         }
     }
 }
