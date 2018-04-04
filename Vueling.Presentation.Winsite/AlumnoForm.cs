@@ -23,6 +23,7 @@ namespace Vueling.Presentation.Winsite
 
         public AlumnoForm()
         {
+            log.Debug("Entrar AlumnoForm: ");
             InitializeComponent();
             alumno = new Alumno();
             alumnoBL = new AlumnoBL();
@@ -78,13 +79,13 @@ namespace Vueling.Presentation.Winsite
         private void button4_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar button4_Click");
+            AlumnosShowForm formShow = new AlumnosShowForm();
+            formShow.ShowDialog();
         }
 
         private void cargarDatosAlumnos()
         {
             log.Debug("Entrar cargarDatosAlumnos");
-            List<Alumno> listAlumnos = alumnoBL.GetAlumnos();
-            log.Debug(listAlumnos);
         }
     }
 }
