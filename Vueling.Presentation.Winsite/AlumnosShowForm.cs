@@ -40,8 +40,7 @@ namespace Vueling.Presentation.Winsite
             {
                 log.Debug("Entrar AlumnosShowForm_Load: ");
                 listAlumnos = alumnoBL.GetAlumnos();
-                dataGridView1.ReadOnly = true;
-                dataGridView1.DataSource = listAlumnos;
+                this.mostrarGrid(listAlumnos);
             }
             catch (Exception ex)
             {
@@ -51,15 +50,14 @@ namespace Vueling.Presentation.Winsite
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonTxt_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar Mostrar lista alumnos TXT: ");
             try
             {
                 ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatTxt);
                 listAlumnos = alumnoBL.GetAlumnos();
-                dataGridView1.ReadOnly = true;
-                dataGridView1.DataSource = listAlumnos;
+                this.mostrarGrid(listAlumnos);
             }
             catch (Exception ex)
             {
@@ -67,15 +65,14 @@ namespace Vueling.Presentation.Winsite
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonJson_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar Mostrar lista alumnos JSON: ");
             try
             {
                 ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatJson);
                 listaAlumnosJson = SingletonListaJson.Instance;
-                dataGridView1.ReadOnly = true;
-                dataGridView1.DataSource = listaAlumnosJson.ListaAlumnos;
+                this.mostrarGrid(listaAlumnosJson.ListaAlumnos);
             }
             catch (Exception ex)
             {
@@ -83,15 +80,14 @@ namespace Vueling.Presentation.Winsite
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonXml_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar Mostrar lista alumnos XML: ");
             try
             {
                 ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatXml);
                 listaAlumnosXml = SingletonListaXml.Instance;
-                dataGridView1.ReadOnly = true;
-                dataGridView1.DataSource = listaAlumnosXml.ListaAlumnos;
+                this.mostrarGrid(listaAlumnosXml.ListaAlumnos);
             }
             catch (Exception ex)
             {
@@ -99,39 +95,55 @@ namespace Vueling.Presentation.Winsite
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonSearch_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar metodo Filtrar por campos");
-            List<Alumno> listAl;
-            var guid = textGuid.Text;
-            var id = textId.Text != "" ? Convert.ToInt32(textId.Text) : 0;
-            var Nombre = textNombre.Text;
 
-            switch (TypeFileEnum.getValorFormatAlumno())
+            try
             {
-                case TypeFileEnum.OpcTypeFile.Txt:
-                    listAl = listAlumnos;
-                    break;
-                case TypeFileEnum.OpcTypeFile.Json:
-                    listaAlumnosJson = SingletonListaJson.Instance;
-                    listAl = listaAlumnosJson.ListaAlumnos;
-                    break;
-                case TypeFileEnum.OpcTypeFile.Xml:
-                    listaAlumnosXml = SingletonListaXml.Instance;
-                    listAl = listaAlumnosXml.ListaAlumnos;
-                    break;
-                default:
-                    listAl = listAlumnos;
-                    break;
+                List<Alumno> listAl;
+                var guid = textGuid.Text;
+                var id = textId.Text != "" ? Convert.ToInt32(textId.Text) : 0;
+                var nombre = textNombre.Text;
+                var apellidos = textApellidos.Text;
+                var dni = textDni.Text;
+                var FechaNac = textFecNac.Text != "" ? Convert.ToDateTime(textFecNac.Text) : new DateTime(1800, 1, 1);
+                var Edad = textEdad.Text != "" ? Convert.ToInt32(textEdad.Text) : 0;
+
+                switch (TypeFileEnum.getValorFormatAlumno())
+                {
+                    case TypeFileEnum.OpcTypeFile.Txt:
+                        listAl = listAlumnos;
+                        break;
+                    case TypeFileEnum.OpcTypeFile.Json:
+                        listaAlumnosJson = SingletonListaJson.Instance;
+                        listAl = listaAlumnosJson.ListaAlumnos;
+                        break;
+                    case TypeFileEnum.OpcTypeFile.Xml:
+                        listaAlumnosXml = SingletonListaXml.Instance;
+                        listAl = listaAlumnosXml.ListaAlumnos;
+                        break;
+                    default:
+                        listAl = listAlumnos;
+                        break;
+                }
+
+                var listFilter = from item in listAl
+                                 where item.Id == id || item.Guid == guid || item.Name == nombre || item.Apellidos == apellidos
+                                 || item.Dni == dni || item.FechaNac == FechaNac || item.Edad == Edad
+                                 select item;
+
+                this.mostrarGrid(listFilter.ToList<Alumno>());
+                ResetFieldForm();
             }
-
-            var listFilter = from item in listAl
-                            where item.Id == id || item.Guid == guid || item.Name == Nombre
-                            select item;
-
-            dataGridView1.ReadOnly = true;
-            dataGridView1.DataSource = listFilter.ToList<Alumno>();
-            ResetFieldForm();
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error Search Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error Search Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ResetFieldForm()
@@ -139,6 +151,17 @@ namespace Vueling.Presentation.Winsite
             textGuid.Text = "";
             textId.Text = "";
             textNombre.Text = "";
+            textApellidos.Text = "";
+            textDni.Text = "";
+            textFecNac.Text = "";
+            textEdad.Text = "";
         }
+
+        private void mostrarGrid(List<Alumno> alumnos)
+        {
+            dataGridView1.ReadOnly = true;
+            dataGridView1.DataSource = alumnos;
+        }
+
     }
 }
