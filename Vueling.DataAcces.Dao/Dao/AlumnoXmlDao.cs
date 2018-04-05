@@ -52,9 +52,14 @@ namespace Vueling.DataAcces.Dao
                 }
                 return alumno;
             }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch Add XML: " + e);
+                throw;
+            }
             catch (Exception e)
             {
-                log.Error("Catch Add: " + e);
+                log.Error("Catch Add XML: " + e);
                 throw;
             }
 
@@ -83,9 +88,14 @@ namespace Vueling.DataAcces.Dao
                     return new List<Alumno>();
                 }
             }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch GetAlumnos XML: " + e);
+                throw;
+            }
             catch (Exception e)
             {
-                log.Error("Catch GetAlumnos: " + e);
+                log.Error("Catch GetAlumnos XML: " + e);
                 throw;
             }
         }

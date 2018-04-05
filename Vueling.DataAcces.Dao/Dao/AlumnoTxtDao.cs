@@ -16,16 +16,21 @@ namespace Vueling.DataAcces.Dao
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public Alumno Add(Alumno alumno)
         {
-            log.Debug("Entrar metodo Add: " + alumno.ToString());
+            log.Debug("Entrar metodo Add TXT: " + alumno.ToString());
             try
             {
                 FileStream fs = FileUtils.Append(FileUtils.getPath());
                 FileUtils.Escribir(fs, alumno.ToString());
                 return alumno;
             }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch Add TXT: " + e);
+                throw;
+            }
             catch (Exception e)
             {
-                log.Error("Catch Add: " + e);
+                log.Error("Catch Add TXT: " + e);
                 throw;
             }
         }
@@ -47,6 +52,11 @@ namespace Vueling.DataAcces.Dao
                 }
 
                 return lalumnos;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch Add TXT: " + e);
+                throw;
             }
             catch (Exception e)
             {

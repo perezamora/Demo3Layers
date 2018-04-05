@@ -80,7 +80,7 @@ namespace Vueling.Presentation.Winsite
 
         }
 
-        private void ResetFieldForm()
+            private void ResetFieldForm()
         {
             textId.Text = "";
             textNombre.Text = "";

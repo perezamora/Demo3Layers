@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Vueling.Common.Logic.Model;
 using Vueling.DataAcces.Dao;
 using Vueling.Common.Logic.Util;
-using Vueling.Common.Logic.Enums;
+using Vueling.Common.Logic;
 using System.Reflection;
 using log4net;
 
@@ -27,7 +27,7 @@ namespace Vueling.Business.Logic
             ITypeFactory factory = new FileFactory();
 
             // Nombre del metodo segun el formato escogido
-            string metodo = "Type" + EnumApp.getValorFormatAlumno();
+            string metodo = "Type" + TypeFileEnum.getValorFormatAlumno();
 
             // Reflection sobre clase Factory -> escoger tipo
             Type myTypeObj = factory.GetType();

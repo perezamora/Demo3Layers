@@ -10,6 +10,7 @@ namespace Vueling.Common.Logic.Singletons
     public class SingletonListaJson
     {
         private static SingletonListaJson _instancia = null;
+        private static readonly object padlock = new object();
         private List<Alumno> alumnos;
 
         private SingletonListaJson()
@@ -22,8 +23,11 @@ namespace Vueling.Common.Logic.Singletons
         {
             get
             {
-                if (_instancia == null)
-                    _instancia = new SingletonListaJson();
+                lock (padlock)
+                {
+                    if (_instancia == null)
+                        _instancia = new SingletonListaJson();
+                }
 
                 // Se devuelve la instancia
                 return _instancia;

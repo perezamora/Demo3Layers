@@ -60,9 +60,14 @@ namespace Vueling.Common.Logic.Util
                     return fs;
                 }
             }
-            catch (IOException e)
+            catch (FileNotFoundException e)
             {
-                log.Error("Catch Crear: " + e);
+                log.Error("Catch Crear File not found: " + e);
+                throw;
+            }
+            catch(Exception e)
+            {
+                log.Error("Catch crear exception general " + e);
                 throw;
             }
 
@@ -92,6 +97,11 @@ namespace Vueling.Common.Logic.Util
                 var fs = new FileStream(pathFile, FileMode.Open);
                 return fs;
             }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch Abrir File not found: " + e);
+                throw;
+            }
             catch (IOException e)
             {
                 log.Error("Catch Abrir: " + e);
@@ -108,6 +118,11 @@ namespace Vueling.Common.Logic.Util
                 {
                     sw.WriteLine(contenido);
                 }
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch Escribir File not found: " + e);
+                throw;
             }
             catch (IOException e)
             {
@@ -134,6 +149,11 @@ namespace Vueling.Common.Logic.Util
                 }
 
             }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch LeerAllFile File not found: " + e);
+                throw;
+            }
             catch (IOException e)
             {
                 log.Error("Catch LeerAllFile: " + e);
@@ -148,6 +168,11 @@ namespace Vueling.Common.Logic.Util
             try
             {
                 fs.Close();
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch Cerrar File not found: " + e);
+                throw;
             }
             catch (IOException e)
             {

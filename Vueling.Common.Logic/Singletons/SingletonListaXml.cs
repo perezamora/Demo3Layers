@@ -10,6 +10,7 @@ namespace Vueling.Common.Logic.Singletons
     public class SingletonListaXml
     {
         private static SingletonListaXml _instancia = null;
+        private static readonly object padlock = new object();
         private List<Alumno> alumnos;
 
         private SingletonListaXml()
@@ -22,8 +23,11 @@ namespace Vueling.Common.Logic.Singletons
         {
             get
             {
-                if (_instancia == null)
-                    _instancia = new SingletonListaXml();
+                lock (padlock)
+                {
+                    if (_instancia == null)
+                        _instancia = new SingletonListaXml();
+                }
 
                 // Se devuelve la instancia
                 return _instancia;

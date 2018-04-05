@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Vueling.Common.Logic.Util;
 
-namespace Vueling.Common.Logic.Enums
+namespace Vueling.Common.Logic
 {
-    public class EnumApp
+    public class TypeFileEnum
     {
         public enum OpcTypeFile
         {

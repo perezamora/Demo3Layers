@@ -24,9 +24,14 @@ namespace Vueling.DataAcces.Dao
                 FileUtils.Escribir(fs, alumno.ToJson());
                 return alumno;
             }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch Add JSON: " + e);
+                throw;
+            }
             catch (Exception e)
             {
-                log.Error("Catch Add: " + e);
+                log.Error("Catch Add JSON: " + e);
                 throw;
             }
         }
@@ -48,9 +53,14 @@ namespace Vueling.DataAcces.Dao
 
                 return lalumnos;
             }
+            catch (FileNotFoundException e)
+            {
+                log.Error("Catch GetAlumnos JSON: " + e);
+                throw;
+            }
             catch (Exception e)
             {
-                log.Error("Catch GetAlumnos: " + e);
+                log.Error("Catch GetAlumnos JSON: " + e);
                 throw;
             }
         }

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vueling.Business.Logic;
-using Vueling.Common.Logic.Enums;
+using Vueling.Common.Logic;
 using Vueling.Common.Logic.Model;
 using Vueling.Common.Logic.Singletons;
 using Vueling.Common.Logic.Util;
@@ -107,16 +107,16 @@ namespace Vueling.Presentation.Winsite
             var id = textId.Text != "" ? Convert.ToInt32(textId.Text) : 0;
             var Nombre = textNombre.Text;
 
-            switch (EnumApp.getValorFormatAlumno())
+            switch (TypeFileEnum.getValorFormatAlumno())
             {
-                case EnumApp.OpcTypeFile.Txt:
+                case TypeFileEnum.OpcTypeFile.Txt:
                     listAl = listAlumnos;
                     break;
-                case EnumApp.OpcTypeFile.Json:
+                case TypeFileEnum.OpcTypeFile.Json:
                     listaAlumnosJson = SingletonListaJson.Instance;
                     listAl = listaAlumnosJson.ListaAlumnos;
                     break;
-                case EnumApp.OpcTypeFile.Xml:
+                case TypeFileEnum.OpcTypeFile.Xml:
                     listaAlumnosXml = SingletonListaXml.Instance;
                     listAl = listaAlumnosXml.ListaAlumnos;
                     break;
