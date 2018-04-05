@@ -62,7 +62,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Error("Catch Crear File not found: " + e);
+                log.Fatal("Catch Crear File not found: " + e);
                 throw;
             }
             catch(Exception e)
@@ -86,7 +86,6 @@ namespace Vueling.Common.Logic.Util
                 log.Error("Catch Append: " + e);
                 throw;
             }
-
         }
 
         public static FileStream Abrir(string pathFile)
@@ -99,7 +98,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Error("Catch Abrir File not found: " + e);
+                log.Fatal("Catch Abrir File not found: " + e);
                 throw;
             }
             catch (IOException e)
@@ -121,7 +120,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Error("Catch Escribir File not found: " + e);
+                log.Fatal("Catch Escribir File not found: " + e);
                 throw;
             }
             catch (IOException e)
@@ -151,7 +150,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Error("Catch LeerAllFile File not found: " + e);
+                log.Fatal("Catch LeerAllFile File not found: " + e);
                 throw;
             }
             catch (IOException e)
@@ -171,7 +170,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Error("Catch Cerrar File not found: " + e);
+                log.Fatal("Catch Cerrar File not found: " + e);
                 throw;
             }
             catch (IOException e)
