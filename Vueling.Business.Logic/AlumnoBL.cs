@@ -17,10 +17,6 @@ namespace Vueling.Business.Logic
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private IAlumnoFormatoDao alumnoDao;
 
-        public AlumnoBL()
-        {
-        }
-
         private void ReflectionMetodoFactoria()
         {
             // Factoria tipos
@@ -46,8 +42,8 @@ namespace Vueling.Business.Logic
             try
             {
                 ReflectionMetodoFactoria();
-                alumno.Edad = alumno.CalcularEdat();
-                alumno.FechaCr = alumno.GetTimesTamp(DateTime.Now);
+                alumno.Edad = CalcularEdat(alumno.FechaNac);
+                alumno.FechaCr = CalcularDateCreate();
                 return alumnoDao.Add(alumno);
             }
             catch (Exception e)
@@ -71,6 +67,20 @@ namespace Vueling.Business.Logic
                 log.Error("Catch Add: " + e.ToString());
                 throw;
             }
+        }
+
+        private int CalcularEdat(DateTime fechaNacimiento)
+        {
+            DateTime CurrentDate = DateTime.Now;
+            var edad = CurrentDate.Year - fechaNacimiento.Year;
+            if (CurrentDate.Month < fechaNacimiento.Month || (CurrentDate.Month == fechaNacimiento.Month && CurrentDate.Day < fechaNacimiento.Day))
+                edad--;
+            return edad;
+        }
+
+        private String CalcularDateCreate()
+        {
+            return DateTime.Now.ToString("yyyyMMddHHmmssffff");
         }
     }
 }

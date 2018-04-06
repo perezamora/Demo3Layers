@@ -22,8 +22,8 @@ namespace Vueling.Common.Logic.Model
         #region Constructores
         public Alumno() { }
 
-        public Alumno(int id, string name, string apellidos, string dni, DateTime fechaNac) :
-            this(id, name, apellidos, dni, fechaNac, 0, "", "")
+        public Alumno(int id, string name, string apellidos, string dni, DateTime fechaNac, int edad, string fechaCr) :
+            this(id, name, apellidos, dni, fechaNac, edad, fechaCr, "")
         { }
 
         public Alumno(int id, string name, string apellidos, string dni, DateTime fechaNac, int edad, string fechaCr, string guid)
@@ -50,17 +50,6 @@ namespace Vueling.Common.Logic.Model
         #endregion
 
         #region Metodos
-        public int CalcularEdat()
-        {
-            DateTime CurrentDate = DateTime.Now;
-            return CurrentDate.Year - this.fechaNac.Year;
-        }
-
-        public String GetTimesTamp(DateTime value)
-        {
-            return value.ToString("yyyyMMddHHmmssffff");
-        }
-
         public override String ToString()
         {
             return string.Format("{0};{1};{2};{3};{4};{5};{6};{7};",
