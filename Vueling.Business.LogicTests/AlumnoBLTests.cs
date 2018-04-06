@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using log4net;
+using Vueling.Common.Logic.Util;
 
 namespace Vueling.Business.Logic.Tests
 {
@@ -14,7 +15,8 @@ namespace Vueling.Business.Logic.Tests
     [TestClass()]
     public class AlumnoBLTests
     {
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly AlumnoBL alumnoBL = new AlumnoBL();
 
         [DataRow("01-03-1998", 20)]

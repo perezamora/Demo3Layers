@@ -75,6 +75,10 @@
       <Project>{4BFD752E-205A-4926-827E-0A1761BDD12C}</Project>
       <Name>Vueling.Business.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vueling.Common.Logic\Vueling.Common.Logic.csproj">
+      <Project>{0912f050-0f24-4c5b-b9cf-1160ec397642}</Project>
+      <Name>Vueling.Common.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

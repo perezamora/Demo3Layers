@@ -18,7 +18,7 @@ namespace Vueling.Presentation.Winsite
 {
     public partial class AlumnoForm : Form
     {
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
         SingletonListaJson listaAlumnosJson;

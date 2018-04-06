@@ -13,7 +13,8 @@ namespace Vueling.DataAcces.Dao
 {
     public class AlumnoTxtDao : IAlumnoFormatoDao
     {
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public Alumno Add(Alumno alumno)
         {
             log.Debug("Entrar metodo Add TXT: " + alumno.ToString());

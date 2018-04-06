@@ -18,7 +18,8 @@ namespace Vueling.DataAcces.Dao.Tests
     [TestClass()]
     public class AlumnoTxtDaoTests
     {
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private static readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private readonly  string fullPath = path + "\\" + "alumnos.txt";
 

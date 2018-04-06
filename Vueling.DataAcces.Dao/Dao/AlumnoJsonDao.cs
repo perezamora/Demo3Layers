@@ -13,7 +13,7 @@ namespace Vueling.DataAcces.Dao
 {
     public class AlumnoJsonDao : IAlumnoFormatoDao
     {
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public Alumno Add(Alumno alumno)
         {

@@ -11,7 +11,7 @@ namespace Vueling.Common.Logic.Util
 {
     public static class ConfigUtils
     {
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         static ConfigUtils() { }
 
