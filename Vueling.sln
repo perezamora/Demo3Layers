@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vueling.DataAccess.DaoTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vueling.Presentation.Winsite", "Vueling.Presentation.Winsite\Vueling.Presentation.Winsite.csproj", "{31446E9E-854E-4B8D-89CC-6EBE56655AC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vueling.Business.LogicTests", "Vueling.Business.LogicTests\Vueling.Business.LogicTests.csproj", "{69840A15-DF27-432A-AB5F-10FFC52072EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{31446E9E-854E-4B8D-89CC-6EBE56655AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31446E9E-854E-4B8D-89CC-6EBE56655AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31446E9E-854E-4B8D-89CC-6EBE56655AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69840A15-DF27-432A-AB5F-10FFC52072EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69840A15-DF27-432A-AB5F-10FFC52072EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69840A15-DF27-432A-AB5F-10FFC52072EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69840A15-DF27-432A-AB5F-10FFC52072EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

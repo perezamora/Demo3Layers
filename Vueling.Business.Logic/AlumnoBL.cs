@@ -69,7 +69,7 @@ namespace Vueling.Business.Logic
             }
         }
 
-        private int CalcularEdat(DateTime fechaNacimiento)
+        public int CalcularEdat(DateTime fechaNacimiento)
         {
             DateTime CurrentDate = DateTime.Now;
             var edad = CurrentDate.Year - fechaNacimiento.Year;
