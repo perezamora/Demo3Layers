@@ -14,7 +14,6 @@ using System.Reflection;
 
 namespace Vueling.DataAcces.Dao.Tests
 {
-    /*
     [TestClass()]
     public class AlumnoTxtDaoTests
     {
@@ -23,8 +22,8 @@ namespace Vueling.DataAcces.Dao.Tests
         private static readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private readonly  string fullPath = path + "\\" + "alumnos.txt";
 
-        IAlumnoFormatoDao alumnoDao;
-        ITypeFactory factory;
+        IAlumnoFormatoDao<Alumno> alumnoDao;
+        ITypeFactory<Alumno> factory;
 
         [TestInitialize]
         public void testInit()
@@ -33,7 +32,7 @@ namespace Vueling.DataAcces.Dao.Tests
 
             ConfigUtils.SetValorVarEnvironment("txt");
             if (File.Exists(fullPath)) File.Delete(fullPath);
-            factory = new FileFactory();
+            factory = new FileFactory<Alumno>();
             alumnoDao = factory.TypeTxt();
 
         }
@@ -79,5 +78,5 @@ namespace Vueling.DataAcces.Dao.Tests
             }
         }
 
-    }*/
+    }
 }
