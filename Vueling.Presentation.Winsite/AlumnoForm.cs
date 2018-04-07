@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -78,7 +79,7 @@ namespace Vueling.Presentation.Winsite
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error cargar datos alumnos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error cargar datos alumnos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -132,7 +133,7 @@ namespace Vueling.Presentation.Winsite
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error cargar datos alumnos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error cargar datos alumnos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

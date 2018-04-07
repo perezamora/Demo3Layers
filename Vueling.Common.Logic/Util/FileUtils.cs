@@ -21,23 +21,18 @@ namespace Vueling.Common.Logic.Util
 
             try
             {
-                // Path de misdocumentos
                 String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                // Nombre del fichero añadir elementos
                 var slash = "\\";
                 var nameFile = "file" + ConfigUtils.GetValorVarEnvironment();
                 var filePath = Environment.GetEnvironmentVariable(nameFile);
                 var fullPath = path + slash + filePath;
-                Console.WriteLine(nameFile);
-                Console.WriteLine(filePath);
-                Console.WriteLine("file path -->" + fullPath);
 
                 return fullPath;
             }
             catch (IOException e)
             {
-                log.Error("Catch GetPath: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
         }
@@ -62,12 +57,12 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Fatal("Catch Crear File not found: " + e);
+                log.Fatal(e.Message + e.StackTrace);
                 throw;
             }
-            catch(Exception e)
+            catch(IOException e)
             {
-                log.Error("Catch crear exception general " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
 
@@ -83,7 +78,7 @@ namespace Vueling.Common.Logic.Util
             }
             catch (IOException e)
             {
-                log.Error("Catch Append: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
         }
@@ -98,12 +93,12 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Fatal("Catch Abrir File not found: " + e);
+                log.Fatal(e.Message + e.StackTrace);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error("Catch Abrir: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
         }
@@ -120,12 +115,12 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Fatal("Catch Escribir File not found: " + e);
+                log.Fatal(e.Message + e.StackTrace);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error("Catch Escribir: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
 
@@ -150,12 +145,12 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Fatal("Catch LeerAllFile File not found: " + e);
+                log.Fatal(e.Message + e.StackTrace);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error("Catch LeerAllFile: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
 
@@ -170,12 +165,12 @@ namespace Vueling.Common.Logic.Util
             }
             catch (FileNotFoundException e)
             {
-                log.Fatal("Catch Cerrar File not found: " + e);
+                log.Fatal(e.Message + e.StackTrace);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error("Catch Cerrar: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
 

@@ -45,7 +45,7 @@ namespace Vueling.Presentation.Winsite
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
 
@@ -62,7 +62,7 @@ namespace Vueling.Presentation.Winsite
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -77,7 +77,7 @@ namespace Vueling.Presentation.Winsite
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -92,7 +92,7 @@ namespace Vueling.Presentation.Winsite
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -139,11 +139,11 @@ namespace Vueling.Presentation.Winsite
             }
             catch (ArgumentNullException ex)
             {
-                MessageBox.Show(ex.ToString(), "Error Search Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error Search Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error Search Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error Search Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

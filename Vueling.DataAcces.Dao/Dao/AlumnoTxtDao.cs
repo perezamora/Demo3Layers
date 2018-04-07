@@ -26,12 +26,12 @@ namespace Vueling.DataAcces.Dao
             }
             catch (FileNotFoundException e)
             {
-                log.Error("Catch Add TXT: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
-            catch (Exception e)
+            catch (IOException e)
             {
-                log.Error("Catch Add TXT: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
         }
@@ -56,12 +56,12 @@ namespace Vueling.DataAcces.Dao
             }
             catch (FileNotFoundException e)
             {
-                log.Error("Catch Add TXT: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
-            catch (Exception e)
+            catch (IOException e)
             {
-                log.Error("Catch GetAlumnos: " + e);
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
 

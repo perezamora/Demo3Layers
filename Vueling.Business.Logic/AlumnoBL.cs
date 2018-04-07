@@ -49,7 +49,7 @@ namespace Vueling.Business.Logic
             }
             catch (Exception e)
             {
-                log.Error("Catch Add: " + e.ToString());
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
 
@@ -65,7 +65,7 @@ namespace Vueling.Business.Logic
             }
             catch (Exception e)
             {
-                log.Error("Catch Add: " + e.ToString());
+                log.Error(e.Message + e.StackTrace);
                 throw;
             }
         }

@@ -38,7 +38,7 @@ namespace Vueling.Common.Logic.Util
 
         public void Warn(object message)
         {
-            this.Warn(message);
+            this._log.Warn(message);
         }
     }
 }
