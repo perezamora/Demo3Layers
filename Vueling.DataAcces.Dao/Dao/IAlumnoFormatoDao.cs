@@ -15,5 +15,6 @@ namespace Vueling.DataAcces.Dao
     {
         T Add(T item);
         List<T> GetAlumnos();
+        T Select(string guid);
     }
 }

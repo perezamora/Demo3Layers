@@ -21,6 +21,7 @@ namespace Vueling.DataAcces.Dao
             path = FileUtils.GetPath();
         }
 
+        #region Metodos
         public T Add(T item)
         {
             log.Debug("Entrar metodo Add JSON: " + item.ToString());
@@ -28,7 +29,7 @@ namespace Vueling.DataAcces.Dao
             {
                 FileStream fs = FileUtils.Append(path);
                 FileUtils.Escribir(fs, FileUtils.SerializarJson(item));
-                return item;
+                return Select(item.Guid);
             }
             catch (FileNotFoundException e)
             {
@@ -40,6 +41,11 @@ namespace Vueling.DataAcces.Dao
                 log.Error(e.Message + e.StackTrace);
                 throw;
             }
+            finally
+            {
+                log.Debug("Salir metode Add JSON: " + item.ToString());
+            }
+            
         }
 
         public List<T> GetAlumnos()
@@ -74,5 +80,52 @@ namespace Vueling.DataAcces.Dao
                 throw;
             }
         }
+
+        public T Select(string guid)
+        {
+            log.Debug("Entrar metodo Select JSON: ");
+
+            try
+            {
+
+                if (File.Exists(path))
+                {
+                    FileStream fs = FileUtils.Abrir(path);
+
+                    using (StreamReader sw = new StreamReader(fs))
+                    {
+                        string line;
+                        bool trobat = false;
+                        T elementT = default(T);
+                        while ((line = FileUtils.LeerRegistro(sw)) != null && trobat == false)
+                        {
+                            var item = FileUtils.DeserializarJson<T>(line);
+                            if (item.Guid.Equals(guid))
+                            {
+                                elementT = item;
+                                trobat = true;
+                            }
+                        }
+                        return elementT;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+        }
+        #endregion
     }
 }

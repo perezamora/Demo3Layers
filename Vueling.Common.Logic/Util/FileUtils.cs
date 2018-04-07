@@ -156,6 +156,11 @@ namespace Vueling.Common.Logic.Util
 
         }
 
+        public static string LeerRegistro(StreamReader sw)
+        {
+            return sw.ReadLine();
+        }
+
         public static void Cerrar(FileStream fs)
         {
             log.Debug("Cerrar fichero: ");

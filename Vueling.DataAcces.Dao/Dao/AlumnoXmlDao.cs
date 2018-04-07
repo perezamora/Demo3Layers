@@ -23,6 +23,7 @@ namespace Vueling.DataAcces.Dao
             path = FileUtils.GetPath();
         }
 
+        #region Metodos
         public T Add(T item)
         {
             log.Debug("Entrar metodo Add: " + item.ToString());
@@ -100,5 +101,11 @@ namespace Vueling.DataAcces.Dao
                 throw;
             }
         }
+
+        public T Select(string guid)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

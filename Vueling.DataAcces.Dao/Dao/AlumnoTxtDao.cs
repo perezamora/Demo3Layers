@@ -21,6 +21,7 @@ namespace Vueling.DataAcces.Dao
             path = FileUtils.GetPath();
         }
 
+        #region Metodos
         public T Add(T item)
         {
             log.Debug("Entrar metodo Add TXT: " + item.ToString());
@@ -28,7 +29,7 @@ namespace Vueling.DataAcces.Dao
             {
                 FileStream fs = FileUtils.Append(path);
                 FileUtils.Escribir(fs, item.ToString());
-                return item;
+                return Select(item.Guid);
             }
             catch (FileNotFoundException e)
             {
@@ -39,6 +40,10 @@ namespace Vueling.DataAcces.Dao
             {
                 log.Error(e.Message + e.StackTrace);
                 throw;
+            }
+            finally
+            {
+                log.Debug("Salir metode Add TXT: " + item.ToString());
             }
         }
 
@@ -73,5 +78,53 @@ namespace Vueling.DataAcces.Dao
             }
 
         }
+
+        public T Select(string guid)
+        {
+            log.Debug("Entrar metodo Select TXT: ");
+            try
+            {
+                if (File.Exists(path))
+                {
+                    FileStream fs = FileUtils.Abrir(path);
+
+                    using (StreamReader sw = new StreamReader(fs))
+                    {
+                        string line;
+                        bool trobat = false;
+                        T elementT = default(T);
+                        while ((line = FileUtils.LeerRegistro(sw)) != null && trobat == false)
+                        {
+                            string[] fields = line.Split(';');
+                            if (fields[7].Equals(guid))
+                            {
+                                //object[] mParam = new object[] { fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], fields[7] };
+                                //elementT = (T)Activator.CreateInstance(typeof(T), mParam);
+                                Alumno alumno = new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], Convert.ToDateTime(fields[4]), Convert.ToInt32(fields[5]), fields[6], fields[7]);
+                                elementT = alumno as T;
+                                trobat = true;
+                            }
+                        }
+                        return elementT;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+        }
+        #endregion
     }
 }
