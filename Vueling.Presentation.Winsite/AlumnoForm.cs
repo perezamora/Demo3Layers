@@ -66,12 +66,14 @@ namespace Vueling.Presentation.Winsite
             log.Debug("Entrar LoadAlumnoData: ");
             try
             {
+                log.Debug("dateTimePicker1" + textFechaNac);
                 alumno.Id = Convert.ToInt32(textId.Text);
                 alumno.Name = textNombre.Text;
                 alumno.Apellidos = textApellidos.Text;
                 alumno.Dni = textDni.Text;
-                var lfechaNac = textFechaNac.Text.Split('-');
-                alumno.FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
+                alumno.FechaNac = textFechaNac.Value;
+                //var lfechaNac = textFechaNac.Text.Split('-');
+                //alumno.FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
                 alumnoBL.Add(alumno);
                 log.Debug("Salir LoadAlumnoData: " + alumno.ToString());
             }

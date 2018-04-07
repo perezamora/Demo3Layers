@@ -27,7 +27,6 @@ namespace Vueling.Presentation.Winsite
         SingletonListaJson listaAlumnosJson;
         SingletonListaXml listaAlumnosXml;
 
-
         public AlumnosShowForm()
         {
             log.Debug("Entrar AlumnosShowForm: ");
@@ -99,7 +98,31 @@ namespace Vueling.Presentation.Winsite
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar metodo Filtrar por campos");
+            this.SearchAlumos();
 
+        }
+
+        private void ResetFieldForm()
+        {
+            textGuid.Text = "";
+            textId.Text = "";
+            textNombre.Text = "";
+            textApellidos.Text = "";
+            textDni.Text = "";
+            textFecNac.Text = "";
+            textEdad.Text = "";
+        }
+
+        private void mostrarGrid(List<Alumno> alumnos)
+        {
+            log.Debug("Entrar metodo mostrarGrid: ");
+            dataGridView1.ReadOnly = true;
+            dataGridView1.DataSource = alumnos;
+        }
+
+        private void SearchAlumos()
+        {
+            log.Debug("Entrar metodo SearchAlumnos: ");
             try
             {
                 List<Alumno> listAl;
@@ -145,23 +168,6 @@ namespace Vueling.Presentation.Winsite
             {
                 MessageBox.Show(ex.Message, "Error Search Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ResetFieldForm()
-        {
-            textGuid.Text = "";
-            textId.Text = "";
-            textNombre.Text = "";
-            textApellidos.Text = "";
-            textDni.Text = "";
-            textFecNac.Text = "";
-            textEdad.Text = "";
-        }
-
-        private void mostrarGrid(List<Alumno> alumnos)
-        {
-            dataGridView1.ReadOnly = true;
-            dataGridView1.DataSource = alumnos;
         }
 
     }

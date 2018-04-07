@@ -32,7 +32,6 @@
             this.textNombre = new System.Windows.Forms.TextBox();
             this.textApellidos = new System.Windows.Forms.TextBox();
             this.textDni = new System.Windows.Forms.TextBox();
-            this.textFechaNac = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,42 +41,36 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.textFechaNac = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // textId
             // 
             this.textId.Location = new System.Drawing.Point(223, 117);
             this.textId.Name = "textId";
-            this.textId.Size = new System.Drawing.Size(100, 20);
+            this.textId.Size = new System.Drawing.Size(200, 20);
             this.textId.TabIndex = 0;
             // 
             // textNombre
             // 
             this.textNombre.Location = new System.Drawing.Point(223, 155);
             this.textNombre.Name = "textNombre";
-            this.textNombre.Size = new System.Drawing.Size(100, 20);
+            this.textNombre.Size = new System.Drawing.Size(200, 20);
             this.textNombre.TabIndex = 1;
             // 
             // textApellidos
             // 
             this.textApellidos.Location = new System.Drawing.Point(223, 194);
             this.textApellidos.Name = "textApellidos";
-            this.textApellidos.Size = new System.Drawing.Size(100, 20);
+            this.textApellidos.Size = new System.Drawing.Size(200, 20);
             this.textApellidos.TabIndex = 2;
             // 
             // textDni
             // 
             this.textDni.Location = new System.Drawing.Point(223, 232);
             this.textDni.Name = "textDni";
-            this.textDni.Size = new System.Drawing.Size(100, 20);
+            this.textDni.Size = new System.Drawing.Size(200, 20);
             this.textDni.TabIndex = 3;
-            // 
-            // textFechaNac
-            // 
-            this.textFechaNac.Location = new System.Drawing.Point(223, 273);
-            this.textFechaNac.Name = "textFechaNac";
-            this.textFechaNac.Size = new System.Drawing.Size(100, 20);
-            this.textFechaNac.TabIndex = 4;
             // 
             // label1
             // 
@@ -164,11 +157,19 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // textFechaNac
+            // 
+            this.textFechaNac.Location = new System.Drawing.Point(223, 273);
+            this.textFechaNac.Name = "textFechaNac";
+            this.textFechaNac.Size = new System.Drawing.Size(200, 20);
+            this.textFechaNac.TabIndex = 14;
+            // 
             // AlumnoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textFechaNac);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -178,7 +179,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textFechaNac);
             this.Controls.Add(this.textDni);
             this.Controls.Add(this.textApellidos);
             this.Controls.Add(this.textNombre);
@@ -196,7 +196,6 @@
         private System.Windows.Forms.TextBox textNombre;
         private System.Windows.Forms.TextBox textApellidos;
         private System.Windows.Forms.TextBox textDni;
-        private System.Windows.Forms.TextBox textFechaNac;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -206,6 +205,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DateTimePicker textFechaNac;
     }
 }
 
