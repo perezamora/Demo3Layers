@@ -11,9 +11,9 @@ using Vueling.DataAcces.Dao;
 namespace Vueling.DataAcces.Dao
 {
   
-    public interface IAlumnoFormatoDao
+    public interface IAlumnoFormatoDao<T> where T : VuelingObject
     {
-        Alumno Add(Alumno alumno);
-        List<Alumno> GetAlumnos();
+        T Add(T item);
+        List<T> GetAlumnos();
     }
 }

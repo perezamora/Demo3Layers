@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Vueling.Common.Logic.Model
 {
@@ -50,28 +49,8 @@ namespace Vueling.Common.Logic.Model
         #endregion
 
         #region Metodos
-        public override String ToString()
-        {
-            return string.Format("{0};{1};{2};{3};{4};{5};{6};{7};",
+        public override String ToString() => string.Format("{0};{1};{2};{3};{4};{5};{6};{7};",
                 this.id, this.name, this.apellidos, this.dni, this.fechaNac, this.edad, this.fechaCr, this.Guid);
-        }
-
-        public string ToJson()
-        {
-            Alumno alumn = new Alumno
-            {
-                Id = this.id,
-                Name = this.name,
-                Apellidos = this.apellidos,
-                Dni = this.dni,
-                FechaNac = this.fechaNac,
-                Edad = this.edad,
-                FechaCr = this.fechaCr,
-                Guid = this.Guid
-            };
-
-            return JsonConvert.SerializeObject(alumn);
-        }
 
         public override bool Equals(object obj)
         {

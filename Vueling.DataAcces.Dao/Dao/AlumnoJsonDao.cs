@@ -11,18 +11,24 @@ using System.Reflection;
 
 namespace Vueling.DataAcces.Dao
 {
-    public class AlumnoJsonDao : IAlumnoFormatoDao
+    public class AlumnoJsonDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {
-        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly string path;
 
-        public Alumno Add(Alumno alumno)
+        public AlumnoJsonDao()
         {
-            log.Debug("Entrar metodo Add JSON: " + alumno.ToString());
+            path = FileUtils.GetPath();
+        }
+
+        public T Add(T item)
+        {
+            log.Debug("Entrar metodo Add JSON: " + item.ToString());
             try
             {
-                FileStream fs = FileUtils.Append(FileUtils.getPath());
-                FileUtils.Escribir(fs, alumno.ToJson());
-                return alumno;
+                FileStream fs = FileUtils.Append(path);
+                FileUtils.Escribir(fs, FileUtils.SerializarJson(item));
+                return item;
             }
             catch (FileNotFoundException e)
             {
@@ -36,19 +42,23 @@ namespace Vueling.DataAcces.Dao
             }
         }
 
-        public List<Alumno> GetAlumnos()
+        public List<T> GetAlumnos()
         {
             log.Debug("Entrar metodo GetAlumnos JSON: ");
             try
             {
-                FileStream fs = FileUtils.Abrir(FileUtils.getPath());
-                List<String> list = FileUtils.LeerAllFile(fs);
-
-                List<Alumno> lalumnos = new List<Alumno>();
-                foreach (String item in list)
+                List<T> lalumnos = new List<T>();
+                if (File.Exists(path))
                 {
-                    log.Debug("item leido : " + item);
-                    lalumnos.Add(FileUtils.DeserializarJson<Alumno>(item));
+                    FileStream fs = FileUtils.Abrir(path);
+                    List<String> list = FileUtils.LeerAllFile(fs);
+
+
+                    foreach (String item in list)
+                    {
+                        log.Debug("item leido : " + item);
+                        lalumnos.Add(FileUtils.DeserializarJson<T>(item));
+                    }
                 }
 
                 return lalumnos;

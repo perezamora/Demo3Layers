@@ -15,7 +15,7 @@ using System.Reflection;
 
 namespace Vueling.DataAcces.Dao.Tests
 {
-
+    /*
     [TestClass()]
     public class AlumnoJsonDaoTests
     {
@@ -73,5 +73,5 @@ namespace Vueling.DataAcces.Dao.Tests
                 return JsonConvert.DeserializeObject<Alumno>(json);
             }
         }
-    }
+    }*/
 }

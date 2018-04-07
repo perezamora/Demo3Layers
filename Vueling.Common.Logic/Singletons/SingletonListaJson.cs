@@ -7,7 +7,7 @@ using Vueling.Common.Logic.Model;
 
 namespace Vueling.Common.Logic.Singletons
 {
-    public class SingletonListaJson
+    public sealed class SingletonListaJson
     {
         private static SingletonListaJson _instancia = null;
         private static readonly object padlock = new object();

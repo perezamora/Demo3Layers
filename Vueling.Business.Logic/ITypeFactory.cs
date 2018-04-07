@@ -9,11 +9,11 @@ using Vueling.DataAcces.Dao;
 namespace Vueling.Business.Logic
 {
 
-    public interface ITypeFactory
+    public interface ITypeFactory<T> where T : VuelingObject
     {
-        IAlumnoFormatoDao TypeTxt();
-        IAlumnoFormatoDao TypeJson();
-        IAlumnoFormatoDao TypeXml();
+        IAlumnoFormatoDao<T> TypeTxt();
+        IAlumnoFormatoDao<T> TypeJson();
+        IAlumnoFormatoDao<T> TypeXml();
     }
 
 }

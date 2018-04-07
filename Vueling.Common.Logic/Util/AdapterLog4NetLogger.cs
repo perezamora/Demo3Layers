@@ -13,7 +13,7 @@ namespace Vueling.Common.Logic.Util
 
         public AdapterLog4NetLogger(Type typeDeclaring)
         {
-            this._log = LogManager.GetLogger(typeDeclaring);
+           this._log = LogManager.GetLogger(typeDeclaring);
         }
 
         public void Debug(object message)

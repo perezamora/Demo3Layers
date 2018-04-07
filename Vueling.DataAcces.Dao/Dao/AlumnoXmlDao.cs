@@ -13,27 +13,32 @@ using log4net;
 namespace Vueling.DataAcces.Dao
 {
     
-    public class AlumnoXmlDao : IAlumnoFormatoDao
+    public class AlumnoXmlDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {
-        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly string path; 
 
-        public Alumno Add(Alumno alumno)
+        public AlumnoXmlDao()
         {
-            log.Debug("Entrar metodo Add: " + alumno.ToString());
+            path = FileUtils.GetPath();
+        }
 
-            var path = FileUtils.getPath();
+        public T Add(T item)
+        {
+            log.Debug("Entrar metodo Add: " + item.ToString());
+
             try
             {
                 if (File.Exists(path))
                 {
-                    List<Alumno> alumnos;
+                    List<T> alumnos;
                     XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
                     using (StreamReader r = new StreamReader(path))
                     {
                         String xml = r.ReadToEnd();
                         StringReader stringReader = new StringReader(xml);
-                        alumnos = (List<Alumno>)xSeriz.Deserialize(stringReader);
-                        alumnos.Add(alumno);
+                        alumnos = (List<T>)xSeriz.Deserialize(stringReader);
+                        alumnos.Add(item);
                     }
 
                     using (FileStream fs1 = new FileStream(path, FileMode.Open))
@@ -41,15 +46,15 @@ namespace Vueling.DataAcces.Dao
                 }
                 else
                 {
-                    List<Alumno> alumnos = new List<Alumno>();
+                    List<T> alumnos = new List<T>();
                     XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
                     using (FileStream fs1 = new FileStream(path, FileMode.Create))
                     {
-                        alumnos.Add(alumno);
+                        alumnos.Add(item);
                         xSeriz.Serialize(fs1, alumnos);
                     }
                 }
-                return alumno;
+                return item;
             }
             catch (FileNotFoundException e)
             {
@@ -64,28 +69,25 @@ namespace Vueling.DataAcces.Dao
 
         }
 
-        public List<Alumno> GetAlumnos()
+        public List<T> GetAlumnos()
         {
             try
             {
-                var path = FileUtils.getPath();
+                List<T> alumnos = new List<T>();
                 if (File.Exists(path))
                 {
-                    List<Alumno> alumnos;
+                    
                     XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
                     using (StreamReader r = new StreamReader(path))
                     {
                         String xml = r.ReadToEnd();
                         StringReader stringReader = new StringReader(xml);
-                        alumnos = (List<Alumno>)xSeriz.Deserialize(stringReader);
+                        alumnos = (List<T>)xSeriz.Deserialize(stringReader);
                     }
                     log.Debug(alumnos);
-                    return alumnos;
                 }
-                else
-                {
-                    return new List<Alumno>();
-                }
+
+                return alumnos;
             }
             catch (FileNotFoundException e)
             {

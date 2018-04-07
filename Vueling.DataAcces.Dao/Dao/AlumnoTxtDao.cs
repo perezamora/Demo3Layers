@@ -11,18 +11,24 @@ using System.Reflection;
 
 namespace Vueling.DataAcces.Dao
 {
-    public class AlumnoTxtDao : IAlumnoFormatoDao
+    public class AlumnoTxtDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {
-        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly string path;
 
-        public Alumno Add(Alumno alumno)
+        public AlumnoTxtDao()
         {
-            log.Debug("Entrar metodo Add TXT: " + alumno.ToString());
+            path = FileUtils.GetPath();
+        }
+
+        public T Add(T item)
+        {
+            log.Debug("Entrar metodo Add TXT: " + item.ToString());
             try
             {
-                FileStream fs = FileUtils.Append(FileUtils.getPath());
-                FileUtils.Escribir(fs, alumno.ToString());
-                return alumno;
+                FileStream fs = FileUtils.Append(path);
+                FileUtils.Escribir(fs, item.ToString());
+                return item;
             }
             catch (FileNotFoundException e)
             {
@@ -36,19 +42,20 @@ namespace Vueling.DataAcces.Dao
             }
         }
 
-        public List<Alumno> GetAlumnos()
+        public List<T> GetAlumnos()
         {
             log.Debug("Entrar metodo GetAlumnos: ");
             try
             {
-                FileStream fs = FileUtils.Abrir(FileUtils.getPath());
+                FileStream fs = FileUtils.Abrir(path);
                 List<String> list = FileUtils.LeerAllFile(fs);
 
-                List<Alumno> lalumnos = new List<Alumno>();
+                List<T> lalumnos = new List<T>();
                 foreach (String item in list)
                 {
                     string[] fields = item.Split(';');
-                    lalumnos.Add(new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], Convert.ToDateTime(fields[4]), Convert.ToInt32(fields[5]), fields[6], fields[7]));
+                    Alumno alumno = new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], Convert.ToDateTime(fields[4]), Convert.ToInt32(fields[5]), fields[6], fields[7]);
+                    lalumnos.Add(alumno as T);
                     log.Debug(item);
                 }
 

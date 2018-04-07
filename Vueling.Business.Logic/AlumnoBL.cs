@@ -16,12 +16,12 @@ namespace Vueling.Business.Logic
     {
         private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private IAlumnoFormatoDao alumnoDao;
+        private IAlumnoFormatoDao<Alumno> alumnoDao;
 
         private void ReflectionMetodoFactoria()
         {
             // Factoria tipos
-            ITypeFactory factory = new FileFactory();
+            ITypeFactory<Alumno> factory = new FileFactory<Alumno>();
 
             // Nombre del metodo segun el formato escogido
             string metodo = "Type" + TypeFileEnum.getValorFormatAlumno();
@@ -34,7 +34,7 @@ namespace Vueling.Business.Logic
             object[] mParam = new object[] { };
 
             // Invocamos el metodo en tiempo ejecucion (Reflection)
-            alumnoDao = (IAlumnoFormatoDao)info.Invoke(factory, mParam);
+            alumnoDao = (IAlumnoFormatoDao<Alumno>)info.Invoke(factory, mParam);
         }
 
         public Alumno Add(Alumno alumno)

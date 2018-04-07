@@ -8,21 +8,21 @@ using Vueling.DataAcces.Dao;
 
 namespace Vueling.Business.Logic
 {
-    public class FileFactory : ITypeFactory
+    public class FileFactory<T> : ITypeFactory<T> where T : VuelingObject
     {
-        public IAlumnoFormatoDao TypeTxt()
+        public IAlumnoFormatoDao<T> TypeTxt()
         {
-            return new AlumnoTxtDao();
+            return new AlumnoTxtDao<T>();
         }
 
-        public IAlumnoFormatoDao TypeJson()
+        public IAlumnoFormatoDao<T> TypeJson()
         {
-            return new AlumnoJsonDao();
+            return new AlumnoJsonDao<T>();
         }
 
-        public IAlumnoFormatoDao TypeXml()
+        public IAlumnoFormatoDao<T> TypeXml()
         {
-            return new AlumnoXmlDao();
+            return new AlumnoXmlDao<T>();
         }
     }
 }

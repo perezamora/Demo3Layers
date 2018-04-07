@@ -14,7 +14,7 @@ using System.Reflection;
 
 namespace Vueling.DataAcces.Dao.Tests
 {
-
+    /*
     [TestClass()]
     public class AlumnoTxtDaoTests
     {
@@ -79,5 +79,5 @@ namespace Vueling.DataAcces.Dao.Tests
             }
         }
 
-    }
+    }*/
 }

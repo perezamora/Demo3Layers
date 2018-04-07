@@ -15,9 +15,9 @@ namespace Vueling.Common.Logic.Util
     {
         private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static String getPath()
+        public static String GetPath()
         {
-            log.Debug("Entrar metodo getPath: ");
+            log.Debug("Entrar metodo GetPath: ");
 
             try
             {
@@ -180,6 +180,12 @@ namespace Vueling.Common.Logic.Util
         {
             log.Debug("DeserializarJson: " + item);
             return JsonConvert.DeserializeObject<T>(item);
+        }
+
+        public static string SerializarJson<T>(T item)
+        {
+            log.Debug("SerializarJson: " + item.ToString());
+            return JsonConvert.SerializeObject(item);
         }
     }
 }
