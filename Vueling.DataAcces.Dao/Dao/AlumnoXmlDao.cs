@@ -12,11 +12,11 @@ using log4net;
 
 namespace Vueling.DataAcces.Dao
 {
-    
+
     public class AlumnoXmlDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {
         private readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly string path; 
+        private readonly string path;
 
         public AlumnoXmlDao()
         {
@@ -55,7 +55,7 @@ namespace Vueling.DataAcces.Dao
                         xSeriz.Serialize(fs1, alumnos);
                     }
                 }
-                return item;
+                return this.Select(item.Guid);
             }
             catch (FileNotFoundException e)
             {
@@ -67,6 +67,10 @@ namespace Vueling.DataAcces.Dao
                 log.Error(e.Message + e.StackTrace);
                 throw;
             }
+            finally
+            {
+                log.Debug("Salir metode Add XML: " + item.ToString());
+            }
 
         }
 
@@ -77,7 +81,7 @@ namespace Vueling.DataAcces.Dao
                 List<T> alumnos = new List<T>();
                 if (File.Exists(path))
                 {
-                    
+
                     XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
                     using (StreamReader r = new StreamReader(path))
                     {
@@ -104,7 +108,23 @@ namespace Vueling.DataAcces.Dao
 
         public T Select(string guid)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<T> listaItems = GetAlumnos();
+                var filterItems = from n in listaItems
+                                  where n.Guid == guid
+                                  select n;
+                return filterItems.FirstOrDefault<T>();
+            }catch(IOException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }catch(Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+
         }
         #endregion
     }

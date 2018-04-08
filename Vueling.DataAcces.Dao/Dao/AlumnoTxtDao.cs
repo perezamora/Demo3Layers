@@ -29,7 +29,7 @@ namespace Vueling.DataAcces.Dao
             {
                 FileStream fs = FileUtils.Append(path);
                 FileUtils.Escribir(fs, item.ToString());
-                return Select(item.Guid);
+                return this.Select(item.Guid);
             }
             catch (FileNotFoundException e)
             {
