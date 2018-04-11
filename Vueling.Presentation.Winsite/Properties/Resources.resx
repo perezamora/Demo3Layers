@@ -121,6 +121,10 @@
     <value>Json</value>
     <comment>Formato guardar alumno en Json</comment>
   </data>
+  <data name="FormatSql" xml:space="preserve">
+    <value>Sql</value>
+    <comment>Alumno guardado en DBA</comment>
+  </data>
   <data name="FormatTxt" xml:space="preserve">
     <value>Txt</value>
     <comment>Formato guardar alumno en Txt</comment>

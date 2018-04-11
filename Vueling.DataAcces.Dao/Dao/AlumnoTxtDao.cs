@@ -9,7 +9,7 @@ using System.IO;
 using log4net;
 using System.Reflection;
 
-namespace Vueling.DataAcces.Dao
+namespace Vueling.DataAcces.Dao.Dao
 {
     public class AlumnoTxtDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {
@@ -98,8 +98,6 @@ namespace Vueling.DataAcces.Dao
                             string[] fields = line.Split(';');
                             if (fields[7].Equals(guid))
                             {
-                                //object[] mParam = new object[] { fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], fields[7] };
-                                //elementT = (T)Activator.CreateInstance(typeof(T), mParam);
                                 Alumno alumno = new Alumno(int.Parse(fields[0]), fields[1], fields[2], fields[3], Convert.ToDateTime(fields[4]), Convert.ToInt32(fields[5]), fields[6], fields[7]);
                                 elementT = alumno as T;
                                 trobat = true;

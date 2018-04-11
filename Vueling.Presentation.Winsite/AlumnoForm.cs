@@ -72,8 +72,6 @@ namespace Vueling.Presentation.Winsite
                 alumno.Apellidos = textApellidos.Text;
                 alumno.Dni = textDni.Text;
                 alumno.FechaNac = textFechaNac.Value;
-                //var lfechaNac = textFechaNac.Text.Split('-');
-                //alumno.FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
                 alumnoBL.Add(alumno);
                 log.Debug("Salir LoadAlumnoData: " + alumno.ToString());
             }
@@ -84,7 +82,7 @@ namespace Vueling.Presentation.Winsite
 
         }
 
-            private void ResetFieldForm()
+        private void ResetFieldForm()
         {
             textId.Text = "";
             textNombre.Text = "";
@@ -106,7 +104,6 @@ namespace Vueling.Presentation.Winsite
             log.Debug("Entrar cargarDatosAlumnos");
             CargarDatosAlumnosJson();
             CargarDatosAlumnosXml();
-
         }
 
         private void CargarDatosAlumnosJson()
@@ -137,5 +134,12 @@ namespace Vueling.Presentation.Winsite
             }
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            log.Debug("Entrar button5_Click");
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatSql);
+            LoadAlumnoData();
+            ResetFieldForm();
+        }
     }
 }

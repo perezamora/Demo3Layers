@@ -9,7 +9,7 @@ using Vueling.Common.Logic.Util;
 using log4net;
 using System.Reflection;
 
-namespace Vueling.DataAcces.Dao
+namespace Vueling.DataAcces.Dao.Dao
 {
     public class AlumnoJsonDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {

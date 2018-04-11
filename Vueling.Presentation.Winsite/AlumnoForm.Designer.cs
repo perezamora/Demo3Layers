@@ -42,6 +42,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textFechaNac = new System.Windows.Forms.DateTimePicker();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textId
@@ -149,7 +150,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(468, 351);
+            this.button4.Location = new System.Drawing.Point(631, 352);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 13;
@@ -164,11 +165,22 @@
             this.textFechaNac.Size = new System.Drawing.Size(200, 20);
             this.textFechaNac.TabIndex = 14;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(453, 350);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 15;
+            this.button5.Text = "Sql";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // AlumnoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.textFechaNac);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -206,6 +218,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DateTimePicker textFechaNac;
+        private System.Windows.Forms.Button button5;
     }
 }
 

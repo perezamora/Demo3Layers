@@ -70,6 +70,15 @@ namespace Vueling.Presentation.Winsite.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sql.
+        /// </summary>
+        internal static string FormatSql {
+            get {
+                return ResourceManager.GetString("FormatSql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Txt.
         /// </summary>
         internal static string FormatTxt {

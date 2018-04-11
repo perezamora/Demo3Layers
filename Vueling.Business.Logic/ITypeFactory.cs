@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vueling.Common.Logic.Model;
-using Vueling.DataAcces.Dao;
+using Vueling.DataAcces.Dao.Dao;
 
 namespace Vueling.Business.Logic
 {

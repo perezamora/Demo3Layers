@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vueling.Common.Logic.Model;
-using Vueling.DataAcces.Dao;
+using Vueling.DataAcces.Dao.Dao;
 
 namespace Vueling.Business.Logic
 {
@@ -23,6 +23,11 @@ namespace Vueling.Business.Logic
         public IAlumnoFormatoDao<T> TypeXml()
         {
             return new AlumnoXmlDao<T>();
+        }
+
+        public IAlumnoFormatoDao<T> TypeSql()
+        {
+            return new AlumnoSqlDao<T>();
         }
     }
 }

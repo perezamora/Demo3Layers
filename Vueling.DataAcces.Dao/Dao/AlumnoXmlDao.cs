@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 using System.Reflection;
 using log4net;
 
-namespace Vueling.DataAcces.Dao
+namespace Vueling.DataAcces.Dao.Dao
 {
 
     public class AlumnoXmlDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject

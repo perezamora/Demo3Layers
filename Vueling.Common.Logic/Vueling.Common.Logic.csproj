@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumeraciones\DBType.cs" />
     <Compile Include="Enumeraciones\TypeFileEnum.cs" />
     <Compile Include="Model\VuelingObject.cs" />
     <Compile Include="Singletons\SingletonListaJson.cs" />

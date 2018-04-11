@@ -55,10 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\AlumnoSqlDao.cs" />
     <Compile Include="Dao\AlumnoXmlDao.cs" />
     <Compile Include="Dao\AlumnoJsonDao.cs" />
     <Compile Include="Dao\AlumnoTxtDao.cs" />
+    <Compile Include="Dao\DBFactory.cs" />
     <Compile Include="Dao\IAlumnoFormatoDao.cs" />
+    <Compile Include="Dao\IDatabase.cs" />
+    <Compile Include="Dao\SqlServerDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

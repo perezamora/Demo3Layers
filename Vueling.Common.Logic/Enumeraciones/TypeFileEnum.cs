@@ -13,7 +13,8 @@ namespace Vueling.Common.Logic
         {
             Txt = 1,
             Json = 2,
-            Xml = 3
+            Xml = 3,
+            Sql = 4
         }
 
         public static OpcTypeFile getValorFormatAlumno()
