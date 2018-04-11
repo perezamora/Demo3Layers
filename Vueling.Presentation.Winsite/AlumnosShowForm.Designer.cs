@@ -47,6 +47,7 @@
             this.textFecNac = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textEdad = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,11 +211,22 @@
             this.textEdad.Size = new System.Drawing.Size(100, 20);
             this.textEdad.TabIndex = 18;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(467, 396);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Sql";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // AlumnosShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.textEdad);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textFecNac);
@@ -264,5 +276,6 @@
         private System.Windows.Forms.TextBox textFecNac;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textEdad;
+        private System.Windows.Forms.Button button5;
     }
 }

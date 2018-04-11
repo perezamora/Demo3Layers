@@ -49,7 +49,44 @@ namespace Vueling.DataAcces.Dao.Dao
 
         public List<T> GetAlumnos()
         {
-            throw new NotImplementedException();
+            DBFactory factory = new DBFactory();
+            database = factory.DBSqlServer();
+
+            try
+            {
+                using (IDbConnection connection = database.CreateOpenConnection())
+                {
+                    var sqlCommand = "SELECT * FROM ALUMNOS";
+                    log.Debug("sqlCommand: " + sqlCommand);
+                    using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
+                    {
+                        using (IDataReader reader = command.ExecuteReader())
+                        {
+                            List<Alumno> alumnos = new List<Alumno>();
+                            while (reader.Read())
+                            {
+                                var alumno = new Alumno();
+                                alumno.Id = reader.GetInt32(0);
+                                alumno.Guid = reader.GetGuid(1).ToString();
+                                alumno.Name = reader.GetString(2);
+                                alumno.Apellidos = reader.GetString(3);
+                                alumno.Dni = reader.GetString(4);
+                                alumno.FechaNac = reader.GetDateTime(5);
+                                alumno.Edad = reader.GetInt32(6);
+                                alumno.FechaCr = reader.GetString(7);
+                                alumnos.Add(alumno);
+                            }
+                            database.CloseConnection(connection);
+                            return alumnos as List<T>;
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
 
         public T Select(string guid)

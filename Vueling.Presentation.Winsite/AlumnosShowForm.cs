@@ -147,6 +147,9 @@ namespace Vueling.Presentation.Winsite
                         listaAlumnosXml = SingletonListaXml.Instance;
                         listAl = listaAlumnosXml.ListaAlumnos;
                         break;
+                    case TypeFileEnum.OpcTypeFile.Sql:
+                        listAl = listAlumnos;
+                        break;
                     default:
                         listAl = listAlumnos;
                         break;
@@ -170,5 +173,19 @@ namespace Vueling.Presentation.Winsite
             }
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            log.Debug("Entrar Mostrar lista alumnos SQL: ");
+            try
+            {
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatSql);
+                listAlumnos = alumnoBL.GetAlumnos();
+                this.mostrarGrid(listAlumnos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error cargar Form", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
