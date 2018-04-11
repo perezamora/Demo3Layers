@@ -10,5 +10,7 @@ namespace Vueling.DataAcces.Dao.Dao
     public interface IDatabase
     {
         IDbConnection CreateOpenConnection();
+        IDbCommand CreateCommand(string commandText, IDbConnection connection);
+        void CloseConnection(IDbConnection connection);
     }
 }

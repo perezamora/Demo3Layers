@@ -72,8 +72,8 @@ namespace Vueling.Presentation.Winsite
                 alumno.Apellidos = textApellidos.Text;
                 alumno.Dni = textDni.Text;
                 alumno.FechaNac = textFechaNac.Value;
-                alumnoBL.Add(alumno);
-                log.Debug("Salir LoadAlumnoData: " + alumno.ToString());
+                Alumno alumnoRet = alumnoBL.Add(alumno);
+                log.Debug("Salir LoadAlumnoData: " + alumnoRet.ToString());
             }
             catch (Exception ex)
             {
