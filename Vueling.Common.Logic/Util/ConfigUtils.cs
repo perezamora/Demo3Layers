@@ -11,7 +11,7 @@ namespace Vueling.Common.Logic.Util
 {
     public static class ConfigUtils
     {
-        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static ILogger log = CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         static ConfigUtils() { }
 
@@ -44,6 +44,20 @@ namespace Vueling.Common.Logic.Util
             {
                 log.Error(e.Message + e.StackTrace);
                 throw;
+            }
+        }
+
+        public static ILogger CreateInstanceClassLog(Type typeDeclaring)
+        {
+            var variable = Environment.GetEnvironmentVariable("typeLog", EnvironmentVariableTarget.User);
+
+            if (variable == "log4net")
+            {
+                return new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+            }
+            else
+            {
+                return new AdapterSerilogLogger(MethodBase.GetCurrentMethod().DeclaringType);
             }
         }
     }

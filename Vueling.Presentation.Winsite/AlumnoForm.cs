@@ -19,7 +19,7 @@ namespace Vueling.Presentation.Winsite
 {
     public partial class AlumnoForm : Form
     {
-        private AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         private Alumno alumno;
         private IAlumnoBL alumnoBL;

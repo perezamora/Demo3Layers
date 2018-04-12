@@ -18,7 +18,7 @@ namespace Vueling.DataAcces.Dao.Tests
     [TestClass()]
     public class AlumnoJsonDaoTests
     {
-        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         private static readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private readonly string fullPath = path + "\\" + "alumnos.json";

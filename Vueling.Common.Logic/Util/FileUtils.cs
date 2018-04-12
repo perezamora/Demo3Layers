@@ -13,7 +13,7 @@ namespace Vueling.Common.Logic.Util
 {
     public static class FileUtils
     {
-        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         public static String GetPath()
         {

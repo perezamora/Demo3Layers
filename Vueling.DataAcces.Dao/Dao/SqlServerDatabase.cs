@@ -13,7 +13,7 @@ namespace Vueling.DataAcces.Dao.Dao
 {
     public class SqlServerDatabase : IDatabase
     {
-        private readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         public IDbConnection CreateOpenConnection()
         {

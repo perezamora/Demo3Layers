@@ -15,7 +15,7 @@ namespace Vueling.Business.Logic.Tests
     [TestClass()]
     public class AlumnoBLTests
     {
-        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly AlumnoBL alumnoBL = new AlumnoBL();
 

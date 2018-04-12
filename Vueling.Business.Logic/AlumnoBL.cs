@@ -14,7 +14,7 @@ namespace Vueling.Business.Logic
 {
     public class AlumnoBL : IAlumnoBL
     {
-        private static readonly AdapterLog4NetLogger log = new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         private IAlumnoFormatoDao<Alumno> alumnoDao;
 

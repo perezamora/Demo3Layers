@@ -1,3 +1,4 @@
+SETX typeLog "serilog"
 SETX Formato "Txt"
 SETX fileTxt "alumnos.txt"
 SETX fileJson "alumnos.json"
