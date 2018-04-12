@@ -117,24 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="file" xml:space="preserve">
+    <value>file</value>
+  </data>
   <data name="Format" xml:space="preserve">
     <value>Format</value>
-    <comment>Tipo de formato a utilizar</comment>
   </data>
-  <data name="FormatJson" xml:space="preserve">
-    <value>Json</value>
-    <comment>Formato guardar alumno en Json</comment>
+  <data name="slash" xml:space="preserve">
+    <value>\\</value>
   </data>
-  <data name="FormatSql" xml:space="preserve">
-    <value>Sql</value>
-    <comment>Alumno guardado en DBA</comment>
+  <data name="typelog" xml:space="preserve">
+    <value>typelog</value>
   </data>
-  <data name="FormatTxt" xml:space="preserve">
-    <value>Txt</value>
-    <comment>Formato guardar alumno en Txt</comment>
+  <data name="log4net" xml:space="preserve">
+    <value>Vueling.Common.Logic.Util.AdapterLog4NetLogger</value>
+    <comment>Nombre de la clase log4net</comment>
   </data>
-  <data name="FormatXml" xml:space="preserve">
-    <value>Xml</value>
-    <comment>Formato guardar alumno en Xml</comment>
+  <data name="serilog" xml:space="preserve">
+    <value>Vueling.Common.Logic.Util.AdapterSerilogLogger</value>
+    <comment>Nombre de la clase serilog</comment>
   </data>
 </root>

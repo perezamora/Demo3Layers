@@ -23,10 +23,9 @@ namespace Vueling.Common.Logic.Util
             {
                 String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                var slash = "\\";
-                var nameFile = "file" + ConfigUtils.GetValorVarEnvironment();
+                var nameFile = Resources.ConfigRes.file + ConfigUtils.GetValorVarEnvironment(Resources.ConfigRes.Format);
                 var filePath = Environment.GetEnvironmentVariable(nameFile);
-                var fullPath = path + slash + filePath;
+                var fullPath = path + Resources.ConfigRes.slash + filePath;
 
                 return fullPath;
             }

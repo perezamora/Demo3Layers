@@ -40,7 +40,7 @@ namespace Vueling.Presentation.Winsite
         private void button1_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar button1_Click");
-            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatTxt);
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format,Properties.Resources.FormatTxt);
             LoadAlumnoData();
             ResetFieldForm();
         }
@@ -48,7 +48,7 @@ namespace Vueling.Presentation.Winsite
         private void button2_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar button2_Click");
-            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatJson);
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatJson);
             LoadAlumnoData();
             ResetFieldForm();
         }
@@ -56,7 +56,7 @@ namespace Vueling.Presentation.Winsite
         private void button3_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar button2_Click");
-            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatXml);
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatXml);
             LoadAlumnoData();
             ResetFieldForm();
         }
@@ -94,7 +94,7 @@ namespace Vueling.Presentation.Winsite
         private void button4_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar button4_Click");
-            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatTxt);
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatTxt);
             AlumnosShowForm formShow = new AlumnosShowForm();
             formShow.ShowDialog();
         }
@@ -111,7 +111,7 @@ namespace Vueling.Presentation.Winsite
             log.Debug("Entrar CargarDatosAlumnosJson");
             try
             {
-                ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatJson);
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatJson);
                 listaAlumnosJson.ListaAlumnos = alumnoBL.GetAlumnos();
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ namespace Vueling.Presentation.Winsite
             log.Debug("Entrar CargarDatosAlumnosXml");
             try
             {
-                ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatXml);
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatXml);
                 listaAlumnosXml.ListaAlumnos = alumnoBL.GetAlumnos();
             }
             catch (Exception ex)
@@ -137,7 +137,7 @@ namespace Vueling.Presentation.Winsite
         private void button5_Click(object sender, EventArgs e)
         {
             log.Debug("Entrar button5_Click");
-            ConfigUtils.SetValorVarEnvironment(Properties.Resources.FormatSql);
+            ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatSql);
             LoadAlumnoData();
             ResetFieldForm();
         }

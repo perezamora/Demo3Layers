@@ -19,7 +19,7 @@ namespace Vueling.Common.Logic
 
         public static OpcTypeFile getValorFormatAlumno()
         {
-            var opcSerial = ConfigUtils.GetValorVarEnvironment();
+            var opcSerial = ConfigUtils.GetValorVarEnvironment(Resources.ConfigRes.Format);
             return (OpcTypeFile)Enum.Parse(typeof(OpcTypeFile), opcSerial, true);
         }
     }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vueling.Presentation.Winsite.Properties {
+namespace Vueling.Common.Logic.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Vueling.Presentation.Winsite.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class ConfigRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ConfigRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Vueling.Presentation.Winsite.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Vueling.Presentation.Winsite.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Vueling.Common.Logic.Resources.ConfigRes", typeof(ConfigRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,6 +61,15 @@ namespace Vueling.Presentation.Winsite.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a file.
+        /// </summary>
+        internal static string file {
+            get {
+                return ResourceManager.GetString("file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Format.
         /// </summary>
         internal static string Format {
@@ -70,38 +79,38 @@ namespace Vueling.Presentation.Winsite.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Json.
+        ///   Busca una cadena traducida similar a Vueling.Common.Logic.Util.AdapterLog4NetLogger.
         /// </summary>
-        internal static string FormatJson {
+        internal static string log4net {
             get {
-                return ResourceManager.GetString("FormatJson", resourceCulture);
+                return ResourceManager.GetString("log4net", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sql.
+        ///   Busca una cadena traducida similar a Vueling.Common.Logic.Util.AdapterSerilogLogger.
         /// </summary>
-        internal static string FormatSql {
+        internal static string serilog {
             get {
-                return ResourceManager.GetString("FormatSql", resourceCulture);
+                return ResourceManager.GetString("serilog", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Txt.
+        ///   Busca una cadena traducida similar a \\.
         /// </summary>
-        internal static string FormatTxt {
+        internal static string slash {
             get {
-                return ResourceManager.GetString("FormatTxt", resourceCulture);
+                return ResourceManager.GetString("slash", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Xml.
+        ///   Busca una cadena traducida similar a typelog.
         /// </summary>
-        internal static string FormatXml {
+        internal static string typelog {
             get {
-                return ResourceManager.GetString("FormatXml", resourceCulture);
+                return ResourceManager.GetString("typelog", resourceCulture);
             }
         }
     }

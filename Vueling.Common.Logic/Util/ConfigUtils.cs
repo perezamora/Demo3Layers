@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
 using log4net;
 using System.Reflection;
 
@@ -13,17 +12,16 @@ namespace Vueling.Common.Logic.Util
     {
         private static ILogger log = CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
+        public static object ConfigurationManager { get; private set; }
+
         static ConfigUtils() { }
 
-        public static string GetValorVarEnvironment()
+        public static string GetValorVarEnvironment(string envVar )
         {
             log.Debug("Entrar metodo GetValorVarEnvironment: ");
             try
             {
-                var variable = (Environment.GetEnvironmentVariable("Formato") == null || Environment.GetEnvironmentVariable("Formato") == "")
-                    ? "Txt" : Environment.GetEnvironmentVariable("Formato", EnvironmentVariableTarget.User);
-                log.Debug("Valor variable entorno formato: " + variable);
-                return variable;
+                return Environment.GetEnvironmentVariable(envVar, EnvironmentVariableTarget.User);
             }
             catch (Exception e)
             {
@@ -33,12 +31,12 @@ namespace Vueling.Common.Logic.Util
 
         }
 
-        public static void SetValorVarEnvironment(string format)
+        public static void SetValorVarEnvironment(string envVar, string envContent)
         {
             log.Debug("Entrar metodo SetValorVarEnvironment: ");
             try
             {
-                Environment.SetEnvironmentVariable("Formato", format, EnvironmentVariableTarget.User);
+                Environment.SetEnvironmentVariable(envVar, envContent, EnvironmentVariableTarget.User);
             }
             catch (Exception e)
             {
@@ -49,16 +47,13 @@ namespace Vueling.Common.Logic.Util
 
         public static ILogger CreateInstanceClassLog(Type typeDeclaring)
         {
-            var variable = Environment.GetEnvironmentVariable("typeLog", EnvironmentVariableTarget.User);
+            var variable = Environment.GetEnvironmentVariable(Resources.ConfigRes.typelog, EnvironmentVariableTarget.User);
+            var key = System.Configuration.ConfigurationManager.AppSettings[variable];
 
-            if (variable == "log4net")
-            {
-                return new AdapterLog4NetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-            }
-            else
-            {
-                return new AdapterSerilogLogger(MethodBase.GetCurrentMethod().DeclaringType);
-            }
+            Type t = Assembly.GetExecutingAssembly().GetType(key);
+
+            object[] mParam = new object[] { typeDeclaring };
+            return (ILogger)Activator.CreateInstance(t,mParam);
         }
     }
 }

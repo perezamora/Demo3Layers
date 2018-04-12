@@ -18,7 +18,7 @@ namespace Vueling.DataAcces.Dao.Tests
     [TestClass()]
     public class AlumnoJsonDaoTests
     {
-        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         private static readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private readonly string fullPath = path + "\\" + "alumnos.json";
@@ -29,7 +29,7 @@ namespace Vueling.DataAcces.Dao.Tests
         public void testInit()
         {
             if (File.Exists(fullPath)) File.Delete(fullPath);
-            ConfigUtils.SetValorVarEnvironment("Json");
+            ConfigUtils.SetValorVarEnvironment("Format","Json");
             factory = new FileFactory<Alumno>();
             alumnoDao = factory.TypeJson();
         }

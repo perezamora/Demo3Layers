@@ -17,7 +17,7 @@ namespace Vueling.DataAcces.Dao.Tests
     [TestClass()]
     public class AlumnoTxtDaoTests
     {
-        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         private static readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private readonly  string fullPath = path + "\\" + "alumnos.txt";
@@ -30,7 +30,7 @@ namespace Vueling.DataAcces.Dao.Tests
         {
             log.Debug("Entrar metodo testInit: ");
 
-            ConfigUtils.SetValorVarEnvironment("txt");
+            ConfigUtils.SetValorVarEnvironment("Format", "txt");
             if (File.Exists(fullPath)) File.Delete(fullPath);
             factory = new FileFactory<Alumno>();
             alumnoDao = factory.TypeTxt();
