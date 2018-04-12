@@ -16,15 +16,18 @@ namespace Vueling.DataAcces.Dao.Dao
         private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string path;
 
+        #region Constructores
         public AlumnoJsonDao()
         {
             path = FileUtils.GetPath();
         }
+        #endregion
 
         #region Metodos
         public T Add(T item)
         {
-            log.Debug("Entrar metodo Add JSON: " + item.ToString());
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name 
+                + Resources.logmessage.valueMethod + item.ToString());
             try
             {
                 FileStream fs = FileUtils.Append(path);
@@ -43,14 +46,15 @@ namespace Vueling.DataAcces.Dao.Dao
             }
             finally
             {
-                log.Debug("Salir metode Add JSON: " + item.ToString());
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name
+                    + Resources.logmessage.valueMethod + item.ToString());
             }
             
         }
 
         public List<T> GetAlumnos()
         {
-            log.Debug("Entrar metodo GetAlumnos JSON: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 List<T> lalumnos = new List<T>();
@@ -62,7 +66,6 @@ namespace Vueling.DataAcces.Dao.Dao
 
                     foreach (String item in list)
                     {
-                        log.Debug("item leido : " + item);
                         lalumnos.Add(FileUtils.DeserializarJson<T>(item));
                     }
                 }
@@ -83,7 +86,7 @@ namespace Vueling.DataAcces.Dao.Dao
 
         public T Select(string guid)
         {
-            log.Debug("Entrar metodo Select JSON: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             try
             {

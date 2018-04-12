@@ -14,11 +14,13 @@ namespace Vueling.DataAcces.Dao.Dao
 {
     public class AlumnoSqlDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {
-        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
         private IDatabase database;
 
+        #region Metodos
         public T Add(T item)
         {
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             DBFactory factory = new DBFactory();
             database = factory.DBSqlServer();
             Alumno alumno = item as Alumno;
@@ -44,11 +46,17 @@ namespace Vueling.DataAcces.Dao.Dao
                 log.Error(e.Message + e.StackTrace);
                 throw;
             }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
 
         }
 
         public List<T> GetAlumnos()
         {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             DBFactory factory = new DBFactory();
             database = factory.DBSqlServer();
 
@@ -57,7 +65,6 @@ namespace Vueling.DataAcces.Dao.Dao
                 using (IDbConnection connection = database.CreateOpenConnection())
                 {
                     var sqlCommand = "SELECT * FROM ALUMNOS";
-                    log.Debug("sqlCommand: " + sqlCommand);
                     using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
                     {
                         using (IDataReader reader = command.ExecuteReader())
@@ -87,11 +94,18 @@ namespace Vueling.DataAcces.Dao.Dao
                 log.Error(e.Message + e.StackTrace);
                 throw;
             }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
 
         public T Select(string guid)
         {
-            log.Debug("Select: " + guid);
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name
+                + Resources.logmessage.valueMethod + guid);
+
             DBFactory factory = new DBFactory();
             database = factory.DBSqlServer();
 
@@ -100,7 +114,6 @@ namespace Vueling.DataAcces.Dao.Dao
                 using (IDbConnection connection = database.CreateOpenConnection())
                 {
                     var sqlCommand = "SELECT * FROM ALUMNOS WHERE Guid = '" + guid + "'";
-                    log.Debug("sqlCommand: " + sqlCommand);
                     using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
                     {
                         using (IDataReader reader = command.ExecuteReader())
@@ -129,6 +142,12 @@ namespace Vueling.DataAcces.Dao.Dao
                 log.Error(e.Message + e.StackTrace);
                 throw;
             }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
+        #endregion
     }
 }

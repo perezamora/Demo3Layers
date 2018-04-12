@@ -13,10 +13,12 @@ namespace Vueling.DataAcces.Dao.Dao
 {
     public class SqlServerDatabase : IDatabase
     {
-        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         public IDbConnection CreateOpenConnection()
         {
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             try
             {
                 IDbConnection connection = new SqlConnection();
@@ -25,6 +27,11 @@ namespace Vueling.DataAcces.Dao.Dao
                 connection.ConnectionString = connectionString;
                 connection.Open();
                 return connection;
+            }
+            catch (SqlException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
             }
             catch (Exception e)
             {
@@ -36,12 +43,19 @@ namespace Vueling.DataAcces.Dao.Dao
 
         public IDbCommand CreateCommand(string commandText, IDbConnection connection)
         {
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             try
             {
                 IDbCommand comando = new SqlCommand();
                 comando.Connection = connection;
                 comando.CommandText = commandText;
                 return comando;
+            }
+            catch (SqlException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
             }
             catch (Exception e)
             {
@@ -52,11 +66,13 @@ namespace Vueling.DataAcces.Dao.Dao
 
         public void CloseConnection(IDbConnection connection)
         {
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             connection.Close();
         }
 
         private string GetConnectionStringByName(string name)
         {
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             string returnValue = null;
 
             ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[name];

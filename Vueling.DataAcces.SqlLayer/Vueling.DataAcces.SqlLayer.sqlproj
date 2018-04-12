@@ -14,7 +14,7 @@
     </RootPath>
     <RootNamespace>Vueling.DataAcces.SqlLayer</RootNamespace>
     <AssemblyName>Vueling.DataAcces.SqlLayer</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>3082,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -23,6 +23,9 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Modern_Spanish_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <DefaultFileStreamFilegroup>FileStreamGroup1</DefaultFileStreamFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -57,5 +60,16 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Storage\" />
+    <Folder Include="scripts" />
+    <Folder Include="Migration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Storage\VuelingDB_FG1.sql" />
+    <Build Include="Storage\FileStreamGroup1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="scripts\Create_DBAVueling.sql" />
+    <None Include="Migration\V1__Init_Vueling_DB.sql" />
   </ItemGroup>
 </Project>

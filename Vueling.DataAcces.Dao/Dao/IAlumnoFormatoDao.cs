@@ -9,11 +9,12 @@ using Vueling.Common.Logic.Model;
 
 namespace Vueling.DataAcces.Dao.Dao
 {
-  
     public interface IAlumnoFormatoDao<T> where T : VuelingObject
     {
+        #region Metodos
         T Add(T item);
         List<T> GetAlumnos();
         T Select(string guid);
+        #endregion
     }
 }

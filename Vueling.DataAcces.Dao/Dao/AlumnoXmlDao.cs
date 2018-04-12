@@ -15,7 +15,7 @@ namespace Vueling.DataAcces.Dao.Dao
 
     public class AlumnoXmlDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {
-        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string path;
 
         public AlumnoXmlDao()
@@ -26,7 +26,8 @@ namespace Vueling.DataAcces.Dao.Dao
         #region Metodos
         public T Add(T item)
         {
-            log.Debug("Entrar metodo Add: " + item.ToString());
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name 
+                + Resources.logmessage.valueMethod + item.ToString());
 
             try
             {
@@ -69,13 +70,14 @@ namespace Vueling.DataAcces.Dao.Dao
             }
             finally
             {
-                log.Debug("Salir metode Add XML: " + item.ToString());
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
 
         }
 
         public List<T> GetAlumnos()
         {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 List<T> alumnos = new List<T>();
@@ -108,6 +110,7 @@ namespace Vueling.DataAcces.Dao.Dao
 
         public T Select(string guid)
         {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 List<T> listaItems = GetAlumnos();

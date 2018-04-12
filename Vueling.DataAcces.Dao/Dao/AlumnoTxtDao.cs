@@ -13,18 +13,21 @@ namespace Vueling.DataAcces.Dao.Dao
 {
     public class AlumnoTxtDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
     {
-        private ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string path;
 
+        #region Constructores
         public AlumnoTxtDao()
         {
             path = FileUtils.GetPath();
         }
+        #endregion
 
         #region Metodos
         public T Add(T item)
         {
-            log.Debug("Entrar metodo Add TXT: " + item.ToString());
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name
+                + Resources.logmessage.valueMethod + item.ToString());
             try
             {
                 FileStream fs = FileUtils.Append(path);
@@ -43,13 +46,13 @@ namespace Vueling.DataAcces.Dao.Dao
             }
             finally
             {
-                log.Debug("Salir metode Add TXT: " + item.ToString());
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
 
         public List<T> GetAlumnos()
         {
-            log.Debug("Entrar metodo GetAlumnos: ");
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 FileStream fs = FileUtils.Abrir(path);
@@ -81,7 +84,7 @@ namespace Vueling.DataAcces.Dao.Dao
 
         public T Select(string guid)
         {
-            log.Debug("Entrar metodo Select TXT: ");
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 if (File.Exists(path))
