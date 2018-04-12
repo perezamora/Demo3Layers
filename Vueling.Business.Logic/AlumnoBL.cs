@@ -20,6 +20,8 @@ namespace Vueling.Business.Logic
 
         private void ReflectionMetodoFactoria()
         {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             // Factoria tipos
             ITypeFactory<Alumno> factory = new FileFactory<Alumno>();
 
@@ -35,11 +37,13 @@ namespace Vueling.Business.Logic
 
             // Invocamos el metodo en tiempo ejecucion (Reflection)
             alumnoDao = (IAlumnoFormatoDao<Alumno>)info.Invoke(factory, mParam);
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
 
         public Alumno Add(Alumno alumno)
         {
-            log.Debug("Entrar metodo Add: " + alumno.ToString());
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name 
+                + Resources.logmessage.valueMethod + alumno.ToString());
             try
             {
                 ReflectionMetodoFactoria();
@@ -57,7 +61,7 @@ namespace Vueling.Business.Logic
 
         public List<Alumno> GetAlumnos()
         {
-            log.Debug("Entrar metodo GetAlumnos: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 ReflectionMetodoFactoria();
@@ -72,15 +76,19 @@ namespace Vueling.Business.Logic
 
         public int CalcularEdat(DateTime fechaNacimiento)
         {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             DateTime CurrentDate = DateTime.Now;
             var edad = CurrentDate.Year - fechaNacimiento.Year;
             if (CurrentDate.Month < fechaNacimiento.Month || (CurrentDate.Month == fechaNacimiento.Month && CurrentDate.Day < fechaNacimiento.Day))
                 edad--;
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name 
+                + Resources.logmessage.valueMethod + edad);
             return edad;
         }
 
         private String CalcularDateCreate()
         {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             return DateTime.Now.ToString("yyyyMMddHHmmssffff");
         }
     }
