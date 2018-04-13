@@ -75,6 +75,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ConfigRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\logmessage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>logmessage.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AlumnoForm.resx">
       <DependentUpon>AlumnoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +101,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resources\ConfigRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfigRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\logmessage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>logmessage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="log4net.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -121,9 +139,7 @@
       <Name>Vueling.Common.Logic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

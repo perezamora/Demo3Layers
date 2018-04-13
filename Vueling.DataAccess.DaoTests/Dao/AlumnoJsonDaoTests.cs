@@ -29,7 +29,7 @@ namespace Vueling.DataAcces.Dao.Tests
         public void testInit()
         {
             if (File.Exists(fullPath)) File.Delete(fullPath);
-            ConfigUtils.SetValorVarEnvironment("Format","Json");
+            ConfigUtils.SetValorVarEnvironment("Formato","Json");
             factory = new FileFactory<Alumno>();
             alumnoDao = factory.TypeJson();
         }

@@ -30,7 +30,7 @@ namespace Vueling.DataAcces.Dao.Tests
         {
             log.Debug("Entrar metodo testInit: ");
 
-            ConfigUtils.SetValorVarEnvironment("Format", "txt");
+            ConfigUtils.SetValorVarEnvironment("Formato", "txt");
             if (File.Exists(fullPath)) File.Delete(fullPath);
             factory = new FileFactory<Alumno>();
             alumnoDao = factory.TypeTxt();

@@ -70,7 +70,7 @@ namespace Vueling.Common.Logic.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Format.
+        ///   Busca una cadena traducida similar a Formato.
         /// </summary>
         internal static string Format {
             get {

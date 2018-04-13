@@ -117,24 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="file" xml:space="preserve">
-    <value>file</value>
+  <data name="endMethod" xml:space="preserve">
+    <value>- End Method:</value>
   </data>
-  <data name="Format" xml:space="preserve">
-    <value>Formato</value>
+  <data name="errorMethod" xml:space="preserve">
+    <value>- Error:</value>
   </data>
-  <data name="slash" xml:space="preserve">
-    <value>\\</value>
+  <data name="startMethod" xml:space="preserve">
+    <value>- Start Method:</value>
   </data>
-  <data name="typelog" xml:space="preserve">
-    <value>typelog</value>
-  </data>
-  <data name="log4net" xml:space="preserve">
-    <value>Vueling.Common.Logic.Util.AdapterLog4NetLogger</value>
-    <comment>Nombre de la clase log4net</comment>
-  </data>
-  <data name="serilog" xml:space="preserve">
-    <value>Vueling.Common.Logic.Util.AdapterSerilogLogger</value>
-    <comment>Nombre de la clase serilog</comment>
+  <data name="valueMethod" xml:space="preserve">
+    <value>- Value:</value>
   </data>
 </root>

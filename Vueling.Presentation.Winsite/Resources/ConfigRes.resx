@@ -117,24 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="file" xml:space="preserve">
-    <value>file</value>
+  <data name="castellano" xml:space="preserve">
+    <value>castellano</value>
   </data>
-  <data name="Format" xml:space="preserve">
-    <value>Formato</value>
+  <data name="catalan" xml:space="preserve">
+    <value>catalan</value>
   </data>
-  <data name="slash" xml:space="preserve">
-    <value>\\</value>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
   </data>
-  <data name="typelog" xml:space="preserve">
-    <value>typelog</value>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="log4net" xml:space="preserve">
-    <value>Vueling.Common.Logic.Util.AdapterLog4NetLogger</value>
-    <comment>Nombre de la clase log4net</comment>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
   </data>
-  <data name="serilog" xml:space="preserve">
-    <value>Vueling.Common.Logic.Util.AdapterSerilogLogger</value>
-    <comment>Nombre de la clase serilog</comment>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
   </data>
 </root>

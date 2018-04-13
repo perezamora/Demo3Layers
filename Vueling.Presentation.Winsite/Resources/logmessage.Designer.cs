@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vueling.Presentation.Winsite.Properties {
+namespace Vueling.Presentation.Winsite.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Vueling.Presentation.Winsite.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class logmessage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal logmessage() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Vueling.Presentation.Winsite.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Vueling.Presentation.Winsite.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Vueling.Presentation.Winsite.Resources.logmessage", typeof(logmessage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,38 @@ namespace Vueling.Presentation.Winsite.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Json.
+        ///   Busca una cadena traducida similar a - End Method:.
         /// </summary>
-        internal static string FormatJson {
+        internal static string endMethod {
             get {
-                return ResourceManager.GetString("FormatJson", resourceCulture);
+                return ResourceManager.GetString("endMethod", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Formato.
+        ///   Busca una cadena traducida similar a - Error:.
         /// </summary>
-        internal static string Formato {
+        internal static string errorMethod {
             get {
-                return ResourceManager.GetString("Formato", resourceCulture);
+                return ResourceManager.GetString("errorMethod", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sql.
+        ///   Busca una cadena traducida similar a - Start Method:.
         /// </summary>
-        internal static string FormatSql {
+        internal static string startMethod {
             get {
-                return ResourceManager.GetString("FormatSql", resourceCulture);
+                return ResourceManager.GetString("startMethod", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Txt.
+        ///   Busca una cadena traducida similar a - Value:.
         /// </summary>
-        internal static string FormatTxt {
+        internal static string valueMethod {
             get {
-                return ResourceManager.GetString("FormatTxt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Xml.
-        /// </summary>
-        internal static string FormatXml {
-            get {
-                return ResourceManager.GetString("FormatXml", resourceCulture);
+                return ResourceManager.GetString("valueMethod", resourceCulture);
             }
         }
     }

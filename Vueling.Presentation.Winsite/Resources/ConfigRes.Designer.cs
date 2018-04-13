@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vueling.Presentation.Winsite.Properties {
+namespace Vueling.Presentation.Winsite.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Vueling.Presentation.Winsite.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class ConfigRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ConfigRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Vueling.Presentation.Winsite.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Vueling.Presentation.Winsite.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Vueling.Presentation.Winsite.Resources.ConfigRes", typeof(ConfigRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,65 @@ namespace Vueling.Presentation.Winsite.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Json.
+        ///   Busca una cadena traducida similar a castellano.
         /// </summary>
-        internal static string FormatJson {
+        internal static string castellano {
             get {
-                return ResourceManager.GetString("FormatJson", resourceCulture);
+                return ResourceManager.GetString("castellano", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Formato.
+        ///   Busca una cadena traducida similar a catalan.
         /// </summary>
-        internal static string Formato {
+        internal static string catalan {
             get {
-                return ResourceManager.GetString("Formato", resourceCulture);
+                return ResourceManager.GetString("catalan", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sql.
+        ///   Busca una cadena traducida similar a Delete.
         /// </summary>
-        internal static string FormatSql {
+        internal static string Delete {
             get {
-                return ResourceManager.GetString("FormatSql", resourceCulture);
+                return ResourceManager.GetString("Delete", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Txt.
+        ///   Busca una cadena traducida similar a English.
         /// </summary>
-        internal static string FormatTxt {
+        internal static string English {
             get {
-                return ResourceManager.GetString("FormatTxt", resourceCulture);
+                return ResourceManager.GetString("English", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Xml.
+        ///   Busca una cadena traducida similar a Insert.
         /// </summary>
-        internal static string FormatXml {
+        internal static string Insert {
             get {
-                return ResourceManager.GetString("FormatXml", resourceCulture);
+                return ResourceManager.GetString("Insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select.
+        /// </summary>
+        internal static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Update.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
             }
         }
     }

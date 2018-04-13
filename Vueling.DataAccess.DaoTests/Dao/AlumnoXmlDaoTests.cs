@@ -30,7 +30,7 @@ namespace Vueling.DataAcces.Dao.Dao.Tests
         public void testInit()
         {
             if (File.Exists(fullPath)) File.Delete(fullPath);
-            ConfigUtils.SetValorVarEnvironment("Format", "Xml");
+            ConfigUtils.SetValorVarEnvironment("Formato", "Xml");
             factory = new FileFactory<Alumno>();
             alumnoDao = factory.TypeXml();
         }

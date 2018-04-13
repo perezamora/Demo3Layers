@@ -55,7 +55,7 @@ namespace Vueling.Presentation.Winsite
             log.Debug("Entrar Mostrar lista alumnos TXT: ");
             try
             {
-                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatTxt);
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Formato, Properties.Resources.FormatTxt);
                 listAlumnos = alumnoBL.GetAlumnos();
                 this.mostrarGrid(listAlumnos);
             }
@@ -70,7 +70,7 @@ namespace Vueling.Presentation.Winsite
             log.Debug("Entrar Mostrar lista alumnos JSON: ");
             try
             {
-                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatJson);
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Formato, Properties.Resources.FormatJson);
                 listaAlumnosJson = SingletonListaJson.Instance;
                 this.mostrarGrid(listaAlumnosJson.ListaAlumnos);
             }
@@ -85,7 +85,7 @@ namespace Vueling.Presentation.Winsite
             log.Debug("Entrar Mostrar lista alumnos XML: ");
             try
             {
-                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatXml);
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Formato, Properties.Resources.FormatXml);
                 listaAlumnosXml = SingletonListaXml.Instance;
                 this.mostrarGrid(listaAlumnosXml.ListaAlumnos);
             }
@@ -178,7 +178,7 @@ namespace Vueling.Presentation.Winsite
             log.Debug("Entrar Mostrar lista alumnos SQL: ");
             try
             {
-                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Format, Properties.Resources.FormatSql);
+                ConfigUtils.SetValorVarEnvironment(Properties.Resources.Formato, Properties.Resources.FormatSql);
                 listAlumnos = alumnoBL.GetAlumnos();
                 this.mostrarGrid(listAlumnos);
             }

@@ -16,7 +16,7 @@ namespace Vueling.Common.Logic.Util
 
         static ConfigUtils() { }
 
-        public static string GetValorVarEnvironment(string envVar )
+        public static string GetValorVarEnvironment(string envVar)
         {
             log.Debug("Entrar metodo GetValorVarEnvironment: ");
             try
