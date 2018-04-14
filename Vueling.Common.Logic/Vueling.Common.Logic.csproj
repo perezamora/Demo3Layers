@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Enumeraciones\Accion.cs" />
     <Compile Include="Enumeraciones\DBType.cs" />
+    <Compile Include="Enumeraciones\Idioma.cs" />
     <Compile Include="Enumeraciones\TypeFileEnum.cs" />
     <Compile Include="Model\VuelingObject.cs" />
     <Compile Include="Resources\ConfigRes.Designer.cs">

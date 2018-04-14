@@ -17,6 +17,9 @@ using Vueling.Common.Logic.Util;
 using Vueling.Common.Logic;
 using static Vueling.Common.Logic.TypeFileEnum;
 using static Vueling.Common.Logic.Enumeraciones.Accion;
+using System.Threading;
+using System.Globalization;
+using static Vueling.Common.Logic.Enumeraciones.Idioma;
 
 namespace Vueling.Presentation.Winsite
 {
@@ -35,6 +38,7 @@ namespace Vueling.Presentation.Winsite
             InitializeComponent();
             alumno = new Alumno();
             alumnoBL = new AlumnoBL();
+
             listaAlumnosJson = SingletonListaJson.Instance;
             listaAlumnosXml = SingletonListaXml.Instance;
             cargarDatosAlumnos();
@@ -159,11 +163,44 @@ namespace Vueling.Presentation.Winsite
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
-            var idioma = IdiomaSeleccionadoCombo();
-            log.Debug(idioma);
+            var idioma = (OpcIdioma)Enum.Parse(typeof(OpcIdioma), (string)comboBox1.SelectedItem, true);
+
+            switch (idioma)
+            {
+                case OpcIdioma.Catalan:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("CA-ES");
+                    break;
+                case OpcIdioma.Castellano:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("ES-ES");
+                    break;
+                case OpcIdioma.Ingles:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("EN-US");
+                    break;
+            }
+            
+            AsignarIdiomaForm();
         }
 
-        private string IdiomaSeleccionadoCombo() => (string)comboBox1.SelectedValue ?? Resources.ConfigRes.castellano;
+        private void AsignarIdiomaForm()
+        {
+            label1.Text = Resources.StringResources.label1;
+            label2.Text = Resources.StringResources.label2;
+            label3.Text = Resources.StringResources.label3;
+            label4.Text = Resources.StringResources.label4;
+            label5.Text = Resources.StringResources.label5;
+            button1.Text = Resources.StringResources.button1;
+            button2.Text = Resources.StringResources.button2;
+            button3.Text = Resources.StringResources.button3;
+            button4.Text = Resources.StringResources.button5;
+            button5.Text = Resources.StringResources.button4;
+            comboBox1.Text = Resources.StringResources.comboBox1;
+            comboBox2.Text = Resources.StringResources.comboBox2;
+            this.Text = Resources.StringResources.WindowTitle;
+        }
 
+        private void AlumnoForm_Load(object sender, EventArgs e)
+        {
+            AsignarIdiomaForm();
+        }
     }
 }

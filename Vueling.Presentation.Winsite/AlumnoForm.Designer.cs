@@ -230,6 +230,7 @@
             this.Controls.Add(this.textId);
             this.Name = "AlumnoForm";
             this.Text = "Formulario Alumno";
+            this.Load += new System.EventHandler(this.AlumnoForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

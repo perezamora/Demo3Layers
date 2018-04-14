@@ -102,6 +102,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>logmessage.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\StringResources.CA-ES.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.CA-ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\StringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\StringResources.ES-ES.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.ES-ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\StringResources.EN-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.EN-US.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AlumnoForm.resx">
       <DependentUpon>AlumnoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +145,22 @@
     <EmbeddedResource Include="Resources\logmessage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>logmessage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\StringResources.CA-ES.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.CA-ES.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\StringResources.ES-ES.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.ES-ES.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\StringResources.EN-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.EN-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\StringResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="log4net.config">
       <SubType>Designer</SubType>
