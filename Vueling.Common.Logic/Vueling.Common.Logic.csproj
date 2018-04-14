@@ -68,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConfigRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\logmessage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>logmessage.resx</DependentUpon>
+    </Compile>
     <Compile Include="Singletons\SingletonListaJson.cs" />
     <Compile Include="Singletons\SingletonListaXml.cs" />
     <Compile Include="Util\AdapterLog4NetLogger.cs" />
@@ -89,6 +94,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ConfigRes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\logmessage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>logmessage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

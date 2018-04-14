@@ -12,6 +12,12 @@ namespace Vueling.Business.Logic
     {
         Alumno Add(Alumno alumno);
 
+        Alumno Select(int id);
+
+        Alumno Update(Alumno alumno);
+
+        void Delete(int id);
+
         List<Alumno> GetAlumnos();
     }
 }

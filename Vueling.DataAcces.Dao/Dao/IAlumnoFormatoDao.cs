@@ -15,6 +15,8 @@ namespace Vueling.DataAcces.Dao.Dao
         T Add(T item);
         List<T> GetAlumnos();
         T Select(string guid);
+        T Update(T item);
+        void Delete(int id);
         #endregion
     }
 }

@@ -1,0 +1,5 @@
+[Environment]::SetEnvironmentVariable("typeLog", "log4net", "User")
+[Environment]::SetEnvironmentVariable("Formato", "Txt", "User")
+[Environment]::SetEnvironmentVariable("fileTxt", "alumnos.txt", "User")
+[Environment]::SetEnvironmentVariable("fileJson", "alumnos.json", "User")
+[Environment]::SetEnvironmentVariable("fileXml", "alumnos.xml", "User")

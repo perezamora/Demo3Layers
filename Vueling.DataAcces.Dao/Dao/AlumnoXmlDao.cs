@@ -75,6 +75,11 @@ namespace Vueling.DataAcces.Dao.Dao
 
         }
 
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<T> GetAlumnos()
         {
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -128,6 +133,11 @@ namespace Vueling.DataAcces.Dao.Dao
                 throw;
             }
 
+        }
+
+        public T Update(T item)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

@@ -17,15 +17,18 @@ namespace Vueling.Common.Logic.Util
 
         public static String GetPath()
         {
-            log.Debug("Entrar metodo GetPath: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             try
             {
                 String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 var nameFile = Resources.ConfigRes.file + ConfigUtils.GetValorVarEnvironment(Resources.ConfigRes.Format);
-                var filePath = Environment.GetEnvironmentVariable(nameFile);
+                var filePath = ConfigUtils.GetValorVarEnvironment(nameFile);
                 var fullPath = path + Resources.ConfigRes.slash + filePath;
+                log.Debug(nameFile);
+                log.Debug(filePath);
+                log.Debug(fullPath);
 
                 return fullPath;
             }
@@ -38,7 +41,7 @@ namespace Vueling.Common.Logic.Util
 
         public static FileStream Crear(string pathFile)
         {
-            log.Debug("Entrar metodo Crear: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             FileStream fs;
             try
@@ -59,7 +62,7 @@ namespace Vueling.Common.Logic.Util
                 log.Fatal(e.Message + e.StackTrace);
                 throw;
             }
-            catch(IOException e)
+            catch (IOException e)
             {
                 log.Error(e.Message + e.StackTrace);
                 throw;
@@ -69,7 +72,7 @@ namespace Vueling.Common.Logic.Util
 
         public static FileStream Append(string pathFile)
         {
-            log.Debug("Entrar metodo Append: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 var fs = new FileStream(pathFile, FileMode.Append, FileAccess.Write);
@@ -84,7 +87,7 @@ namespace Vueling.Common.Logic.Util
 
         public static FileStream Abrir(string pathFile)
         {
-            log.Debug("Entrar metodo Abrir: " + pathFile);
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 var fs = new FileStream(pathFile, FileMode.Open);
@@ -104,7 +107,7 @@ namespace Vueling.Common.Logic.Util
 
         public static void Escribir(FileStream fs, string contenido)
         {
-            log.Debug("Entrar metodo Escribir: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 using (StreamWriter sw = new StreamWriter(fs))
@@ -127,7 +130,7 @@ namespace Vueling.Common.Logic.Util
 
         public static List<String> LeerAllFile(FileStream fs)
         {
-            log.Debug("Entrar metodo Leer: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 List<string> list = new List<string>();
@@ -162,7 +165,7 @@ namespace Vueling.Common.Logic.Util
 
         public static void Cerrar(FileStream fs)
         {
-            log.Debug("Cerrar fichero: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 fs.Close();
@@ -183,12 +186,15 @@ namespace Vueling.Common.Logic.Util
         public static T DeserializarJson<T>(string item)
         {
             log.Debug("DeserializarJson: " + item);
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name +
+                Resources.logmessage.valueMethod + item.ToString());
             return JsonConvert.DeserializeObject<T>(item);
         }
 
         public static string SerializarJson<T>(T item)
         {
-            log.Debug("SerializarJson: " + item.ToString());
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name +
+                Resources.logmessage.valueMethod + item.ToString());
             return JsonConvert.SerializeObject(item);
         }
     }

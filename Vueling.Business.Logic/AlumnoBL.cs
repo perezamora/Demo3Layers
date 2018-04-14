@@ -91,5 +91,20 @@ namespace Vueling.Business.Logic
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             return DateTime.Now.ToString("yyyyMMddHHmmssffff");
         }
+
+        public Alumno Select(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Alumno Update(Alumno alumno)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

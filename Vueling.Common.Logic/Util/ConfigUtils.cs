@@ -18,7 +18,7 @@ namespace Vueling.Common.Logic.Util
 
         public static string GetValorVarEnvironment(string envVar)
         {
-            log.Debug("Entrar metodo GetValorVarEnvironment: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 return Environment.GetEnvironmentVariable(envVar, EnvironmentVariableTarget.User);
@@ -33,7 +33,7 @@ namespace Vueling.Common.Logic.Util
 
         public static void SetValorVarEnvironment(string envVar, string envContent)
         {
-            log.Debug("Entrar metodo SetValorVarEnvironment: ");
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
                 Environment.SetEnvironmentVariable(envVar, envContent, EnvironmentVariableTarget.User);
