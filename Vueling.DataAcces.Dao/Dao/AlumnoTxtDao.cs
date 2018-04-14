@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Vueling.Common.Logic.Model;
 using Vueling.Common.Logic.Util;
 using System.IO;
-using log4net;
 using System.Reflection;
 
 namespace Vueling.DataAcces.Dao.Dao
@@ -50,12 +49,12 @@ namespace Vueling.DataAcces.Dao.Dao
             }
         }
 
-        public void Delete(int id)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<T> GetAlumnos()
+        public List<T> GetAll()
         {
             log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
@@ -130,6 +129,11 @@ namespace Vueling.DataAcces.Dao.Dao
                 log.Error(e.Message + e.StackTrace);
                 throw;
             }
+        }
+
+        public T SelectId(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public T Update(T item)

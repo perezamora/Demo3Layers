@@ -8,7 +8,6 @@ using Vueling.DataAcces.Dao.Dao;
 using Vueling.Common.Logic.Util;
 using Vueling.Common.Logic;
 using System.Reflection;
-using log4net;
 
 namespace Vueling.Business.Logic
 {
@@ -65,7 +64,7 @@ namespace Vueling.Business.Logic
             try
             {
                 ReflectionMetodoFactoria();
-                return alumnoDao.GetAlumnos();
+                return alumnoDao.GetAll();
             }
             catch (Exception e)
             {

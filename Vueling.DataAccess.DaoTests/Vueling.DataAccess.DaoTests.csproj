@@ -82,9 +82,9 @@
   <ItemGroup>
     <Compile Include="Dao\AlumnoJsonDaoTests.cs" />
     <Compile Include="Dao\AlumnoTxtDaoTests.cs" />
+    <Compile Include="Dao\AlumnoTxtDaoUnitTest.cs" />
     <Compile Include="Dao\AlumnoXmlDaoTests.cs" />
     <Compile Include="LogginSetup.cs" />
-    <Compile Include="NMock3\NMockTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

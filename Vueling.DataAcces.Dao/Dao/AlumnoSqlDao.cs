@@ -54,12 +54,12 @@ namespace Vueling.DataAcces.Dao.Dao
 
         }
 
-        public void Delete(int id)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<T> GetAlumnos()
+        public List<T> GetAll()
         {
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             DBFactory factory = new DBFactory();
@@ -152,6 +152,11 @@ namespace Vueling.DataAcces.Dao.Dao
                 log.Error(e.Message + e.StackTrace);
                 throw;
             }
+        }
+
+        public T SelectId(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public T Update(T item)

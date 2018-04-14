@@ -8,7 +8,6 @@ using Vueling.Common.Logic.Util;
 using System.IO;
 using System.Xml.Serialization;
 using System.Reflection;
-using log4net;
 
 namespace Vueling.DataAcces.Dao.Dao
 {
@@ -75,12 +74,12 @@ namespace Vueling.DataAcces.Dao.Dao
 
         }
 
-        public void Delete(int id)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<T> GetAlumnos()
+        public List<T> GetAll()
         {
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
@@ -118,7 +117,7 @@ namespace Vueling.DataAcces.Dao.Dao
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
-                List<T> listaItems = GetAlumnos();
+                List<T> listaItems = GetAll();
                 var filterItems = from n in listaItems
                                   where n.Guid == guid
                                   select n;
@@ -133,6 +132,11 @@ namespace Vueling.DataAcces.Dao.Dao
                 throw;
             }
 
+        }
+
+        public T SelectId(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public T Update(T item)
