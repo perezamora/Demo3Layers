@@ -26,7 +26,7 @@ namespace Vueling.DataAcces.Dao.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AM-BCN-POR-335;Initial Catalog=VuelingDB;User ID=sa;Password=Pa$$w0rd" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AM-BCN-POR-417;Initial Catalog=VuelingDB;User ID=sa;Password=Pa$$w0rd" +
             "")]
         public string cn {
             get {
