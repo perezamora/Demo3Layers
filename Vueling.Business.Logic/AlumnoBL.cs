@@ -8,14 +8,16 @@ using Vueling.DataAcces.Dao.Dao;
 using Vueling.Common.Logic.Util;
 using Vueling.Common.Logic;
 using System.Reflection;
+using Vueling.Business.Logic.Interfaces;
 
 namespace Vueling.Business.Logic
 {
-    public class AlumnoBL : IAlumnoBL
+    public class AlumnoBL : IAlumnoBL, ICrudBL
     {
         private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         private IAlumnoFormatoDao<Alumno> alumnoDao;
+        private ICrudDao<Alumno> alumnoCrudDao;
 
         private void ReflectionMetodoFactoria()
         {
@@ -91,23 +93,67 @@ namespace Vueling.Business.Logic
             return DateTime.Now.ToString("yyyyMMddHHmmssffff");
         }
 
-        public Alumno Select(int id)
+        public Alumno Insert(Alumno alumno)
+        {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            alumnoCrudDao = new AlumnoSqlDao<Alumno>();
+            try
+            {
+                alumno.Edad = CalcularEdat(alumno.FechaNac);
+                alumno.FechaCr = CalcularDateCreate();
+                return alumnoCrudDao.Insert(alumno);
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+
+        }
+
+        public Alumno Select(string guid)
         {
             throw new NotImplementedException();
+        }
+
+        public Alumno SelectById(Alumno alumno)
+        {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            alumnoCrudDao = new AlumnoSqlDao<Alumno>();
+            try
+            {
+                return alumnoCrudDao.SelectById(alumno);
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
 
         public Alumno Update(Alumno alumno)
         {
-            throw new NotImplementedException();
-        }
-
-        public int Delete(int id)
-        {
-            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + Resources.logmessage.valueMethod + id);
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            alumnoCrudDao = new AlumnoSqlDao<Alumno>();
             try
             {
-                ReflectionMetodoFactoria();
-                return alumnoDao.Delete(id);
+                alumno.Edad = CalcularEdat(alumno.FechaNac);
+                return alumnoCrudDao.Update(alumno);
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+        }
+
+        public int Delete(Alumno alumno)
+        {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            alumnoCrudDao = new AlumnoSqlDao<Alumno>();
+            try
+            {
+                return alumnoCrudDao.Delete(alumno);
             }
             catch (Exception e)
             {

@@ -13,10 +13,6 @@ namespace Vueling.DataAcces.Dao.Dao
         #region Metodos
         T Add(T item);
         List<T> GetAll();
-        T Select(string guid);
-        T SelectId(int id);
-        T Update(T item);
-        int Delete(int id);
         #endregion
     }
 }

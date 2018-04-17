@@ -12,5 +12,6 @@ namespace Vueling.DataAcces.Dao.Dao
         IDbConnection CreateOpenConnection();
         IDbCommand CreateCommand(string commandText, IDbConnection connection);
         void CloseConnection(IDbConnection connection);
+        void AddParameter(IDbCommand command, string name, object value);
     }
 }

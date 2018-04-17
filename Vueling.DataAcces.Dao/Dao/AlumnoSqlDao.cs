@@ -12,13 +12,13 @@ using Vueling.Common.Logic.Util;
 
 namespace Vueling.DataAcces.Dao.Dao
 {
-    public class AlumnoSqlDao<T> : IAlumnoFormatoDao<T> where T : VuelingObject
+    public class AlumnoSqlDao<T> : ICrudDao<T>
     {
         private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
         private IDatabase database;
 
         #region Metodos
-        public T Add(T item)
+        public T Insert(T item)
         {
             log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             DBFactory factory = new DBFactory();
@@ -30,94 +30,40 @@ namespace Vueling.DataAcces.Dao.Dao
                 using (IDbConnection connection = database.CreateOpenConnection())
                 {
                     var fechaNac = (SqlDateTime)alumno.FechaNac;
-                    var sqlCommand = "INSERT INTO ALUMNOS ([Guid],[Nombre],[Apellidos],[Dni],[FechaNacimiento],[Edad],[FechaCreacion]) " +
-                        "VALUES ('" + alumno.Guid + "','" + alumno.Name + "','" + alumno.Apellidos + "','" + alumno.Dni + "','" + fechaNac + "'," + alumno.Edad + ",'" + alumno.FechaCr + "')";
+                    var sqlCommand = "INSERT INTO ALUMNOS ([Guid],[Nombre],[Apellidos],[Dni],[FechaNacimiento],[Edad],[FechaCreacion]) VALUES (@Guid, @Nombre, @Apellidos, @Dni, @FechaNac, @Edad , @FechaCr)";
                     using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
                     {
+                        database.AddParameter(command, "@Guid", alumno.Guid);
+                        database.AddParameter(command, "@Nombre", alumno.Name);
+                        database.AddParameter(command, "@Apellidos", alumno.Apellidos);
+                        database.AddParameter(command, "@Dni", alumno.Dni);
+                        database.AddParameter(command, "@FechaNac", alumno.FechaNac);
+                        database.AddParameter(command, "@Edad", alumno.Edad);
+                        database.AddParameter(command, "@FechaCr", alumno.FechaCr);
                         command.ExecuteNonQuery();
-                        database.CloseConnection(connection);
                     }
 
-                    return this.Select(alumno.Guid);
-                }
-            }
-            catch (SqlException e)
-            {
-                log.Error(e.Message + e.StackTrace);
-                throw;
-            }
-            catch (Exception e)
-            {
-                log.Error(e.Message + e.StackTrace);
-                throw;
-            }
-
-        }
-
-        public int Delete(int id)
-        {
-            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
-            DBFactory factory = new DBFactory();
-            database = factory.DBSqlServer();
-
-            try
-            {
-                using (IDbConnection connection = database.CreateOpenConnection())
-                {
-                    var sqlCommand = "DELETE FROM ALUMNOS WHERE id = " + id;
+                    sqlCommand = "SELECT * FROM ALUMNOS WHERE Guid = @Guid";
                     using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
                     {
-                        command.ExecuteNonQuery();
-                        database.CloseConnection(connection);
-                    }
-
-                    return 0;
-                }
-            }
-            catch (SqlException e)
-            {
-                log.Error(e.Message + e.StackTrace);
-                throw;
-            }
-            catch (Exception e)
-            {
-                log.Error(e.Message + e.StackTrace);
-                throw;
-            }
-
-        }
-
-        public List<T> GetAll()
-        {
-            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
-            DBFactory factory = new DBFactory();
-            database = factory.DBSqlServer();
-
-            try
-            {
-                using (IDbConnection connection = database.CreateOpenConnection())
-                {
-                    var sqlCommand = "SELECT * FROM ALUMNOS";
-                    using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
-                    {
+                        database.AddParameter(command, "@Guid", alumno.Guid);
                         using (IDataReader reader = command.ExecuteReader())
                         {
-                            List<Alumno> alumnos = new List<Alumno>();
+                            var alumnoRet = new Alumno();
                             while (reader.Read())
                             {
-                                var alumno = new Alumno();
-                                alumno.Id = reader.GetInt32(0);
-                                alumno.Guid = reader.GetGuid(1).ToString();
-                                alumno.Name = reader.GetString(2);
-                                alumno.Apellidos = reader.GetString(3);
-                                alumno.Dni = reader.GetString(4);
-                                alumno.FechaNac = reader.GetDateTime(5);
-                                alumno.Edad = reader.GetInt32(6);
-                                alumno.FechaCr = reader.GetString(7);
-                                alumnos.Add(alumno);
+                                alumnoRet.Id = Convert.ToInt32(reader["Id"].ToString());
+                                alumnoRet.Guid = reader["Guid"].ToString();
+                                alumnoRet.Name = reader["Nombre"].ToString();
+                                alumnoRet.Apellidos = reader["Apellidos"].ToString();
+                                alumnoRet.Dni = reader["Dni"].ToString();
+                                alumnoRet.FechaNac = Convert.ToDateTime(reader["FechaNacimiento"].ToString());
+                                alumnoRet.Edad = Convert.ToInt32(reader["Edad"].ToString());
+                                alumnoRet.FechaCr = reader["FechaCreacion"].ToString();
                             }
-                            database.CloseConnection(connection);
-                            return alumnos as List<T>;
+
+                            //return alumnoRet as T;
+                            return (T)Convert.ChangeType(alumnoRet, typeof(T));
                         }
                     }
                 }
@@ -134,62 +80,151 @@ namespace Vueling.DataAcces.Dao.Dao
             }
         }
 
-        public T Select(string guid)
-        {
-            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name
-                + Resources.logmessage.valueMethod + guid);
-
-            DBFactory factory = new DBFactory();
-            database = factory.DBSqlServer();
-
-            try
-            {
-                using (IDbConnection connection = database.CreateOpenConnection())
-                {
-                    var sqlCommand = "SELECT * FROM ALUMNOS WHERE Guid = '" + guid + "'";
-                    using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
-                    {
-                        using (IDataReader reader = command.ExecuteReader())
-                        {
-                            var alumno = new Alumno();
-                            while (reader.Read())
-                            {
-                                alumno.Id = reader.GetInt32(0);
-                                alumno.Guid = reader.GetGuid(1).ToString();
-                                alumno.Name = reader.GetString(2);
-                                alumno.Apellidos = reader.GetString(3);
-                                alumno.Dni = reader.GetString(4);
-                                alumno.FechaNac = reader.GetDateTime(5);
-                                alumno.Edad = reader.GetInt32(6);
-                                alumno.FechaCr = reader.GetString(7);
-                            }
-                            database.CloseConnection(connection);
-                            log.Debug("Alumno select: " + alumno.ToString());
-                            return alumno as T;
-                        }
-                    }
-                }
-            }
-            catch (SqlException e)
-            {
-                log.Error(e.Message + e.StackTrace);
-                throw;
-            }
-            catch (Exception e)
-            {
-                log.Error(e.Message + e.StackTrace);
-                throw;
-            }
-        }
-
-        public T SelectId(int id)
+        public T Select(T item)
         {
             throw new NotImplementedException();
+        }
+
+        public T SelectById(T item)
+        {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + Resources.logmessage.valueMethod);
+
+            DBFactory factory = new DBFactory();
+            database = factory.DBSqlServer();
+            Alumno alumno = item as Alumno;
+
+            try
+            {
+                using (IDbConnection connection = database.CreateOpenConnection())
+                {
+                    var sqlCommand = "SELECT * FROM ALUMNOS WHERE Id = @IDAlumno";
+                    using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
+                    {
+                        database.AddParameter(command, "@IDAlumno", alumno.Id);
+
+                        using (IDataReader reader = command.ExecuteReader())
+                        {
+                            var alumnoSel = new Alumno();
+                            while (reader.Read())
+                            {
+                                alumnoSel.Id = Convert.ToInt32(reader["Id"].ToString());
+                                alumnoSel.Guid = reader["Guid"].ToString();
+                                alumnoSel.Name = reader["Nombre"].ToString();
+                                alumnoSel.Apellidos = reader["Apellidos"].ToString();
+                                alumnoSel.Dni = reader["Dni"].ToString();
+                                alumnoSel.FechaNac = Convert.ToDateTime(reader["FechaNacimiento"].ToString());
+                                alumnoSel.Edad = Convert.ToInt32(reader["Edad"].ToString());
+                                alumnoSel.FechaCr = reader["FechaCreacion"].ToString();
+                            }
+
+                            return (T)Convert.ChangeType(alumnoSel, typeof(T));
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
 
         public T Update(T item)
         {
-            throw new NotImplementedException();
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + Resources.logmessage.valueMethod);
+
+            DBFactory factory = new DBFactory();
+            database = factory.DBSqlServer();
+            Alumno alumno = item as Alumno;
+
+            try
+            {
+                using (IDbConnection connection = database.CreateOpenConnection())
+                {
+                    var sqlCommand = "UPDATE ALUMNOS SET Nombre = @Nombre, Apellidos = @Apellidos , Dni = @Dni, FechaNacimiento = @FechaNac, Edad = @Edad WHERE id = @IDAlumno";
+                    using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
+                    {
+                        database.AddParameter(command, "@IDAlumno", alumno.Id);
+                        database.AddParameter(command, "@Nombre", alumno.Name);
+                        database.AddParameter(command, "@Apellidos", alumno.Apellidos);
+                        database.AddParameter(command, "@Dni", alumno.Dni);
+                        database.AddParameter(command, "@FechaNac", alumno.FechaNac);
+                        database.AddParameter(command, "@Edad", alumno.Edad);
+                        command.ExecuteNonQuery();
+                    }
+
+                    sqlCommand = "SELECT * FROM ALUMNOS WHERE Id = @IDAlumno";
+                    using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
+                    {
+                        database.AddParameter(command, "@IDAlumno", alumno.Id);
+
+                        using (IDataReader reader = command.ExecuteReader())
+                        {
+                            var alumnoSel = new Alumno();
+                            while (reader.Read())
+                            {
+                                alumnoSel.Id = Convert.ToInt32(reader["Id"].ToString());
+                                alumnoSel.Guid = reader["Guid"].ToString();
+                                alumnoSel.Name = reader["Nombre"].ToString();
+                                alumnoSel.Apellidos = reader["Apellidos"].ToString();
+                                alumnoSel.Dni = reader["Dni"].ToString();
+                                alumnoSel.FechaNac = Convert.ToDateTime(reader["FechaNacimiento"].ToString());
+                                alumnoSel.Edad = Convert.ToInt32(reader["Edad"].ToString());
+                                alumnoSel.FechaCr = reader["FechaCreacion"].ToString();
+                            }
+
+                            return (T)Convert.ChangeType(alumnoSel, typeof(T));
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+        }
+
+        public int Delete(T item)
+        {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + Resources.logmessage.valueMethod);
+
+            DBFactory factory = new DBFactory();
+            database = factory.DBSqlServer();
+            Alumno alumno = item as Alumno;
+
+            try
+            {
+                using (IDbConnection connection = database.CreateOpenConnection())
+                {
+                    var sqlCommand = "DELETE FROM ALUMNOS WHERE Id = @IDAlumno";
+                    using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
+                    {
+                        database.AddParameter(command, "@IDAlumno", alumno.Id);
+                        return (Int32)command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
         #endregion
     }

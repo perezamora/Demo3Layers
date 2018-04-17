@@ -68,6 +68,7 @@
       <HintPath>..\packages\Serilog.Sinks.RollingFile.3.3.0\lib\net45\Serilog.Sinks.RollingFile.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
@@ -81,6 +82,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Dao\AlumnoJsonDaoTests.cs" />
+    <Compile Include="Dao\AlumnoSqlDaoTests.cs" />
     <Compile Include="Dao\AlumnoTxtDaoTests.cs" />
     <Compile Include="Dao\AlumnoTxtDaoUnitTest.cs" />
     <Compile Include="Dao\AlumnoXmlDaoTests.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

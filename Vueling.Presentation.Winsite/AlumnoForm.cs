@@ -19,6 +19,7 @@ using static Vueling.Common.Logic.Enumeraciones.Accion;
 using System.Threading;
 using System.Globalization;
 using static Vueling.Common.Logic.Enumeraciones.Idioma;
+using Vueling.Business.Logic.Interfaces;
 
 namespace Vueling.Presentation.Winsite
 {
@@ -28,6 +29,7 @@ namespace Vueling.Presentation.Winsite
 
         private Alumno alumno;
         private IAlumnoBL alumnoBL;
+        private ICrudBL alumnoBLCrud;
         SingletonListaJson listaAlumnosJson;
         SingletonListaXml listaAlumnosXml;
 
@@ -37,6 +39,7 @@ namespace Vueling.Presentation.Winsite
             InitializeComponent();
             alumno = new Alumno();
             alumnoBL = new AlumnoBL();
+            alumnoBLCrud = new AlumnoBL();
 
             listaAlumnosJson = SingletonListaJson.Instance;
             listaAlumnosXml = SingletonListaXml.Instance;
@@ -48,18 +51,60 @@ namespace Vueling.Presentation.Winsite
         {
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             LoadAlumnoData();
-            Alumno alumnoRet = alumnoBL.Add(alumno);
-            ResetFieldForm();
+            Alumno alumnoRet;
+
+            try
+            {
+                var formato = FormatoSeleccionadoCombo();
+                switch (formato)
+                {
+                    case OpcTypeFile.Sql:
+                        alumnoRet = alumnoBLCrud.Insert(alumno);
+                        break;
+                    default:
+                        alumnoRet = alumnoBL.Add(alumno);
+                        break;
+                }
+                ResetFieldForm();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error Añadir Alumno", "Error Añadir Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            try
+            {
+                var idAlumno = textId.Text == "" ? 0 : Convert.ToInt32(textId.Text);
+                alumno.Id = idAlumno;
+                Alumno alumnoSelect = alumnoBLCrud.SelectById(alumno);
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + alumnoSelect.ToString());
+                ResetFieldForm();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error Select Alumno", "Error Select Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            try
+            {
+                LoadAlumnoData();
+                var alumnoRet = alumnoBLCrud.Update(alumno);
+                ResetFieldForm();
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + alumnoRet.ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error Delete Alumno", "Error Delete Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -75,19 +120,23 @@ namespace Vueling.Presentation.Winsite
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
-                var result = alumnoBL.Delete(Convert.ToInt32(textId.Text));
+                var idAlumno = textId.Text == "" ? 0 : Convert.ToInt32(textId.Text);
+                alumno.Id = idAlumno;
+                var result = alumnoBLCrud.Delete(alumno);
                 ResetFieldForm();
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error Delete Alumno", "Error Delete Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void LoadAlumnoData()
         {
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
-            alumno.Id = Convert.ToInt32(textId.Text);
+            alumno.Id = textId.Text == "" ? 0 : Convert.ToInt32(textId.Text);
             alumno.Name = textNombre.Text;
             alumno.Apellidos = textApellidos.Text;
             alumno.Dni = textDni.Text;
@@ -147,15 +196,19 @@ namespace Vueling.Presentation.Winsite
             {
                 case OpcTypeFile.Txt:
                     ConfigUtils.SetValorVarEnvironment(Properties.Resources.Formato, Properties.Resources.FormatTxt);
+                    this.ConfigViewFormNormal();
                     break;
                 case OpcTypeFile.Json:
                     ConfigUtils.SetValorVarEnvironment(Properties.Resources.Formato, Properties.Resources.FormatJson);
+                    this.ConfigViewFormNormal();
                     break;
                 case OpcTypeFile.Xml:
                     ConfigUtils.SetValorVarEnvironment(Properties.Resources.Formato, Properties.Resources.FormatXml);
+                    this.ConfigViewFormNormal();
                     break;
                 case OpcTypeFile.Sql:
                     ConfigUtils.SetValorVarEnvironment(Properties.Resources.Formato, Properties.Resources.FormatSql);
+                    this.ConfigViewFormCrud();
                     break;
             }
         }
@@ -186,7 +239,7 @@ namespace Vueling.Presentation.Winsite
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("EN-US");
                     break;
             }
-            
+
             AsignarIdiomaForm();
         }
 
@@ -210,6 +263,20 @@ namespace Vueling.Presentation.Winsite
         private void AlumnoForm_Load(object sender, EventArgs e)
         {
             AsignarIdiomaForm();
+        }
+
+        private void ConfigViewFormNormal()
+        {
+            button2.Visible = false;
+            button3.Visible = false;
+            button5.Visible = false;
+        }
+
+        private void ConfigViewFormCrud()
+        {
+            button2.Visible = true;
+            button3.Visible = true;
+            button5.Visible = true;
         }
     }
 }
