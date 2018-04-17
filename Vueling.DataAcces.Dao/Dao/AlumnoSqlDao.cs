@@ -56,7 +56,35 @@ namespace Vueling.DataAcces.Dao.Dao
 
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            DBFactory factory = new DBFactory();
+            database = factory.DBSqlServer();
+
+            try
+            {
+                using (IDbConnection connection = database.CreateOpenConnection())
+                {
+                    var sqlCommand = "DELETE FROM ALUMNOS WHERE id = " + id;
+                    using (IDbCommand command = database.CreateCommand(sqlCommand, connection))
+                    {
+                        command.ExecuteNonQuery();
+                        database.CloseConnection(connection);
+                    }
+
+                    return 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+
         }
 
         public List<T> GetAll()

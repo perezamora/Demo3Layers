@@ -72,7 +72,16 @@ namespace Vueling.Presentation.Winsite
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            try
+            {
+                var result = alumnoBL.Delete(Convert.ToInt32(textId.Text));
+                ResetFieldForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Delete Alumno", "Error Delete Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadAlumnoData()
@@ -96,6 +105,7 @@ namespace Vueling.Presentation.Winsite
 
         private void cargarDatosAlumnos()
         {
+
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             CargarDatosAlumnosJson();
             CargarDatosAlumnosXml();

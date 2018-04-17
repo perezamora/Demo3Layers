@@ -41,7 +41,7 @@ namespace Vueling.Business.Logic
 
         public Alumno Add(Alumno alumno)
         {
-            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name 
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name
                 + Resources.logmessage.valueMethod + alumno.ToString());
             try
             {
@@ -80,7 +80,7 @@ namespace Vueling.Business.Logic
             var edad = CurrentDate.Year - fechaNacimiento.Year;
             if (CurrentDate.Month < fechaNacimiento.Month || (CurrentDate.Month == fechaNacimiento.Month && CurrentDate.Day < fechaNacimiento.Day))
                 edad--;
-            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name 
+            log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name
                 + Resources.logmessage.valueMethod + edad);
             return edad;
         }
@@ -101,9 +101,19 @@ namespace Vueling.Business.Logic
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public int Delete(int id)
         {
-            throw new NotImplementedException();
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + Resources.logmessage.valueMethod + id);
+            try
+            {
+                ReflectionMetodoFactoria();
+                return alumnoDao.Delete(id);
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Vueling.Business.Logic
 
         Alumno Update(Alumno alumno);
 
-        void Delete(int id);
+        int Delete(int id);
 
         List<Alumno> GetAlumnos();
     }
