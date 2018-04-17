@@ -133,7 +133,18 @@ namespace Vueling.Business.Logic
 
         public Alumno Update(Alumno alumno)
         {
-            throw new NotImplementedException();
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            alumnoCrudDao = new AlumnoSqlDao<Alumno>();
+            try
+            {
+                alumno.Edad = CalcularEdat(alumno.FechaNac);
+                return alumnoCrudDao.Update(alumno);
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
 
         public int Delete(Alumno alumno)

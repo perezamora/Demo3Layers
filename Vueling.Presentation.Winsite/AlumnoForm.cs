@@ -93,7 +93,18 @@ namespace Vueling.Presentation.Winsite
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            try
+            {
+                LoadAlumnoData();
+                var alumnoRet = alumnoBLCrud.Update(alumno);
+                ResetFieldForm();
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + alumnoRet.ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error Delete Alumno", "Error Delete Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

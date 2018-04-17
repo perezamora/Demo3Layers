@@ -34,6 +34,7 @@ namespace Vueling.DataAcces.Dao.Dao.Tests
 
         }
 
+        #region MetodosTest
         [DataRow("pere", "zamora", "3333", "01-03-1998", 20)]
         [DataTestMethod]
         public void InsertTest(string name, string apellidos, string dni, string fechaNac, int edad)
@@ -67,7 +68,22 @@ namespace Vueling.DataAcces.Dao.Dao.Tests
         }
 
 
-        [DataRow(5)]
+        [DataRow(12, "pere", "mmmer", "2222", "10-08-1976", 44)]
+        [DataTestMethod]
+        public void UpdateTest(int id, string name, string apellidos, string dni, string fechaNac, int edad)
+        {
+            var lfechaNac = fechaNac.Split('-');
+            var FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
+
+            Alumno alumno = new Alumno(id, name, apellidos, dni, FechaNac, edad, DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+
+            Alumno alumnoUpdate = alumnoCrudDao.Update(alumno);
+
+            Assert.AreNotEqual(alumno, alumnoUpdate);
+            Assert.IsTrue(alumno.Id == alumnoUpdate.Id);
+        }
+
+        [DataRow(4)]
         [DataTestMethod]
         public void DeleteTest(int id)
         {
@@ -106,6 +122,7 @@ namespace Vueling.DataAcces.Dao.Dao.Tests
                 throw;
             }
         }
+        #endregion
 
     }
 
