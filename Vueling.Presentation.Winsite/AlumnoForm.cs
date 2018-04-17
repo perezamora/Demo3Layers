@@ -65,13 +65,12 @@ namespace Vueling.Presentation.Winsite
                         alumnoRet = alumnoBL.Add(alumno);
                         break;
                 }
+                ResetFieldForm();
             }
             catch (Exception)
             {
                 MessageBox.Show("Error Añadir Alumno", "Error Añadir Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            ResetFieldForm();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -83,13 +82,13 @@ namespace Vueling.Presentation.Winsite
                 alumno.Id = idAlumno;
                 Alumno alumnoSelect = alumnoBLCrud.SelectById(alumno);
                 log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + alumnoSelect.ToString());
+                ResetFieldForm();
             }
             catch (Exception)
             {
                 MessageBox.Show("Error Select Alumno", "Error Select Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            ResetFieldForm();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -110,13 +109,17 @@ namespace Vueling.Presentation.Winsite
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
-                //var result = alumnoBL.Delete(Convert.ToInt32(textId.Text));
+                var idAlumno = textId.Text == "" ? 0 : Convert.ToInt32(textId.Text);
+                alumno.Id = idAlumno;
+                var result = alumnoBLCrud.Delete(alumno);
                 ResetFieldForm();
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + result);
             }
             catch (Exception)
             {
                 MessageBox.Show("Error Delete Alumno", "Error Delete Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void LoadAlumnoData()

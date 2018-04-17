@@ -66,6 +66,23 @@ namespace Vueling.DataAcces.Dao.Dao.Tests
             Assert.IsTrue(alumnoSelect.Id == alumnoRet.Id);
         }
 
+
+        [DataRow(5)]
+        [DataTestMethod]
+        public void DeleteTest(int id)
+        {
+            var countPreIsrt = this.CountAlumnosTable();
+            Alumno alumnoSelect = new Alumno
+            {
+                Id = id
+            };
+            var result = alumnoCrudDao.Delete(alumnoSelect);
+            var countPostIsrt = this.CountAlumnosTable();
+
+            Assert.IsTrue(countPreIsrt > countPostIsrt);
+            Assert.IsTrue(result == 1);
+        }
+
         private int CountAlumnosTable()
         {
 

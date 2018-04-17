@@ -136,9 +136,19 @@ namespace Vueling.Business.Logic
             throw new NotImplementedException();
         }
 
-        public int Delete(int id)
+        public int Delete(Alumno alumno)
         {
-            throw new NotImplementedException();
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            alumnoCrudDao = new AlumnoSqlDao<Alumno>();
+            try
+            {
+                return alumnoCrudDao.Delete(alumno);
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
     }
 }

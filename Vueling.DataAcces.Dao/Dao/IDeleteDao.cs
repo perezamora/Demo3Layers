@@ -8,6 +8,6 @@ namespace Vueling.DataAcces.Dao.Dao
 {
     public interface IDeleteDao<T>
     {
-        T Delete(T id);
+        int Delete(T id);
     }
 }
