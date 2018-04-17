@@ -8,10 +8,11 @@ using Vueling.DataAcces.Dao.Dao;
 using Vueling.Common.Logic.Util;
 using Vueling.Common.Logic;
 using System.Reflection;
+using Vueling.Business.Logic.Interfaces;
 
 namespace Vueling.Business.Logic
 {
-    public class AlumnoBL : IAlumnoBL
+    public class AlumnoBL : IAlumnoBL, ICrudBL
     {
         private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -91,7 +92,17 @@ namespace Vueling.Business.Logic
             return DateTime.Now.ToString("yyyyMMddHHmmssffff");
         }
 
-        public Alumno Select(int id)
+        public Alumno Insert(Alumno alumno)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Alumno Select(string guid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Alumno SelectById(int id)
         {
             throw new NotImplementedException();
         }
@@ -103,17 +114,7 @@ namespace Vueling.Business.Logic
 
         public int Delete(int id)
         {
-            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + Resources.logmessage.valueMethod + id);
-            try
-            {
-                ReflectionMetodoFactoria();
-                return alumnoDao.Delete(id);
-            }
-            catch (Exception e)
-            {
-                log.Error(e.Message + e.StackTrace);
-                throw;
-            }
+            throw new NotImplementedException();
         }
     }
 }

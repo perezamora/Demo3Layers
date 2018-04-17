@@ -43,6 +43,11 @@
     <Compile Include="AlumnoBL.cs" />
     <Compile Include="IAlumnoBL.cs" />
     <Compile Include="FileFactory.cs" />
+    <Compile Include="Interfaces\ICreateBL.cs" />
+    <Compile Include="Interfaces\ICrudBL.cs" />
+    <Compile Include="Interfaces\IDeleteBL.cs" />
+    <Compile Include="Interfaces\IReadBL.cs" />
+    <Compile Include="Interfaces\IUpdateBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITypeFactory.cs" />
     <Compile Include="Resources\logmessage.Designer.cs">

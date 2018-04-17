@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Vueling.Business.Logic;
 using Vueling.Common.Logic.Model;
 
-namespace Vueling.Business.Logic
+namespace Vueling.Business.Logic.Interfaces
 {
-    public interface IAlumnoBL
+    public interface IReadBL
     {
-        Alumno Add(Alumno alumno);
-
-        List<Alumno> GetAlumnos();
+        Alumno Select(string guid);
+        Alumno SelectById(int id);
     }
 }

@@ -25,7 +25,7 @@ namespace Vueling.Business.Logic
             return new AlumnoXmlDao<T>();
         }
 
-        public IAlumnoFormatoDao<T> TypeSql()
+        public ICrudDao<T> TypeSql()
         {
             return new AlumnoSqlDao<T>();
         }

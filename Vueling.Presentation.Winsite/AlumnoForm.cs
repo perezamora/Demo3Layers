@@ -75,10 +75,10 @@ namespace Vueling.Presentation.Winsite
             log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
-                var result = alumnoBL.Delete(Convert.ToInt32(textId.Text));
+                //var result = alumnoBL.Delete(Convert.ToInt32(textId.Text));
                 ResetFieldForm();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error Delete Alumno", "Error Delete Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -34,54 +34,6 @@ namespace Vueling.DataAccess.DaoTests.Dao
             _factory.ClearExpectations();
         }
 
-        [DataRow(1, "pere", "zamora", "3333", "10-03-1978", "40")]
-        [DataTestMethod]
-        public void Insert_Alumno_FormatoTXT_unitTest(int id, string name, string apellidos, string dni, string fechaNac, string edad)
-        {
-
-            alumno = Load_Properties_Alumno(id, name, apellidos, dni, fechaNac, edad);
-
-            mockTextDao.Expects.One.MethodWith(alumnoDaoInst => alumnoDaoInst.Add(alumno)).WillReturn(alumno);
-
-            Assert.AreEqual(alumno, mockTextDao.MockObject.Add(alumno));
-        }
-
-        [DataRow(1)]
-        [DataTestMethod]
-        public void Delete_Alumno_FormatoTXT_unitTest(int id)
-        {
-            var result = 1;
-            mockTextDao.Expects.One.MethodWith(alumnoDaoInst => alumnoDaoInst.Delete(id)).WillReturn(result);
-
-            Assert.AreEqual(result, mockTextDao.MockObject.Delete(id));
-        }
-
-        [DataRow(1, "pere", "zamora", "3333", "10-03-1978", "40")]
-        [DataTestMethod]
-        public void Select_byId_Alumno_FormatoTXT_unitTest(int id, string name, string apellidos, string dni, string fechaNac, string edad)
-        {
-            alumno = Load_Properties_Alumno(id, name, apellidos, dni, fechaNac, edad);
-            mockTextDao.Expects.One.MethodWith(alumnoDaoInst => alumnoDaoInst.SelectId(id)).WillReturn(alumno);
-
-            Assert.AreEqual(alumno, mockTextDao.MockObject.SelectId(id));
-
-            var idFake = 2;
-            Alumno alumnoTest = Load_Properties_Alumno(idFake, name, apellidos, dni, fechaNac, edad);
-            mockTextDao.Expects.One.MethodWith(alumnoDaoInst => alumnoDaoInst.SelectId(id)).WillReturn(alumno);
-
-            Assert.AreNotEqual(alumnoTest, mockTextDao.MockObject.SelectId(id));
-        }
-
-        [DataRow(1, "pere", "zamora", "3333", "10-03-1978", "40")]
-        [DataTestMethod]
-        public void Update_Alumno_FormatoTXT_unitTest(int id, string name, string apellidos, string dni, string fechaNac, string edad)
-        {
-            alumno = Load_Properties_Alumno(id, name, apellidos, dni, fechaNac, edad);
-            mockTextDao.Expects.One.MethodWith(alumnoDaoInst => alumnoDaoInst.Update(alumno)).WillReturn(alumno);
-
-            Assert.AreEqual(alumno, mockTextDao.MockObject.Update(alumno));
-        }
-
         [TestMethod]
         public void GetAlumnos_FormatoTxt_unitTest()
         {

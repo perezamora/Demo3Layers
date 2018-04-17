@@ -47,7 +47,12 @@
     <Compile Include="Dao\AlumnoTxtDao.cs" />
     <Compile Include="Dao\DBFactory.cs" />
     <Compile Include="Dao\IAlumnoFormatoDao.cs" />
+    <Compile Include="Dao\ICreateDao.cs" />
+    <Compile Include="Dao\ICrudDao.cs" />
     <Compile Include="Dao\IDatabase.cs" />
+    <Compile Include="Dao\IDeleteDao.cs" />
+    <Compile Include="Dao\IReadDao.cs" />
+    <Compile Include="Dao\IUpdateDao.cs" />
     <Compile Include="Dao\SqlServerDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
