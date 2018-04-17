@@ -17,6 +17,7 @@ namespace Vueling.Business.Logic
         private readonly ILogger log = ConfigUtils.CreateInstanceClassLog(MethodBase.GetCurrentMethod().DeclaringType);
 
         private IAlumnoFormatoDao<Alumno> alumnoDao;
+        private ICrudDao<Alumno> alumnoCrudDao;
 
         private void ReflectionMetodoFactoria()
         {
@@ -94,7 +95,20 @@ namespace Vueling.Business.Logic
 
         public Alumno Insert(Alumno alumno)
         {
-            throw new NotImplementedException();
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            alumnoCrudDao = new AlumnoSqlDao<Alumno>();
+            try
+            {
+                alumno.Edad = CalcularEdat(alumno.FechaNac);
+                alumno.FechaCr = CalcularDateCreate();
+                return alumnoCrudDao.Insert(alumno);
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
+
         }
 
         public Alumno Select(string guid)

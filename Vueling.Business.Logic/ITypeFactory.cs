@@ -14,6 +14,7 @@ namespace Vueling.Business.Logic
         IAlumnoFormatoDao<T> TypeTxt();
         IAlumnoFormatoDao<T> TypeJson();
         IAlumnoFormatoDao<T> TypeXml();
+        ICrudDao<T> TypeSql();
     }
 
 }
