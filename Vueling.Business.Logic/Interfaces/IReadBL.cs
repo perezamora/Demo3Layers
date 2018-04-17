@@ -10,6 +10,6 @@ namespace Vueling.Business.Logic.Interfaces
     public interface IReadBL
     {
         Alumno Select(string guid);
-        Alumno SelectById(int id);
+        Alumno SelectById(Alumno alumno);
     }
 }

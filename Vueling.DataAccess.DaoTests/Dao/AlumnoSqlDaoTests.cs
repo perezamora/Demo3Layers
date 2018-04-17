@@ -34,17 +34,16 @@ namespace Vueling.DataAcces.Dao.Dao.Tests
 
         }
 
-        [DataRow("pere", "zamora", "3333", "01-03-1998", "20")]
+        [DataRow("pere", "zamora", "3333", "01-03-1998", 20)]
         [DataTestMethod]
-        public void InsertTest(string name, string apellidos, string dni, string fechaNac, string edad)
+        public void InsertTest(string name, string apellidos, string dni, string fechaNac, int edad)
         {
-
             var countPreIsrt = this.CountAlumnosTable();
 
             var lfechaNac = fechaNac.Split('-');
             var FechaNac = new DateTime(Convert.ToInt32(lfechaNac[2]), Convert.ToInt32(lfechaNac[1]), Convert.ToInt32(lfechaNac[0]));
 
-            Alumno alumno = new Alumno(0, name, apellidos, dni, FechaNac, Convert.ToInt32(edad), DateTime.Now.ToString("yyyyMMddHHmmssffff"))
+            Alumno alumno = new Alumno(0, name, apellidos, dni, FechaNac, edad, DateTime.Now.ToString("yyyyMMddHHmmssffff"))
             {
                 Guid = System.Guid.NewGuid().ToString()
             };
@@ -52,10 +51,23 @@ namespace Vueling.DataAcces.Dao.Dao.Tests
             Alumno alumnoIsrt = alumnoCrudDao.Insert(alumno);
             var countPostIsrt = this.CountAlumnosTable();
 
-            Assert.IsTrue(countPreIsrt  < countPostIsrt);
+            Assert.IsTrue(countPreIsrt < countPostIsrt);
         }
 
-        private int CountAlumnosTable() {
+
+        [DataRow(2)]
+        [DataTestMethod]
+        public void SelectByIdTest(int id)
+        {
+            Alumno alumnoSelect = new Alumno();
+            alumnoSelect.Id = id;
+            Alumno alumnoRet = alumnoCrudDao.SelectById(alumnoSelect);
+
+            Assert.IsTrue(alumnoSelect.Id == alumnoRet.Id);
+        }
+
+        private int CountAlumnosTable()
+        {
 
             try
             {

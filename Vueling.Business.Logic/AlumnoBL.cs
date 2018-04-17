@@ -116,9 +116,19 @@ namespace Vueling.Business.Logic
             throw new NotImplementedException();
         }
 
-        public Alumno SelectById(int id)
+        public Alumno SelectById(Alumno alumno)
         {
-            throw new NotImplementedException();
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            alumnoCrudDao = new AlumnoSqlDao<Alumno>();
+            try
+            {
+                return alumnoCrudDao.SelectById(alumno);
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message + e.StackTrace);
+                throw;
+            }
         }
 
         public Alumno Update(Alumno alumno)

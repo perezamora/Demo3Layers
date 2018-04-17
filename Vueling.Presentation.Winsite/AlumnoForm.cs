@@ -53,15 +53,22 @@ namespace Vueling.Presentation.Winsite
             LoadAlumnoData();
             Alumno alumnoRet;
 
-            var formato = FormatoSeleccionadoCombo();
-            switch (formato)
+            try
             {
-                case OpcTypeFile.Sql:
-                    alumnoRet = alumnoBLCrud.Insert(alumno);
-                    break;
-                default:
-                    alumnoRet = alumnoBL.Add(alumno);
-                    break;
+                var formato = FormatoSeleccionadoCombo();
+                switch (formato)
+                {
+                    case OpcTypeFile.Sql:
+                        alumnoRet = alumnoBLCrud.Insert(alumno);
+                        break;
+                    default:
+                        alumnoRet = alumnoBL.Add(alumno);
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error Añadir Alumno", "Error Añadir Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             ResetFieldForm();
@@ -69,7 +76,20 @@ namespace Vueling.Presentation.Winsite
 
         private void button2_Click(object sender, EventArgs e)
         {
+            log.Debug(Resources.logmessage.startMethod + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            try
+            {
+                var idAlumno = textId.Text == "" ? 0 : Convert.ToInt32(textId.Text);
+                alumno.Id = idAlumno;
+                Alumno alumnoSelect = alumnoBLCrud.SelectById(alumno);
+                log.Debug(Resources.logmessage.endMethod + System.Reflection.MethodBase.GetCurrentMethod().Name + alumnoSelect.ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error Select Alumno", "Error Select Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+            ResetFieldForm();
         }
 
         private void button3_Click(object sender, EventArgs e)
